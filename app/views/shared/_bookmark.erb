@@ -1,0 +1,23 @@
+<div class="bookmark">
+  <img class="center-cover bookmark-img" src="./Todoist2_files/thumbnail.png" width="17" height="17" class="cmp_12_checkbox_off amicheckbox_img">
+  <div class="bookmark-inner-wrap">
+    <div class="info-top">
+      <%= react_component("BookmarkBody", props: {title: "Pricing mixpanel", url: "mixpanel.com" })%>
+
+      <div class="bookmark-left">
+        <%=render "shared/clipboard"%>
+        <div class="date">
+          12 Jan
+        </div>
+      </div>
+    </div>
+
+  <div class="bookmark-bottom">
+
+    <div class="tag-list">
+      <%= react_component("Tag", props: {title: "movie", logo: image_path("video.svg") }) %>
+      <%= react_component("Tag", props: {title: "blog" }) %>
+    </div>
+    </div>
+  </div>
+</div>

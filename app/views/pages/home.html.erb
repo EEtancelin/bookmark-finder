@@ -1,3 +1,56 @@
 
-<h1>Hello World</h1>
-<%= react_component("HelloWorldApp", props: @hello_world_props, prerender: false) %>
+<body class=" theme_todoist" cz-shortcut-listen="true">
+  <%=render "shared/todo_top_bar"%>
+
+  <div id="all_holder" style="margin-left: 230px;">
+
+    <div id="notifier" style="display: none; left: 720px;"><a href="https://fr.todoist.com/app?lang=fr&amp;v=860#" class="hide_link" style="float: right;">Cacher</a></div>
+
+    <div id="left_menu" class="left_menu" style="height: 732px;">
+      <div id="close_menu_holder"><a href="https://fr.todoist.com/app?lang=fr&amp;v=860#" id="close_menu"><img src="<%=image_path("calendar.gif")%>" width="14" height="14" class="cmp_menu_close">Fermer le menu</a></div>
+
+      <div id="list_holder">
+        <div id="top_section">
+          <ul id="top_filters">
+            <li class="filter" id="filter_team_inbox" style="display: none;">
+              <img src="<%=image_path("calendar.gif")%>" width="20" height="18" class="cmp_filter_team_inbox">Boîte de réception de l'équipe
+              <span class="counter"></span>
+            </li>
+            <li class="filter">
+              <img src="<%=image_path("calendar.gif")%>" width="20" height="18" class="cmp_filter_today">Aujourd'hui<span class="counter overdue_color">4</span>
+            </li>
+            <li class="filter">
+              <img src="<%=image_path("calendar.gif")%>" width="20" height="18" class="cmp_filter_days">7 derniers jours
+              <span class="counter">4</span>
+            </li>
+          </ul>
+          <%=render "shared/show_projects"%>
+        </div>
+        <%=render "shared/project_list"%>
+      </div>
+    </div>
+
+
+    <div id="content" class="main_content" style="min-height: 782px;">
+      <div id="editor" style="width: 596px;">
+        <div id="agenda_view">
+          <h2 class="view_header">Aujourd'hui<div class="top_right_actions">
+          </div>
+        </h2>
+        <%= render "shared/search_bar"%>
+        <div class="section_overdue">
+          <h2 class="header">En retard
+
+          </h2><ul class="items priority_list" style="margin-bottom: 9px;"><li class="task_item item_76105126 not_shared menu_clickable priority_1 agenda_item indent_1" id="item_76105126">
+            <div class="invisible_space"></div>
+            <%= react_component("MainContentApp", props: @hello_world_props)%>
+            <%=render "shared/bookmark" %>
+            <%=render "shared/bookmark" %>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body></html>
