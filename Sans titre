@@ -1,0 +1,23 @@
+Directory/
+
+where is registration? app/startup/registration/ OR
+app/HelloWorld/registration
+
+
+Inconsistancy between https://github.com/shakacode/react_on_rails/blob/master/docs/additional-reading/webpack-dev-server.md
+and
+https://github.com/shakacode/react_on_rails/blob/master/docs/additional-reading/hot-reloading-rails-development.md
+HMR is enabled by default or not ?
+
+
+
+
+
+Improve Hot Reloading of Assets For Rails Development
+
+
+1)
+Download webpack.server.rails.build.config.js missing in doc.
+ webpack -w --config webpack.server.rails.build.config.js // missing
+
+Problem 2) Error: Cannot find module './webpack.common'
