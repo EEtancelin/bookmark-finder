@@ -10,7 +10,8 @@ const mapStateToProps = (state, ownprops) => {
   const bookmark = state.bookmarks.get(ownprops.bookmark_id)
   return {
     title: bookmark.get("title"),
-    url: bookmark.get("url")
+    url: bookmark.get("url"),
+    date: bookmark.get("date"),
   }
 };
 
