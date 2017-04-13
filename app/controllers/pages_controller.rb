@@ -20,8 +20,11 @@ class PagesController < ApplicationController
     }
 
     @hello_world_props = {
-      entities: { bookmarks: bookmarks, tags: tag },
-      bookmarkTag: bookmark_tag
+      entities: {
+        bookmarks: bookmarks,
+        tags: tag,
+        bookmarkTag: bookmark_tag
+      }
     }
 
   end

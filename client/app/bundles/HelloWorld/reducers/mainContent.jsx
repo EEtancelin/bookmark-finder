@@ -14,22 +14,8 @@ const entities = (state = Map({}), action) => {
   }
 };
 
-
-const bookmarkTag = (state = '', action) => {
-  switch (action.type) {
-    case HELLO_WORLD_NAME_UPDATE:
-      return action.text;
-    case '@@INIT':
-      return fromJS(state);
-    default:
-      return state;
-  }
-};
-
-
 const mainContentReducer = combineReducers({
   entities,
-  bookmarkTag,
 });
 
 export default mainContentReducer;
