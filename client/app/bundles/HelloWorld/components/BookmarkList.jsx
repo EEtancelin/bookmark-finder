@@ -1,12 +1,15 @@
 import React from 'react';
-import BookmarkContainer from '../containers/BookmarkContainer'
+import BookmarkContainer from '../containers/BookmarkContainer';
 
-const BookmarkList = ({bookmarks_id_list}) =>(
+const BookmarkList = ({ bookmarksId }) => (
   <div>
-    {bookmarks_id_list.map(bookmark_id => (
-      <div><BookmarkContainer bookmark_id={bookmark_id}/></div>
+    {bookmarksId.map(bookmarkId => (
+      <BookmarkContainer key={bookmarkId} bookmark_id={bookmarkId} />
     ))}
   </div>
 
-)
+);
+BookmarkList.PropTypes = {
+  bookmarksId: React.PropTypes.array.isRequired,
+};
 export default BookmarkList;

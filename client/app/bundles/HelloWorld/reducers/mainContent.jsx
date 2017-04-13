@@ -1,30 +1,58 @@
 import { combineReducers } from 'redux';
+import { Map, fromJS } from 'immutable';
 import { HELLO_WORLD_NAME_UPDATE } from '../constants/mainContentConstants';
-import { Map, List, fromJS } from 'immutable';
 
 
 const bookmarks = (state = Map({}), action) => {
   switch (action.type) {
     case HELLO_WORLD_NAME_UPDATE:
       return action.text;
-    case "@@INIT":
-      return fromJS(state)
+    case '@@INIT':
+      return fromJS(state);
     default:
       return state;
   }
 };
 
-const bookmarks_list = (state = '', action) => {
+const bookmarksList = (state = '', action) => {
   switch (action.type) {
     case HELLO_WORLD_NAME_UPDATE:
       return action.text;
-    case "@@INIT":
-      return fromJS(state)
+    case '@@INIT':
+      return fromJS(state);
     default:
       return state;
   }
 };
 
-const mainContentReducer = combineReducers({ bookmarks,bookmarks_list});
+const tags = (state = '', action) => {
+  switch (action.type) {
+    case HELLO_WORLD_NAME_UPDATE:
+      return action.text;
+    case '@@INIT':
+      return fromJS(state);
+    default:
+      return state;
+  }
+};
+
+const bookmarkTag = (state = '', action) => {
+  switch (action.type) {
+    case HELLO_WORLD_NAME_UPDATE:
+      return action.text;
+    case '@@INIT':
+      return fromJS(state);
+    default:
+      return state;
+  }
+};
+
+
+const mainContentReducer = combineReducers({
+  bookmarks,
+  bookmarksList,
+  tags,
+  bookmarkTag,
+});
 
 export default mainContentReducer;

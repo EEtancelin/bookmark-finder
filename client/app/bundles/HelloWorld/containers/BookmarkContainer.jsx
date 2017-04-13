@@ -7,12 +7,14 @@ import * as actions from '../actions/mainContentActionCreators';
 
 
 const mapStateToProps = (state, ownprops) => {
-  const bookmark = state.bookmarks.get(ownprops.bookmark_id)
+  const bookmark = state.bookmarks.get(ownprops.bookmark_id);
   return {
-    title: bookmark.get("title"),
-    url: bookmark.get("url"),
-    date: bookmark.get("date"),
-  }
+    key: bookmark.get('id'),
+    bmId: bookmark.get('id'),
+    title: bookmark.get('title'),
+    url: bookmark.get('url'),
+    date: bookmark.get('date'),
+  };
 };
 
 // Don't forget to actually use connect!
