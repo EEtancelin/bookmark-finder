@@ -7,7 +7,7 @@ import * as actions from '../actions/mainContentActionCreators';
 
 
 const mapStateToProps = (state, ownprops) => {
-  const tag = state.tags.get(ownprops.tagId);
+  const tag = state.entities.get('tags').get(ownprops.tagId);
   return {
     title: tag.get('title'),
     id: tag.get('id'),
