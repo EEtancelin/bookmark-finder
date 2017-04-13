@@ -14,17 +14,6 @@ const bookmarks = (state = Map({}), action) => {
   }
 };
 
-const bookmarksList = (state = '', action) => {
-  switch (action.type) {
-    case HELLO_WORLD_NAME_UPDATE:
-      return action.text;
-    case '@@INIT':
-      return fromJS(state);
-    default:
-      return state;
-  }
-};
-
 const tags = (state = '', action) => {
   switch (action.type) {
     case HELLO_WORLD_NAME_UPDATE:
@@ -50,7 +39,6 @@ const bookmarkTag = (state = '', action) => {
 
 const mainContentReducer = combineReducers({
   bookmarks,
-  bookmarksList,
   tags,
   bookmarkTag,
 });

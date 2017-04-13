@@ -8,6 +8,7 @@ const getTagsByBookmark = (bookmarkTagsList, bookmarkId) => (
   bookmarkTagsList
     .filter(t => t.get('bookmark') === bookmarkId)
     .map(x => x.get('tag'))
+    .toSetSeq()
 );
 
 // Which part of the Redux global state does our component want to receive as props?

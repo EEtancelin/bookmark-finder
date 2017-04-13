@@ -5,7 +5,9 @@ import BookmarkList from '../components/BookmarkList';
 import * as actions from '../actions/mainContentActionCreators';
 
 // Which part of the Redux global state does our component want to receive as props?
-const mapStateToProps = state => ({ bookmarksId: state.bookmarksList });
+const mapStateToProps = state => ({
+  bookmarksId: state.bookmarks.filter(t => true).map(bm => bm.get('id')).toSetSeq(),
+});
 
 // Don't forget to actually use connect!
 // Note that we don't export HelloWorld, but the redux "connected" version of it.
