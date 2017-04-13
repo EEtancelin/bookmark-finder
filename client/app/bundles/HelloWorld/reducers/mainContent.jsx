@@ -3,7 +3,7 @@ import { Map, fromJS } from 'immutable';
 import { HELLO_WORLD_NAME_UPDATE } from '../constants/mainContentConstants';
 
 
-const bookmarks = (state = Map({}), action) => {
+const entities = (state = Map({}), action) => {
   switch (action.type) {
     case HELLO_WORLD_NAME_UPDATE:
       return action.text;
@@ -38,7 +38,7 @@ const bookmarkTag = (state = '', action) => {
 
 
 const mainContentReducer = combineReducers({
-  bookmarks,
+  entities,
   tags,
   bookmarkTag,
 });

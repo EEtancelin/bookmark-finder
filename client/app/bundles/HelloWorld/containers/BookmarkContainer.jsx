@@ -7,7 +7,7 @@ import * as actions from '../actions/mainContentActionCreators';
 
 
 const mapStateToProps = (state, ownprops) => {
-  const bookmark = state.bookmarks.get(ownprops.bookmark_id);
+  const bookmark = state.entities.get('bookmarks').get(ownprops.bookmark_id);
   return {
     key: bookmark.get('id'),
     bmId: bookmark.get('id'),
