@@ -1,9 +1,10 @@
 import React from 'react';
+import Immutable from 'immutable';
 import BookmarkBody from './BookmarkBody';
 import TagListContainer from '../containers/TagListContainer';
 import Clipboard from './Clipboard';
 
-const Bookmark = ({ bmId, title, url, date = '' }) => (
+const Bookmark = ({ bmId, tags,title, url, date = '' }) => (
   <div className="bookmark">
     <div className="center-cover bookmark-img" style={{ backgroundImage: './Todoist2_files/thumbnail.png' }}> </div>
     <div className="bookmark-inner-wrap">
@@ -18,7 +19,7 @@ const Bookmark = ({ bmId, title, url, date = '' }) => (
       </div>
 
       <div className="bookmark-bottom">
-        <TagListContainer bmId={bmId} />
+        <TagListContainer tags={tags} />
       </div>
     </div>
   </div>

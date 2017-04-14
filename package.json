@@ -15,7 +15,6 @@
     "eslint": "^3.19.0",
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^3.0.2",
-    "immutable": "^3.8.1"
   },
   "devDependencies": {
     "babel-eslint": "^7.2.1",
