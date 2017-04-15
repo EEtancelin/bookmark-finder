@@ -1,10 +1,10 @@
 import React from 'react';
 import BookmarkContainer from '../containers/BookmarkContainer';
 
-const BookmarkList = ({ bookmarksId }) => (
+const BookmarkList = ({ bookmarksId, allbookmarks }) => (
   <div>
-    {bookmarksId.map(bookmarkId => (
-      <BookmarkContainer key={bookmarkId} bookmark_id={bookmarkId} />
+    {(bookmarksId.count() > 0 ? bookmarksId : allbookmarks).map(bookmarkId => (
+        <BookmarkContainer key={bookmarkId} bookmark_id={bookmarkId} />
     ))}
   </div>
 

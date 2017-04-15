@@ -20,10 +20,10 @@ class SearchBox extends React.Component {
   onUserInputChange(e) {
     const userInput = e.target.value;
     const extractedTag = this.extractTagId(userInput, this.state.tags);
-    this.setState({ userInput: extractedTag.count() > 0 ? '' : userInput,
-                    searchedTags: this.state.searchedTags.concat(extractedTag)
-                  }
-    );
+    this.setState({
+      userInput: (extractedTag.count() > 0 || userInput === ' ') ? '' : userInput,
+      searchedTags: this.state.searchedTags.concat(extractedTag)
+    });
     extractedTag.count() > 0 ? (this.props.onSearchedTagsAdded(extractedTag.first())) : '';
   }
 
