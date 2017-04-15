@@ -1,10 +1,10 @@
 import React, { PropTypes } from 'react';
 import VisibleBookmarkList from '../containers/VisibleBookmarkList'
-import SearchBox from './SearchBox'
+import SearchBoxContainer from '../containers/SearchBoxContainer'
 
 const MainContent = ({ name, updateName }) => (
   <div>
-    <SearchBox />
+    <SearchBoxContainer />
     <div className="section_overdue">
     <h2 className="header">En retard </h2>
     <ul className="items priority_list">

@@ -1,23 +1,22 @@
 
 import { connect } from 'react-redux';
 import SearchBox from '../components/SearchBox';
-import { onUserInputUpdate } from '../actions/searchBoxActionCreators';
+import { addSearchedTag } from '../actions/searchBoxActionCreators';
 
 // Which part of the Redux global state does our component want to receive as props?
 
 
 const mapStateToProps = (state) => {
   return {
-    value: state.ui.get('searchBox').get('userInput'),
-    tags: state.entities.get('tags'),
     bookmarkTag: state.entities.get('bookmarkTag'),
+    tags: state.entities.get('tags'),
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onSearchBoxChange: (value) => {
-      dispatch(onUserInputUpdate(value))
+    onSearchedTagsAdded: (value) => {
+      dispatch(addSearchedTag(value))
     },
   };
 };

@@ -1,7 +1,7 @@
 
-import { USER_INPUT_UPDATE } from '../constants/mainContentConstants';
+import { ADD_SEARCHED_TAG } from '../constants/mainContentConstants';
 
-export const onUserInputUpdate = (userInput) => ({
-  type: USER_INPUT_UPDATE,
-  userInput,
+export const addSearchedTag= (tag) => ({
+  type: ADD_SEARCHED_TAG,
+  tag,
 });

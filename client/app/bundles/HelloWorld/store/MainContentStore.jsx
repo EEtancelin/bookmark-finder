@@ -1,5 +1,5 @@
 import { createStore } from 'redux';
-import MainContentReducer from '../reducers/MainContent';
+import MainContentReducer from '../reducers/MainContentReducer';
 
 const configureStore = (railsProps) => (
   createStore(
