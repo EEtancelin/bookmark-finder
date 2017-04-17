@@ -15,7 +15,7 @@ class PagesController < ApplicationController
       "3":{tag:"3",bookmark:"1"},
     }
     bookmarks = {
-      "1":{id:"1", title:"The Blog",url:"www.medium.com", date:"12-jan"},
+      "1":{id:"1", title:"The Blog",url:"www.medium.com", date:"12-jan",thumbnail:"https://lh3.googleusercontent.com/proxy/lSMyWvrS-uHJUFn9weB8zlgdz2_7mKlO1GsNPlm4VHC9Zf0uDEc-Z1cJ5BI1x-jjupIkf9IFWBEqunLFbKDRiC54GWAcyHbsYwlFbc9QtjTz-AU"},
       "2":{id:"2", title:"The Blog2",url:"www.medium2.com", date: "15-Août"}
     }
     searchedTags = ['1']
