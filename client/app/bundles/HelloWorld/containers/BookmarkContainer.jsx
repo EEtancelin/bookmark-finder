@@ -22,6 +22,7 @@ const mapStateToProps = (state, ownprops) => {
     url: bookmark.get('url'),
     date: bookmark.get('date'),
     tags: getTagsByBookmark(state, bookmark.get('id')),
+    thumbnail: bookmark.get('thumbnail'),
   };
 };
 

@@ -1,7 +1,7 @@
 
-import { ADD_SEARCHED_TAG } from '../constants/mainContentConstants';
+import { UPDATE_SEARCHED_TAG } from '../constants/mainContentConstants';
 
-export const addSearchedTag= (tag) => ({
-  type: ADD_SEARCHED_TAG,
-  tag,
+export const updateSearchedTag = tags => ({
+  type: UPDATE_SEARCHED_TAG,
+  tags,
 });
