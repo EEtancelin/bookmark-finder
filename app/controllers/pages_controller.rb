@@ -27,7 +27,8 @@ class PagesController < ApplicationController
         bookmarkTag: bookmark_tag
       },
       ui:{
-        searchedTags: searchedTags
+        searchedTags: searchedTags,
+        searchBoxValue: ''
       }
     }
 
