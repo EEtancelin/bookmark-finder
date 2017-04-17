@@ -4,7 +4,7 @@ const Tag = ({title ,logo}) => (
     {logo &&
       <div className="tag-logo" style= {{backgroundImage: `url(${logo})`}}> </div>
     }
-    <div className="tag-title">
+    <div className="tag-title" style={{ cursor: 'default' }}>
       {title}
     </div>
   </div>
