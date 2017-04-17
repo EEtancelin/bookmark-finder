@@ -1,6 +1,6 @@
 import React from 'react';
 const Tag = ({title ,logo}) => (
-  <div className="tag">
+  <div className="tag" style={{ fontFamily: "'Mukta Vaani', sans-serif" }} >
     {logo &&
       <div className="tag-logo" style= {{backgroundImage: `url(${logo})`}}> </div>
     }

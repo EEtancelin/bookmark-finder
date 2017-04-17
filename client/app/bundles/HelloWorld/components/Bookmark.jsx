@@ -2,6 +2,7 @@ import React from 'react';
 import BookmarkBody from './BookmarkBody';
 import TagListContainer from '../containers/TagListContainer';
 import Clipboard from './Clipboard';
+import Icons from './Icons';
 
 const Bookmark = ({ bmId, tags,title, url, date = '', thumbnail }) => (
   <div className="bookmark">
@@ -18,7 +19,13 @@ const Bookmark = ({ bmId, tags,title, url, date = '', thumbnail }) => (
       </div>
 
       <div className="bookmark-bottom">
+        <div style={{ display: 'flex', flexDirection: 'row', marginBottom: '3px' }}>
         <TagListContainer tags={tags} />
+          <div style={{ marginLeft: '-5px', marginBottom: '-6px' }} >
+            <Icons icon={'add'} viewBox={'0 0 7 16'} />
+          </div>
+        <input style= {{backgroundColor: 'transparent', flexGrow: '1', border:'0px' }}/>
+      </div>
       </div>
     </div>
   </div>
