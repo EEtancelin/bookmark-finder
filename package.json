@@ -15,6 +15,11 @@
     "eslint": "^3.19.0",
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^3.0.2",
+    "react": "^15.5.4",
+    "react-addons-css-transition-group": "^15.5.2",
+    "react-addons-transition-group": "^15.5.2",
+    "react-dom": "^15.5.4",
+    "reactstrap": "^4.5.0"
   },
   "devDependencies": {
     "babel-eslint": "^7.2.1",

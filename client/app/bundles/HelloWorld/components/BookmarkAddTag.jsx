@@ -1,11 +1,12 @@
 import React from 'react';
 import Icons from './Icons';
+import { Button } from 'reactstrap';
 
 class BookmarkAddTag extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isEditing: true,
+      isEditing: false,
     };
     this.onAddTagCLick = this.onAddTagCLick.bind(this);
   }
@@ -14,10 +15,20 @@ class BookmarkAddTag extends React.Component {
   }
 
   render() {
+    const  addButtonStyle = { height: '20px',
+      padding: '0px',
+      paddingLeft: '9px',
+      paddingRight: '9px',
+      marginLeft: '5px',
+      fontSize: '12px',
+      fontWeight: '600',
+    }
+    const flexRowCenteredStyle = { display: 'flex', flexDirection: 'row', alignItems: 'center' };
+    const style = { display: 'flex', flexDirection: 'row', alignItems: 'center', position: 'relative' };
     return (
-      <div style={{ display: 'flex', flexDirection: 'row' }}>
+      <div style={style}>
         { this.state.isEditing ? (
-          <div style={{ display: 'flex', flexDirection: 'row' }}>
+          <div style={flexRowCenteredStyle}>
             <input
               className="search-input"
               type="text"
@@ -26,14 +37,11 @@ class BookmarkAddTag extends React.Component {
               autoFocus="true"
               onChange={this.onUserInputChange}
             />
-          <div style={{ backgroundColor: 'blue' }}>
-            <Button
-onPress={onPressLearnMore}
-title="Learn More"
-color="#841584"
-accessibilityLabel="Learn more about this purple button"
-/>
-            </div>
+          <Button style={addButtonStyle}color="danger">Ajouter</Button>
+
+          <div style={{ backgroundColor:'blue', position:'absolute', top:'10px' }} >
+            coucou
+          </div>
           </div>
       ) :
       (
