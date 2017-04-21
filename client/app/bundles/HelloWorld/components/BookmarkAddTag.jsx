@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button } from 'reactstrap';
 import Icons from './Icons';
+import { Icon } from 'semantic-ui-react';
 
 class BookmarkAddTag extends React.Component {
 
@@ -147,7 +148,6 @@ class BookmarkAddTag extends React.Component {
               name="search"
               placeholder="Tag this Bookmark"
               autoFocus="true"
-              autofill="false"
               value={this.state.inputValue}
               onChange={this.onUserInputChange}
               onKeyDown={this.onKeyDown}
@@ -176,9 +176,7 @@ class BookmarkAddTag extends React.Component {
           </div>
       ) :
       (
-        <div onClick={this.onEditClick} style={{ marginLeft: '-5px', marginBottom: '-6px' }} >
-          <Icons icon={'add'} viewBox={'0 0 7 16'} />
-        </div>
+        <Icon style={{color: 'rgba(0,0,0,0.75)', marginBottom: '4px'}} name='write' onClick={this.onEditClick} />
       )
       }
       </div>
