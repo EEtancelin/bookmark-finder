@@ -4,3 +4,10 @@ export const addTagToBookmark = (tagTitle, bookmark) => ({
   tagTitle,
   bookmark,
 });
+
+export const createTag = (tagId, tagTitle, bookmark) => ({
+  type: 'CREATE_TAG',
+  tagId,
+  tagTitle,
+  bookmark,
+});

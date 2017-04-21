@@ -2,26 +2,26 @@ import { combineReducers } from 'redux';
 import { Map, fromJS } from 'immutable';
 import { UPDATE_SEARCHED_TAG, UPDATE_SEARCH_BOX_VALUE } from '../constants/mainContentConstants';
 
-const getTagIdFromTitle = (bookmarkTags, tagTitle) => {
-    return(bookmarkTags.get('tags').get(tagTitle))
-}
+const getNewBookmarkTagId = (bookmarkTag) => {
+  return ((bookmarkTag.map(t => parseInt(t.get('id'))).max() + 1).toString());
+};  
 
 const entities = (state = Map({}), action) => {
   switch (action.type) {
     case '@@INIT':
       return fromJS(state);
     case 'ADD_TAG_TO_BOOKMARK':
-      const tag = state.get('tags')
-        .find(tag => tag.get('title') === action.tagTitle )
-
-      if (tag) {tag}
-      else {}
-
-      const bookmarkTagId = state.get('bookmarkTag').count() + 1;
-      const bookmarkTag = Map({ tag: tagId, bookmark:action.bookmark });
+      const tag = state.get('tags').find(tag => tag.get('title') === action.tagTitle);
+      const tagId = tag.get('id')
+      const bookmarkTagId = getNewBookmarkTagId (state.get('bookmarkTag'));
+      const bookmarkTag = Map({ id: bookmarkTagId,  tag: tagId, bookmark:action.bookmark });
       return state.setIn(['bookmarkTag', bookmarkTagId], bookmarkTag);
-      case 'CREATE_TAG':
-      return state.entities.set('tag','sdsds')
+
+    case 'CREATE_TAG':
+      let newState = state.setIn(['tags', action.tagId], Map({ id :action.tagId, title: action.tagTitle}));
+      const bookmarkTagIdd = getNewBookmarkTagId (state.get('bookmarkTag'));
+      newState = newState.setIn(['bookmarkTag', bookmarkTagIdd], Map({ id: bookmarkTagIdd, tag: action.tagId, bookmark: action.bookmark }))
+      return newState;
     default:
       return state;
   }

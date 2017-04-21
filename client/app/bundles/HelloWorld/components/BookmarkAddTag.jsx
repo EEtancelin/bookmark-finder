@@ -1,31 +1,68 @@
 import React from 'react';
-import Icons from './Icons';
 import { Button } from 'reactstrap';
+import Icons from './Icons';
 
 class BookmarkAddTag extends React.Component {
+
+
   constructor(props) {
     super(props);
     this.state = {
-      isEditing: true,
+      isEditing: false,
+      isNewTag: true,
+      addedTagId: '1',
       inputValue: '',
       tags: this.props.tags,
+
     };
-    this.onAddTagCLick = this.onAddTagCLick.bind(this);
+    this.onEditClick = this.onEditClick.bind(this);
     this.onUserInputChange = this.onUserInputChange.bind(this);
     this.getProposedTags = this.getProposedTags.bind(this);
     this.onProposedTagCLick = this.onProposedTagCLick.bind(this);
     this.isTagsToPropose = this.isTagsToPropose.bind(this);
     this.submitNewTag = this.submitNewTag.bind(this);
+    this.isNewtag = this.isNewTag.bind(this);
+    this.getTagIdByTitle = this.getTagIdByTitle.bind(this);
+    this.onKeyDown = this.onKeyDown.bind(this);
   }
 
   submitNewTag() {
-    console.log(this.state.inputValue);
-    console.log(this.props.bookmark);
-    this.props.onTagAddedToBookmark(this.state.inputValue, this.props.bookmark);
+    const isNewTag = this.isNewTag(this.props.tags, this.state.inputValue);
+    if (isNewTag) {
+      this.props.onTagCreated(this.state.addedTagId, this.state.inputValue, this.props.bookmark)
+    } else {
+      this.props.onTagAddedToBookmark(this.state.inputValue, this.props.bookmark);
+    }
+    this.setState({
+      isEditing: false,
+      inputValue: '',
+    })
   }
 
+  onKeyDown(event) {
+    event.keyCode === 13 ? this.submitNewTag(): ('')
+  }
 
-  onAddTagCLick() {
+  isNewTag(tags, value) {
+    return (!tags.map(t => t.get('title')).toSet().has(value));
+}
+
+  getTagIdByTitle(tags, title) {
+    return (tags.find(t => t.get('title') === title)).get('id');
+  }
+
+  getAddedTagId(tags, value) {
+    const isNewTag = this.isNewTag(tags, value)
+    let tagId = "1"
+    if (isNewTag) {
+      tagId = tags.map(t => parseInt(t.get('id'))).max() + 1
+    } else {
+      tagId = this.getTagIdByTitle(tags, value)
+    }
+    return(tagId)
+  }
+
+  onEditClick() {
     this.setState({ isEditing: true });
   }
 
@@ -35,13 +72,18 @@ class BookmarkAddTag extends React.Component {
       .first()
       .get('title');
     this.setState({ inputValue: tagTitle });
+
   }
 
-  onUserInputChange(e){
-    this.setState({ inputValue: e.target.value });
+  onUserInputChange(e) {
+    this.setState({
+      inputValue: e.target.value,
+      isNewTag: this.isNewTag(this.props.tags, e.target.value),
+      addedTagId: this.getAddedTagId(this.props.tags, e.target.value),
+    });
   }
 
-  getProposedTags(){
+  getProposedTags() {
     return ( this.state.tags.filter(t => RegExp(this.state.inputValue).exec(t.get('title'))));
   }
 
@@ -105,8 +147,10 @@ class BookmarkAddTag extends React.Component {
               name="search"
               placeholder="Tag this Bookmark"
               autoFocus="true"
+              autofill="false"
               value={this.state.inputValue}
               onChange={this.onUserInputChange}
+              onKeyDown={this.onKeyDown}
             />
           <Button
             style={addButtonStyle}
@@ -132,7 +176,7 @@ class BookmarkAddTag extends React.Component {
           </div>
       ) :
       (
-        <div onClick={this.onAddTagCLick} style={{ marginLeft: '-5px', marginBottom: '-6px' }} >
+        <div onClick={this.onEditClick} style={{ marginLeft: '-5px', marginBottom: '-6px' }} >
           <Icons icon={'add'} viewBox={'0 0 7 16'} />
         </div>
       )
@@ -141,5 +185,12 @@ class BookmarkAddTag extends React.Component {
     );
   }
 }
+
+BookmarkAddTag.propTypes = {
+  tags: React.PropTypes.isRequired,
+  onTagAddedToBookmark: React.PropTypes.func.isRequired,
+  bookmark: React.PropTypes.func.isRequired,
+  onTagCreated: React.PropTypes.func.isRequired,
+};
 
 export default BookmarkAddTag;

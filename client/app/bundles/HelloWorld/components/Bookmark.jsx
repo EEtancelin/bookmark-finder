@@ -22,7 +22,6 @@ const Bookmark = ({ bmId, tags,title, url, date = '', thumbnail }) => (
         <div style={{ display: 'flex', flexDirection: 'row', marginBottom: '3px' }}>
         <TagListContainer tags={tags} />
         <BookmarkAddTagContainer bookmark={bmId}/>
-        <input style= {{backgroundColor: 'transparent', flexGrow: '1', border:'0px' }}/>
       </div>
       </div>
     </div>

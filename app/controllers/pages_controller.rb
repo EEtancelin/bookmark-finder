@@ -10,9 +10,9 @@ class PagesController < ApplicationController
     }
 
     bookmark_tag = {
-      "1":{tag:"1",bookmark:"2"},
-      "2":{tag:"2",bookmark:"2"},
-      "3":{tag:"3",bookmark:"1"},
+      "1":{id: "1", tag:"1",bookmark:"2"},
+      "2":{id: "2",tag:"2",bookmark:"2"},
+      "3":{id:"3",tag:"3",bookmark:"1"},
     }
     bookmarks = {
       "1":{id:"1", title:"The Blog",url:"www.medium.com", date:"12-jan",thumbnail:"https://lh3.googleusercontent.com/proxy/lSMyWvrS-uHJUFn9weB8zlgdz2_7mKlO1GsNPlm4VHC9Zf0uDEc-Z1cJ5BI1x-jjupIkf9IFWBEqunLFbKDRiC54GWAcyHbsYwlFbc9QtjTz-AU"},
