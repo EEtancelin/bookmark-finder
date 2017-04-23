@@ -2,8 +2,16 @@ import React, { PropTypes } from 'react';
 import VisibleBookmarkList from '../containers/VisibleBookmarkList'
 import SearchBoxContainer from '../containers/SearchBoxContainer'
 
-const MainContent = ({ name, updateName }) => (
-  <div>
+const HomePage = ({ name, updateName }) => (
+
+  <div style={{display: 'flex', flexDirection:'row', backgroundColor: '#FAFAFA', justifyContent: 'center', minHeight: '100vh'}}>
+  <div style={{width: '200px', backgroundColor: '#FAFAFA'}}>
+    <ul>
+      <li>Coucou</li>
+      <li> hello</li>
+    </ul>
+  </div>
+  <div style={{ width: '596px', padding: '15px', backgroundColor: 'white'}}>
     <SearchBoxContainer />
     <div className="section_overdue">
     <h2 className="header">En retard </h2>
@@ -12,12 +20,13 @@ const MainContent = ({ name, updateName }) => (
       <div className="invisible_space"></div>
       <VisibleBookmarkList />
     </li>
-  </ul>
+</ul>
 </div>
   </div>
+</div>
 );
 
-MainContent.propTypes = {
+HomePage.propTypes = {
 };
 
-export default MainContent;
+export default HomePage;
