@@ -1,3 +1,4 @@
+
 import { combineReducers } from 'redux';
 import { Map, fromJS } from 'immutable';
 import { UPDATE_SEARCHED_TAG, UPDATE_SEARCH_BOX_VALUE } from '../constants/mainContentConstants';
@@ -47,9 +48,20 @@ const ui = (state = Map({}), action) => {
   }
 };
 
+const user = (state = Map({}), action) => {
+  switch (action.type) {
+    case '@@INIT':
+      return fromJS(state);
+    default:
+      return state;
+  }
+};
+
+
 const mainContentReducer = combineReducers({
   entities,
   ui,
+  user,
 });
 
 export default mainContentReducer;

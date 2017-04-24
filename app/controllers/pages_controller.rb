@@ -3,6 +3,10 @@ class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :home ]
 
   def home
+
+    user = { userEmail: current_user.email || "not logued"}
+
+
     tag = {
       "1":{id:"1",title:"movie"},
       "2":{id:"2",title:"music"},
@@ -29,7 +33,8 @@ class PagesController < ApplicationController
       ui:{
         searchedTags: searchedTags,
         searchBoxValue: ''
-      }
+      },
+      user: user
     }
 
   end
