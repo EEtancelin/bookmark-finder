@@ -4,9 +4,15 @@ class PagesController < ApplicationController
 
   def home
 
-    user = { userEmail: current_user.email || 'not logued',
-            token: current_user.authentication_token || 'not loged'}
-
+    if current_user
+    user = {  userEmail: current_user.email ,
+              token: current_user.authentication_token
+            }
+    else
+    user = {  userEmail: 'not loged',
+              token:  'not loged'
+            }
+    end
 
     tag = {
       "1":{id:"1",title:"movie"},
