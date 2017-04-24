@@ -4,7 +4,8 @@ class PagesController < ApplicationController
 
   def home
 
-    user = { userEmail: current_user.email || "not logued"}
+    user = { userEmail: current_user.email || 'not logued',
+            token: current_user.authentication_token || 'not loged'}
 
 
     tag = {
