@@ -20,7 +20,7 @@ const Bookmark = ({ bmId, tags,title, url, date = '', thumbnail }) => (
 
       <div className="bookmark-bottom">
         <div style={{ display: 'flex', flexDirection: 'row', marginBottom: '3px' }}>
-        <TagListContainer tags={tags} />
+        <TagListContainer tags={tags} bookmark={bmId} />
         <BookmarkAddTagContainer bookmark={bmId}/>
       </div>
       </div>

@@ -4,7 +4,7 @@ import { UPDATE_SEARCHED_TAG, UPDATE_SEARCH_BOX_VALUE } from '../constants/mainC
 
 const getNewBookmarkTagId = (bookmarkTag) => {
   return ((bookmarkTag.map(t => parseInt(t.get('id'))).max() + 1).toString());
-};  
+};
 
 const entities = (state = Map({}), action) => {
   switch (action.type) {
@@ -22,6 +22,13 @@ const entities = (state = Map({}), action) => {
       const bookmarkTagIdd = getNewBookmarkTagId (state.get('bookmarkTag'));
       newState = newState.setIn(['bookmarkTag', bookmarkTagIdd], Map({ id: bookmarkTagIdd, tag: action.tagId, bookmark: action.bookmark }))
       return newState;
+    case 'REMOVE_BOOKMARK':
+      return (state.setIn(['bookmarkTag'],
+        state.get('bookmarkTag').filter(bt =>
+          (bt.get('bookmark') !== action.bookmark)
+          || (bt.get('tag') !== action.tag)
+        )
+      ));
     default:
       return state;
   }

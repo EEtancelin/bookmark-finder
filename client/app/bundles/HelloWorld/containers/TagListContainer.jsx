@@ -14,6 +14,7 @@ const getTagsByBookmark = (bookmarkTagList, bookmarkId) => (
 // Which part of the Redux global state does our component want to receive as props?
 const mapStateToProps = (state, ownprops) => ({
   tags: ownprops.tags.toSet(),
+  bookmark: ownprops.bookmark,
 });
 
 // Don't forget to actually use connect!

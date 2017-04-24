@@ -1,6 +1,5 @@
 import React from 'react';
 import { Button } from 'reactstrap';
-import Icons from './Icons';
 import { Icon } from 'semantic-ui-react';
 
 class BookmarkAddTag extends React.Component {
@@ -126,6 +125,7 @@ class BookmarkAddTag extends React.Component {
       border: 'solid 1px rgba(0,0,0,0.1)',
       fontFamily: 'Roboto, sans-serif',
       fontSize: '13px',
+      zIndex: 1,
     }
 
     const TagProposalSelected = {

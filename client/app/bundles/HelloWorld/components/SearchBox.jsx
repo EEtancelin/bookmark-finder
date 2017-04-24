@@ -8,6 +8,7 @@ class SearchBox extends React.Component {
     this.state = { userInput: '' };
     this.extractTagId = this.extractTagId.bind(this);
     this.onUserInputChange = this.onUserInputChange.bind(this);
+    this.onKeyDown = this.onKeyDown.bind(this);
   }
 
   onUserInputChange(e) {
@@ -24,6 +25,14 @@ class SearchBox extends React.Component {
     });
   }
 
+  // Listen Backslach to delete the last Tag.
+  onKeyDown(event) {
+     if (event.keyCode === 8 && this.state.userInput === "") {
+       const searchedTags = this.props.searchedTags.butLast();
+       this.props.onSearchedTagsUpdate(searchedTags);
+     }
+  }
+
   // Took a user input a return the tags which have been selected.
   extractTagId(string) {
     return (this.props.tags.filter(t => t.get('title') === string)
@@ -34,7 +43,7 @@ class SearchBox extends React.Component {
   // Took a string and find the bookmarks where the title === string
   render() {
     return (
-      <div>
+      <div style={{marginBottom: '13px'}}>
         <div className="search-bar" >
           <TagList className={'input-tags-list'} tags={this.props.searchedTags} />
           <input
@@ -45,6 +54,7 @@ class SearchBox extends React.Component {
             autoFocus="true"
             value={this.state.userInput}
             onChange={this.onUserInputChange}
+            onKeyDown={this.onKeyDown}
           />
           <DeleteTagsButton deleteTagsFn={this.props.onDeleteTagsClick} viewBox="0 0 7 16" />
         </div>
