@@ -16,7 +16,7 @@ const getBookmarksAssociateToTags = (bookmarkTag, tags) => {
 const getTagsAssociateToBookmarks = (bookmarkTag, bookmarks) => {
   return (bookmarkTag
     .filter(bt => bookmarks.has(bt.get('bookmark')))
-    .map(bt => bt.get('tag'))
+    .map(bt => bt.get('tag_id'))
     .toSet()
   );
 };
@@ -26,13 +26,13 @@ const hasSearchedTags = (state) =>  {
   return (state.ui.get('searchedTags').count() > 0);
 }
 
-// Which Tags should be propose to the user ?
+// be propose to the user ?
 const getProposedTags = (state) => {
   return (hasSearchedTags(state) ? getAssociatedTags(state) : getAllTags(state))
 };
 
 const getAllTags = (state) => {
-  return (state.entities.get('bookmarkTag').map(bt => bt.get('tag')).toSet())
+  return (state.entities.get('bookmarkTag').map(bt => bt.get('tag_id')).toSet())
 };
 
 // Which Tags have one boomarks in common with searched Tags ?

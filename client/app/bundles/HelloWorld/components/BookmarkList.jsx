@@ -4,7 +4,8 @@ import BookmarkContainer from '../containers/BookmarkContainer';
 const BookmarkList = ({ bookmarksId, allbookmarks }) => (
   <div>
     {(bookmarksId.count() > 0 ? bookmarksId : allbookmarks).map(bookmarkId => (
-        <BookmarkContainer key={bookmarkId} bookmark_id={bookmarkId} />
+        //<BookmarkContainer key={bookmarkId} bookmark_id={bookmarkId} />
+        <div>test</div>
     ))}
   </div>
 
