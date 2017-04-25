@@ -18,6 +18,7 @@ gem 'font-awesome-sass'
 gem 'simple_form'
 gem 'autoprefixer-rails'
 gem "simple_token_authentication"
+gem 'forest_liana'
 
 
 group :development, :test do
