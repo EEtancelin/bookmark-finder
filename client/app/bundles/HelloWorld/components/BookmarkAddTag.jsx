@@ -187,7 +187,7 @@ class BookmarkAddTag extends React.Component {
 }
 
 BookmarkAddTag.propTypes = {
-  tags: React.PropTypes.isRequired,
+  tags: React.PropTypes.any.isRequired,
   onTagAddedToBookmark: React.PropTypes.func.isRequired,
   bookmark: React.PropTypes.number.isRequired,
   onTagCreated: React.PropTypes.func.isRequired,
