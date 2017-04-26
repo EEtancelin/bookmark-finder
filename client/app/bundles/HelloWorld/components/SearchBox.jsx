@@ -1,4 +1,6 @@
 import React from 'react';
+import Immutable from 'immutable';
+import PropTypes from 'prop-types';
 import TagList from './TagList';
 import DeleteTagsButton from './DeleteTagsButton';
 
@@ -67,10 +69,10 @@ class SearchBox extends React.Component {
 }
 
 SearchBox.propTypes = {
-  tags: React.PropTypes.object.isRequired,
-  proposedTags: React.PropTypes.object.isRequired,
-  searchedTags: React.PropTypes.object.isRequired,
-  onSearchBoxValueChange: React.PropTypes.function,
+  tags: PropTypes.instanceOf(Immutable.Map).isRequired,
+  proposedTags: PropTypes.instanceOf(Immutable.Set).isRequired,
+  searchedTags: PropTypes.instanceOf(Immutable.Set).isRequired,
+  onSearchBoxValueChange: PropTypes.func.isRequired,
 };
 
 export default SearchBox;

@@ -12,8 +12,8 @@ const mapStateToProps = state => (
     .toSet(),
 
     bookmarksId: state.entities.get('bookmarkTag')
-    .filter(bt => state.ui.get('searchedTags').has(bt.get('tag')))
-    .map(bt => bt.get('bookmark'))
+    .filter(bt => state.ui.get('searchedTags').has(bt.get('tag_id')))
+    .map(bt => bt.get('bookmark_id'))
     .toSet(),
   });
 

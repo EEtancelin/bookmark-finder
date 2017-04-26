@@ -40,7 +40,9 @@ class BookmarkAddTag extends React.Component {
   }
 
   onKeyDown(event) {
+    console.log(event.keyCode);
     event.keyCode === 13 ? this.submitNewTag(): ('')
+    event.keyCode === 27 ? this.setState({ isEditing: false }): ('')
   }
 
   isNewTag(tags, value) {

@@ -26,8 +26,8 @@ const entities = (state = Map({}), action) => {
     case 'REMOVE_BOOKMARK':
       return (state.setIn(['bookmarkTag'],
         state.get('bookmarkTag').filter(bt =>
-          (bt.get('bookmark') !== action.bookmark)
-          || (bt.get('tag') !== action.tag)
+          (bt.get('bookmark_id') !== action.bookmark)
+          || (bt.get('tag_id') !== action.tag)
         )
       ));
     default:
@@ -57,7 +57,6 @@ const user = (state = Map({}), action) => {
   }
 };
 
-
 const mainContentReducer = combineReducers({
   entities,
   ui,
@@ -65,3 +64,15 @@ const mainContentReducer = combineReducers({
 });
 
 export default mainContentReducer;
+
+
+// Selector
+
+export const getTagsByBookmark = (bookmarkTag, bookmarkId) => {
+  return (
+  bookmarkTag
+    .filter(bt => bt.get('bookmark_id') === bookmarkId)
+    .map(bt => bt.get('tag_id'))
+    .toSet()
+  );
+};

@@ -14,7 +14,7 @@ const mapDispatchToProps = (dispatch, ownprops ) => {
 
 
 const mapStateToProps = (state, ownprops) => {
-  const tag = state.entities.get('tags').get(ownprops.tagId);
+  const tag = state.entities.get('tags').get(ownprops.tagId.toString());
   return {
     title: tag.get('title'),
     id: tag.get('id'),

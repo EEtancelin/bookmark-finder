@@ -7,14 +7,14 @@ import * as actions from '../actions/mainContentActionCreators';
 
 const getTagsByBookmark = (state, bookmarkId) => (
   state.entities.get('bookmarkTag')
-    .filter(t => t.get('bookmark') === bookmarkId)
-    .map(x => x.get('tag'))
-    .toSetSeq()
+    .filter(t => t.get('bookmark_id') === bookmarkId)
+    .map(x => x.get('tag_id'))
+    .toSet()
 );
 
 
 const mapStateToProps = (state, ownprops) => {
-  const bookmark = state.entities.get('bookmarks').get(ownprops.bookmark_id);
+  const bookmark = state.entities.get('bookmarks').get(ownprops.bookmarkId.toString());
   return {
     key: bookmark.get('id'),
     bmId: bookmark.get('id'),

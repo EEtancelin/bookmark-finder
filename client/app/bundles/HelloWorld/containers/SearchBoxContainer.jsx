@@ -7,15 +7,15 @@ import { updateSearchBoxValue } from '../actions/searchBoxActionCreators'
 
 const getBookmarksAssociateToTags = (bookmarkTag, tags) => {
   return (bookmarkTag
-    .filter(bt => tags.has(bt.get('tag')))
-    .map(bt => bt.get('bookmark'))
+    .filter(bt => tags.has(bt.get('tag_id')))
+    .map(bt => bt.get('bookmark_id'))
     .toSet()
   );
 };
 
 const getTagsAssociateToBookmarks = (bookmarkTag, bookmarks) => {
   return (bookmarkTag
-    .filter(bt => bookmarks.has(bt.get('bookmark')))
+    .filter(bt => bookmarks.has(bt.get('bookmark_id')))
     .map(bt => bt.get('tag_id'))
     .toSet()
   );
@@ -49,9 +49,9 @@ const mapStateToProps = (state) => {
     bookmarkTag: state.entities.get('bookmarkTag'),
     tags: state.entities.get('tags'),
     inputValue: state.ui.get('searchBoxValue'),
-    searchedTags: state.ui.get('searchedTags'),
-    proposedTags: getProposedTags(state),
-    associatedTags: getAssociatedTags(state),
+    searchedTags: state.ui.get('searchedTags').toSet(),
+    proposedTags: getProposedTags(state).toSet(),
+    associatedTags: getAssociatedTags(state).toSet(),
   };
 };
 
