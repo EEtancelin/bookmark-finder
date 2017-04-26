@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import BookmarkBody from './BookmarkBody';
 import TagListContainer from '../containers/TagListContainer';
 import Clipboard from './Clipboard';
@@ -30,10 +31,10 @@ const Bookmark = ({ bookmarkId, tags, title, url, date = '', thumbnail }) => (
 
 
 Bookmark.propTypes = {
-  bookmarkId: React.PropTypes.number.isRequired,
-  title: React.PropTypes.string.isRequired,
-  url: React.PropTypes.string.isRequired,
-  date: React.PropTypes.string,
+  bookmarkId: PropTypes.number.isRequired,
+  title: PropTypes.string.isRequired,
+  url: PropTypes.string.isRequired,
+  date: PropTypes.string.isRequired,
 };
 
 export default Bookmark;

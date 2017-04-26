@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import BookmarkContainer from '../containers/BookmarkContainer';
 
 const BookmarkList = ({ bookmarksId, allbookmarks }) => (
@@ -10,6 +11,6 @@ const BookmarkList = ({ bookmarksId, allbookmarks }) => (
 
 );
 BookmarkList.PropTypes = {
-  bookmarksId: React.PropTypes.array.isRequired,
+  bookmarksId: PropTypes.any.isRequired,
 };
 export default BookmarkList;

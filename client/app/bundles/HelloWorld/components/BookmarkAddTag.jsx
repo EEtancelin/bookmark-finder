@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Button } from 'reactstrap';
 import { Icon } from 'semantic-ui-react';
 
@@ -187,10 +188,10 @@ class BookmarkAddTag extends React.Component {
 }
 
 BookmarkAddTag.propTypes = {
-  tags: React.PropTypes.any.isRequired,
-  onTagAddedToBookmark: React.PropTypes.func.isRequired,
-  bookmark: React.PropTypes.number.isRequired,
-  onTagCreated: React.PropTypes.func.isRequired,
+  tags: PropTypes.any.isRequired,
+  onTagAddedToBookmark: PropTypes.func.isRequired,
+  bookmark: PropTypes.number.isRequired,
+  onTagCreated: PropTypes.func.isRequired,
 };
 
 export default BookmarkAddTag;
