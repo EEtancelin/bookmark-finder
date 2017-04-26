@@ -3,7 +3,9 @@ import { connect } from 'react-redux';
 import { Set } from 'immutable';
 import SearchBox from '../components/SearchBox';
 import { updateSearchedTag } from '../actions/searchBoxActionCreators';
-import { updateSearchBoxValue } from '../actions/searchBoxActionCreators'
+import { updateSearchBoxValue } from '../actions/searchBoxActionCreators';
+import { getTagsIdsAssociateToTags } from '../reducers/mainContentReducer';
+import { getAssociationMatrix } from '../reducers/mainContentReducer';
 
 const getBookmarksAssociateToTags = (bookmarkTag, tags) => {
   return (bookmarkTag
@@ -28,7 +30,7 @@ const hasSearchedTags = (state) =>  {
 
 // be propose to the user ?
 const getProposedTags = (state) => {
-  return (hasSearchedTags(state) ? getAssociatedTags(state) : getAllTags(state))
+  return (hasSearchedTags(state) ? getTagsIdsAssociateToTags(state.entities.get('bookmarkTag'), state.ui.get('searchedTags')) : getAllTags(state))
 };
 
 const getAllTags = (state) => {
@@ -40,7 +42,7 @@ const getAssociatedTags = (state) => {
   const bookmarkTag = state.entities.get('bookmarkTag');
   const searchedTags = state.ui.get('searchedTags');
   const associateBookmarks = getBookmarksAssociateToTags(bookmarkTag, searchedTags);
-  return (getTagsAssociateToBookmarks(bookmarkTag, associateBookmarks))
+  return (getBookmarksIdsAssociateToTags(bookmarkTag, searchedTags));
 }
 
 // Which part of the Redux global state does our component want to receive as props?
@@ -50,8 +52,8 @@ const mapStateToProps = (state) => {
     tags: state.entities.get('tags'),
     inputValue: state.ui.get('searchBoxValue'),
     searchedTags: state.ui.get('searchedTags').toSet(),
-    proposedTags: getProposedTags(state).toSet(),
-    associatedTags: getAssociatedTags(state).toSet(),
+    proposedTags: getProposedTags(state),
+    assoma: getAssociationMatrix(state.entities.get('bookmarkTag')),
   };
 };
 

@@ -1,17 +1,10 @@
 
 import { connect } from 'react-redux';
 import Bookmark from '../components/Bookmark';
+import { getTagsByBookmark } from '../reducers/mainContentReducer';
 import * as actions from '../actions/mainContentActionCreators';
 
 // Which part of the Redux global state does our component want to receive as props?
-
-const getTagsByBookmark = (state, bookmarkId) => (
-  state.entities.get('bookmarkTag')
-    .filter(t => t.get('bookmark_id') === bookmarkId)
-    .map(x => x.get('tag_id'))
-    .toSet()
-);
-
 
 const mapStateToProps = (state, ownprops) => {
   const bookmark = state.entities.get('bookmarks').get(ownprops.bookmarkId.toString());
@@ -21,7 +14,7 @@ const mapStateToProps = (state, ownprops) => {
     title: bookmark.get('title'),
     url: bookmark.get('url'),
     date: bookmark.get('date'),
-    tags: getTagsByBookmark(state, bookmark.get('id')),
+    tags: getTagsByBookmark(state.entities.get('bookmarkTag'), bookmark.get('id')),
     thumbnail: bookmark.get('thumbnail'),
   };
 };
