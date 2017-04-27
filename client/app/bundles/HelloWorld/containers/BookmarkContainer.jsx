@@ -13,7 +13,7 @@ const mapStateToProps = (state, ownprops) => {
     bmId: bookmark.get('id'),
     title: bookmark.get('title'),
     url: bookmark.get('url'),
-    date: bookmark.get('date'),
+    date: bookmark.get('created_at'),
     tags: getTagsByBookmark(state.entities.get('bookmarkTag'), bookmark.get('id')),
     thumbnail: bookmark.get('thumbnail'),
   };

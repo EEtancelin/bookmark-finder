@@ -1,4 +1,5 @@
 import React from 'react';
+import moment from 'moment';
 import PropTypes from 'prop-types';
 import BookmarkBody from './BookmarkBody';
 import TagListContainer from '../containers/TagListContainer';
@@ -13,8 +14,8 @@ const Bookmark = ({ bookmarkId, tags, title, url, date = '', thumbnail }) => (
         <BookmarkBody key={bookmarkId} url={url} title={title} />
         <div className="bookmark-left">
           <Clipboard to_copy="clipboard" />
-          <div className="date">
-            {date}
+          <div style={{ textDecoration: 'underline', fontSize: '12px'}}>
+            {moment(date).format('Do MMM')}
           </div>
         </div>
       </div>
