@@ -1,20 +1,30 @@
+// Absolute Import
 import React from 'react';
 import moment from 'moment';
 import PropTypes from 'prop-types';
-import BookmarkBody from './BookmarkBody';
+
+// Containers
 import TagListContainer from '../containers/TagListContainer';
-import Clipboard from './Clipboard';
 import BookmarkAddTagContainer from '../containers/BookmarkAddTagContainer';
+
+// Components
+import BookmarkBody from './BookmarkBody';
+import Clipboard from './Clipboard';
+import BookmarkThumbnail from './BookmarkThumbnail';
+
+// Component constants
+// Style constants
+const dateStyle = { textDecoration: 'underline', fontSize: '12px' };
 
 const Bookmark = ({ bookmarkId, tags, title, url, date = '', thumbnail }) => (
   <div className="bookmark" >
-    <div className="center-cover bookmark-img" style={{ backgroundImage: 'url('+ thumbnail + ')' , backgroundSize:'cover', backgroundPosition:'center'}}> </div>
+    <BookmarkThumbnail />
     <div className="bookmark-inner-wrap">
       <div className="info-top" onClick={() => window.open(url, '_blank')}>
         <BookmarkBody key={bookmarkId} url={url} title={title} />
         <div className="bookmark-left">
           <Clipboard to_copy="clipboard" />
-          <div style={{ textDecoration: 'underline', fontSize: '12px'}}>
+          <div style={dateStyle}>
             {moment(date).format('Do MMM')}
           </div>
         </div>

@@ -1,6 +1,10 @@
 import React from 'react';
 import { Icon } from 'semantic-ui-react';
 
+
+// Style constants
+
+
 const Tag = ({ title ,logo,showRemoveButton, onRemoveClick }) => (
   <div className="tag" style={{ fontFamily: "'Mukta Vaani', sans-serif", position:'relative' }} >
     {logo &&
@@ -10,13 +14,11 @@ const Tag = ({ title ,logo,showRemoveButton, onRemoveClick }) => (
       {title}
     </div>
 
-    { showRemoveButton ?
+    { showRemoveButton &&
       <div onClick={onRemoveClick}
         style={{ position: 'absolute', top: '-7px', right: '-16px' }} >
         <Icon style={{ color: 'rgba(0,0,0,0.75)' }} name="remove" />
       </div>
-      :
-      ''
     }
 
   </div>
