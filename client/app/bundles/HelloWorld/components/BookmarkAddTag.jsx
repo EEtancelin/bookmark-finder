@@ -41,9 +41,8 @@ class BookmarkAddTag extends React.Component {
   }
 
   onKeyDown(event) {
-    console.log(event.keyCode);
-    event.keyCode === 13 ? this.submitNewTag(): ('')
-    event.keyCode === 27 ? this.setState({ isEditing: false }): ('')
+    event.keyCode === 13 && this.submitNewTag();
+    event.keyCode === 27 && this.setState({ isEditing: false });
   }
 
   isNewTag(tags, value) {
@@ -162,19 +161,17 @@ class BookmarkAddTag extends React.Component {
             >
             Ajouter
           </Button>
-            { this.isTagsToPropose() ? (
-            <div style={ tagProposalsBoxStyle } >
-                {proposedTags.valueSeq().map(t => (
-                  <div key={t.get('id')}
-                    style={tagProposal}
-                    onClick={() => { this.onProposedTagCLick(t.get('id')); }}
-                  >
-                    {t.get('title')}
-                  </div>
-                ))}
-              </div>
-            )
-            :('')
+            { this.isTagsToPropose() &&
+              <div style={ tagProposalsBoxStyle } >
+                  {proposedTags.valueSeq().map(t => (
+                    <div key={t.get('id')}
+                      style={tagProposal}
+                      onClick={() => { this.onProposedTagCLick(t.get('id')); }}
+                    >
+                      {t.get('title')}
+                    </div>
+                  ))}
+                </div>
           }
           </div>
       ) :
