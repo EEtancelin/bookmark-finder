@@ -12,11 +12,12 @@ const hasSearchedTags = (state) =>  {
   return (state.ui.get('searchedTags').count() > 0);
 }
 
-// Tag to propose to the user ?
+// Which Tag to propose to the user ?
 const getProposedTags = (state) => {
   return (hasSearchedTags(state) ? getTagsIdsAssociateToTags(state.entities.get('bookmarkTag'), state.ui.get('searchedTags')) : getAllTags(state))
 };
 
+// Which are the Ids of all existing tag ?
 const getAllTags = (state) => {
   return (state.entities.get('bookmarkTag').map(bt => bt.get('tag_id')).toSet())
 };

@@ -4,8 +4,12 @@ import { Map, fromJS } from 'immutable';
 import { UPDATE_SEARCHED_TAG, UPDATE_SEARCH_BOX_VALUE } from '../constants/mainContentConstants';
 
 const getNewBookmarkTagId = (bookmarkTag) => {
-  return ((bookmarkTag.map(t => parseInt(t.get('id'))).max() + 1).toString());
+  return (bookmarkTag.map(t => parseInt(t.get('id'))).max() + 1);
 };
+
+const isNewBookmark = (state, title) => {
+  return (!(state.hasIn(['tags', 'title'], title)));
+}
 
 const entities = (state = Map({}), action) => {
   switch (action.type) {
@@ -13,16 +17,20 @@ const entities = (state = Map({}), action) => {
       return fromJS(state);
     case 'ADD_TAG_TO_BOOKMARK':
       const tag = state.get('tags').find(tag => tag.get('title') === action.tagTitle);
-      const tagId = tag.get('id')
+      const tagId = parseInt(tag.get('id'));
       const bookmarkTagId = getNewBookmarkTagId (state.get('bookmarkTag'));
-      const bookmarkTag = Map({ id: bookmarkTagId,  tag: tagId, bookmark:action.bookmark });
-      return state.setIn(['bookmarkTag', bookmarkTagId], bookmarkTag);
+      const bookmarkTag = Map({ id: bookmarkTagId, tag_id: tagId, bookmark_id: action.bookmark });
+      return state.setIn(['bookmarkTag', bookmarkTagId.toString()], bookmarkTag);
 
     case 'CREATE_TAG':
-      let newState = state.setIn(['tags', action.tagId], Map({ id :action.tagId, title: action.tagTitle}));
-      const bookmarkTagIdd = getNewBookmarkTagId (state.get('bookmarkTag'));
-      newState = newState.setIn(['bookmarkTag', bookmarkTagIdd], Map({ id: bookmarkTagIdd, tag: action.tagId, bookmark: action.bookmark }))
-      return newState;
+
+      if(isNewBookmark(state, action.title)) {
+
+        let newState = state.setIn(['tags', action.tagId.toString()], Map({ id :action.tagId, title: action.tagTitle}));
+        const bookmarkTagIdd = getNewBookmarkTagId (state.get('bookmarkTag'));
+        newState = newState.setIn(['bookmarkTag', bookmarkTagIdd.toString()], Map({ id: bookmarkTagIdd, bookmark_id: action.bookmark, tag_id: action.tagId }))
+        return newState;
+      }
     case 'REMOVE_BOOKMARK':
       return (state.setIn(['bookmarkTag'],
         state.get('bookmarkTag').filter(bt =>

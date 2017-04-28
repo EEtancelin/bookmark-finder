@@ -50,12 +50,12 @@ class BookmarkAddTag extends React.Component {
 }
 
   getTagIdByTitle(tags, title) {
-    return (tags.find(t => t.get('title') === title)).get('id');
+    return ((tags.find(t => t.get('title') === title)).get('id')) ;
   }
 
   getAddedTagId(tags, value) {
     const isNewTag = this.isNewTag(tags, value)
-    let tagId = "1"
+    let tagId = 1
     if (isNewTag) {
       tagId = tags.map(t => parseInt(t.get('id'))).max() + 1
     } else {
