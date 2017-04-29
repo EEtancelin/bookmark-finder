@@ -3,7 +3,7 @@
 import { connect } from 'react-redux';
 import BookmarkList from '../components/BookmarkList';
 import * as actions from '../actions/mainContentActionCreators';
-import { getBookmarksIdsAssociateToTags } from '../reducers/mainContentReducer'
+import { getBookmarksIdsAssociateToTags } from '../reducers/entitiesReducer'
 
 // Which part of the Redux global state does our component want to receive as props?
 const mapStateToProps = state => (

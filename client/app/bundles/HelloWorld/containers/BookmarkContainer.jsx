@@ -1,7 +1,7 @@
 
 import { connect } from 'react-redux';
 import Bookmark from '../components/Bookmark';
-import { getTagsByBookmark } from '../reducers/mainContentReducer';
+import { getTagsByBookmark } from '../reducers/entitiesReducer';
 import * as actions from '../actions/mainContentActionCreators';
 
 // Which part of the Redux global state does our component want to receive as props?
