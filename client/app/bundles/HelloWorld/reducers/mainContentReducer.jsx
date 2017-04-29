@@ -1,6 +1,5 @@
 
 import { combineReducers } from 'redux-immutable';
-import { Map } from 'immutable';
 import ui from './uiReducer';
 
 const getNewBookmarkTagId = (bookmarkTag) => {
