@@ -4,7 +4,7 @@ import { Set } from 'immutable';
 import SearchBox from '../components/SearchBox';
 import { updateSearchedTag } from '../actions/searchBoxActionCreators';
 import { updateSearchBoxValue } from '../actions/searchBoxActionCreators';
-import { getTagsIdsAssociateToTags } from '../reducers/mainContentReducer';
+import { getTagsIdsAssociateToTags } from '../reducers/entitiesReducer';
 
 
 // Is there Searched Tags ?

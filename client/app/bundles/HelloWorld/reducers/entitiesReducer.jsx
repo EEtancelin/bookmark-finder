@@ -1,7 +1,4 @@
-
-
-
-
+import { Map } from 'immutable';
 
 export const getTagsIdsAssociateToBookmarks = (bookmarkTag, bookmarks) => {
   return (getBookmarksIdsForEachTag(bookmarkTag)
