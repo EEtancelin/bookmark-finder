@@ -1,5 +1,5 @@
 
-import { combineReducers } from 'redux';
+import { combineReducers } from 'redux-immutable';
 import { Map, fromJS } from 'immutable';
 import { UPDATE_SEARCHED_TAG, UPDATE_SEARCH_BOX_VALUE } from '../constants/mainContentConstants';
 

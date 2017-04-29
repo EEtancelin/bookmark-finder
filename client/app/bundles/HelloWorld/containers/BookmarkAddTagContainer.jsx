@@ -16,8 +16,8 @@ const onTagCreated = (tagId, title, bookmark) => {
 
 const mapStateToProps = (state, ownprops) => ({
   bookmark: ownprops.bookmark,
-  tags: state.entities.get('tags'),
-  newTagId: parseInt(state.entities.get('tags').filter(t => t.get('id')).max().first()) + 1,
+  tags: state.get('entities').get('tags'),
+  newTagId: parseInt(state.get('entities').get('tags').filter(t => t.get('id')).max().first()) + 1,
 });
 
 
