@@ -30,9 +30,6 @@ export const getBookmarksIdsForEachTag = (bookmarkTag) => {
   );
 };
 
-export const getNewBookmarkTagId = (bookmarkTag) => {
-  return (bookmarkTag.map(t => parseInt(t.get('id'))).max() + 1);
-};
 
 export const isNewBookmark = (state, title) => {
   return (!(state.hasIn(['tags', 'title'], title)));
@@ -60,26 +57,19 @@ export const getBookmarksIdsAssociateToTags = (bookmarkTag, tags) => {
   );
 };
 
-
-
-
-
 const entities = (state = Map({}), action) => {
   switch (action.type) {
     case 'ADD_TAG_TO_BOOKMARK':
-      const tag = state.get('tags').find(tag => tag.get('title') === action.tagTitle);
-      const tagId = parseInt(tag.get('id'));
-      const bookmarkTagId = getNewBookmarkTagId (state.get('bookmarkTag'));
-      const bookmarkTag = Map({ id: bookmarkTagId, tag_id: tagId, bookmark_id: action.bookmark });
-      return state.setIn(['bookmarkTag', bookmarkTagId.toString()], bookmarkTag);
+      const tagId = parseInt(state.get('tags').find(tag => tag.get('title') === action.tagTitle));
+      const bookmarkTag = Map({ id: action.bookmarkTagId, tag_id: tagId, bookmark_id: action.bookmark });
+      return state.setIn(['bookmarkTag', action.bookmarkTagId ], bookmarkTag);
 
     case 'CREATE_TAG':
 
       if(isNewBookmark(state, action.title)) {
 
-        let newState = state.setIn(['tags', action.tagId.toString()], Map({ id :action.tagId, title: action.tagTitle}));
-        const bookmarkTagIdd = getNewBookmarkTagId (state.get('bookmarkTag'));
-        newState = newState.setIn(['bookmarkTag', bookmarkTagIdd.toString()], Map({ id: bookmarkTagIdd, bookmark_id: action.bookmark, tag_id: action.tagId }))
+        let newState = state.setIn(['tags', action.tagId], Map({ id :action.tagId, title: action.tagTitle}));
+        newState = newState.setIn(['bookmarkTag', action.bookmarkTagId], Map({ id: action.bookmarkTagId, bookmark_id: action.bookmark, tag_id: action.tagId }))
         return newState;
       }
     case 'REMOVE_BOOKMARK':
