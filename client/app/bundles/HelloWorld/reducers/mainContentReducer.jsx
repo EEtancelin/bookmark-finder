@@ -1,7 +1,7 @@
 
 import { combineReducers } from 'redux-immutable';
-import { Map, fromJS } from 'immutable';
-import { UPDATE_SEARCHED_TAG, UPDATE_SEARCH_BOX_VALUE } from '../constants/mainContentConstants';
+import { Map } from 'immutable';
+import ui from './uiReducer';
 
 const getNewBookmarkTagId = (bookmarkTag) => {
   return (bookmarkTag.map(t => parseInt(t.get('id'))).max() + 1);
@@ -41,16 +41,6 @@ const entities = (state = Map({}), action) => {
   }
 };
 
-const ui = (state = Map({}), action) => {
-  switch (action.type) {
-    case UPDATE_SEARCHED_TAG:
-      return state.setIn(['searchedTags'], (action.tags).toSet());
-    case UPDATE_SEARCH_BOX_VALUE:
-      return state.setIn(['searchBoxValue'], (action.value));
-    default:
-      return state;
-  }
-};
 
 const user = (state = Map({}), action) => {
   switch (action.type) {
