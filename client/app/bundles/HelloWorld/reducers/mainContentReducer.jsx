@@ -13,8 +13,6 @@ const isNewBookmark = (state, title) => {
 
 const entities = (state = Map({}), action) => {
   switch (action.type) {
-    case '@@INIT':
-      return fromJS(state);
     case 'ADD_TAG_TO_BOOKMARK':
       const tag = state.get('tags').find(tag => tag.get('title') === action.tagTitle);
       const tagId = parseInt(tag.get('id'));
@@ -49,8 +47,6 @@ const ui = (state = Map({}), action) => {
       return state.setIn(['searchedTags'], (action.tags).toSet());
     case UPDATE_SEARCH_BOX_VALUE:
       return state.setIn(['searchBoxValue'], (action.value));
-    case '@@INIT':
-      return fromJS(state);
     default:
       return state;
   }
@@ -58,8 +54,6 @@ const ui = (state = Map({}), action) => {
 
 const user = (state = Map({}), action) => {
   switch (action.type) {
-    case '@@INIT':
-      return fromJS(state);
     default:
       return state;
   }
