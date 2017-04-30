@@ -29,10 +29,11 @@ class BookmarkAddTag extends React.Component {
 
   submitNewTag() {
     const isNewTag = this.isNewTag(this.props.tags, this.state.inputValue);
+    const inputValue = this.state.inputValue;
     if (isNewTag) {
-      this.props.onTagCreated(this.state.addedTagId, this.state.inputValue, this.props.bookmark)
+      this.props.onTagCreated(this.state.addedTagId, inputValue, this.props.bookmark)
     } else {
-      this.props.onTagAddedToBookmark(this.state.inputValue, this.props.bookmark);
+      this.props.onTagAddedToBookmark(this.getTagIdByTitle(this.props.tags, inputValue),this.props.bookmark);
     }
     this.setState({
       isEditing: false,

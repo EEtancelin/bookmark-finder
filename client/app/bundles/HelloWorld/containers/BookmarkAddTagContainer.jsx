@@ -6,8 +6,8 @@ import { createTag , addTagToBookmark } from '../actions/bookmarkActionCreators'
 
 // Which part of the Redux global state does our component want to receive as props?
 
-const onTagAddedToBookmark = (tagTitle, bookmark) => {
-  return(addTagToBookmark(tagTitle, bookmark))
+const onTagAddedToBookmark = (tagId, bookmark) => {
+  return(addTagToBookmark(tagId, bookmark))
 }
 
 const onTagCreated = (tagId, title, bookmark) => {
@@ -21,9 +21,9 @@ const mapStateToProps = (state, ownprops) => ({
 });
 
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch, ownprops) => {
   return {
-    onTagAddedToBookmark: (tagId, tagTitle, bookmark) => { dispatch(onTagAddedToBookmark(tagId, tagTitle, bookmark)); },
+    onTagAddedToBookmark: (tagId, tagTitle, bookmark) => { dispatch(onTagAddedToBookmark(ownprops.tags, tagTitle, bookmark)); },
     onTagCreated: (tagId, tagTitle, bookmark) => { dispatch(createTag(tagId, tagTitle, bookmark)); }
   };
 };
