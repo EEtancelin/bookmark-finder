@@ -1,6 +1,7 @@
 
 import { connect } from 'react-redux';
 import Tag from '../components/Tag';
+import { addSearchedTag } from '../actions/searchBoxActionCreators'
 
 // Which part of the Redux global state does our component want to receive as props?
 
@@ -8,7 +9,8 @@ const mapDispatchToProps = (dispatch, ownprops ) => {
   return {
     onRemoveClick: () => (
       dispatch({ type: 'REMOVE_BOOKMARK', tag: ownprops.tagId, bookmark: ownprops.bookmark })
-    )
+    ),
+    onClick: () => (dispatch(addSearchedTag(ownprops.tagId))),
   };
 }
 
