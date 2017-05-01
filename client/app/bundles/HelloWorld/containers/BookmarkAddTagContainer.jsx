@@ -12,7 +12,7 @@ const onTagAddedToBookmark = (tags, tagTitle, bookmark) => {
 }
 
 const onTagCreated = (title, bookmark) => {
-  return(createTag('1', title, bookmark))
+  return(createTag(title, bookmark))
 }
 
 const isNewTag = (tags, value) => {

@@ -7,7 +7,7 @@ export const addTagToBookmark = (tagUuid, bookmark) => ({
   bookmark,
 });
 
-export const createTag = (tagUuid, tagTitle, bookmark) => ({
+export const createTag = (tagTitle, bookmark) => ({
   type: 'CREATE_TAG',
   tagUuid: uuidV4(),
   bookmarkTagUuid: uuidV4(),
