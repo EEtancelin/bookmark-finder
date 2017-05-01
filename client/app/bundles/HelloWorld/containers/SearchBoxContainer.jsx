@@ -17,13 +17,6 @@ import {
 
 // Methods
 
-// Listen Backslach to delete the last Tag.
-const onKeyDown = (event) => {
-  if (event.keyCode === 8 && this.props.inputValue === '') {
-    this.props.onDeleteLastSearchedTag();
-  }
-}
-
 // Whitch action dispatch when user Input Change ?
 const onUserInputChange = (tags, userInput) => {
   const tag = findTagByTitle(tags, userInput);
@@ -46,7 +39,7 @@ const mapStateToProps = (state) => {
   return {
     tags: state.getIn(['entities', 'tags']),
     inputValue: state.getIn(['ui', 'searchBoxValue']),
-    searchedTags: state.getIn(['ui', 'searchedTags']).toSet(),
+    searchedTags: state.getIn(['ui', 'searchedTags']),
     proposedTags: getProposedTags(state),
     onUserInputChange: (tags, userInput) => onUserInputChange(tags, userInput),
   };
