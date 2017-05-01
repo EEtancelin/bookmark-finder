@@ -12,26 +12,28 @@ import {
 import { getTagsIdsAssociateToTags } from '../reducers/entitiesReducer';
 
 
-//Whitch action triger when user Input Change ?
+// Whitch action triger when user Input Change ?
 const onUserInputChange = (tags, userInput) => {
-  const tag = findTagByTitle(tags, userInput)
+  const tag = findTagByTitle(tags, userInput);
+  let action;
   if (tag) {
-    return (addSearchedTag(tag.get('uuid')))
+    action = addSearchedTag(tag.get('uuid'));
   } else {
-    return (updateSearchBoxValue(userInput))
+    action = updateSearchBoxValue(userInput);
   }
-}
+  return action;
+};
 
 
-const findTagByTitle = (tags, title) =>  {
-  return (tags.find(t => t.get('title') === title))
-}
+const findTagByTitle = (tags, title) => {
+  tags.find(t => t.get('title') === title);
+};
 
 
 // Is there Searched Tags ?
-const hasSearchedTags = (state) =>  {
+const hasSearchedTags = (state) => {
   return (state.get('ui').get('searchedTags').count() > 0);
-}
+};
 
 // Which Tag to propose to the user ?
 const getProposedTags = (state) => {
