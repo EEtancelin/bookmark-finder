@@ -2,6 +2,7 @@ import { combineReducers } from 'redux-immutable';
 import {
   UPDATE_SEARCHED_TAG,
   ADD_SEARCHED_TAG,
+  DELETE_LAST_SEARCHED_TAG,
   UPDATE_SEARCH_BOX_VALUE,
 } from '../constants/appConstants';
 
@@ -26,6 +27,8 @@ const searchedTags = (state = Map({}), action) => {
       return action.tags.toSet();
     case ADD_SEARCHED_TAG:
       return state.add(action.tagId);
+    case DELETE_LAST_SEARCHED_TAG:
+      return state.butLast();
     default:
       return state;
   }

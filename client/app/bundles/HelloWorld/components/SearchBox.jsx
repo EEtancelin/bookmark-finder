@@ -17,10 +17,9 @@ class SearchBox extends React.Component {
 
   // Listen Backslach to delete the last Tag.
   onKeyDown(event) {
-     if (event.keyCode === 8 && this.props.inputValue === "") {
-       const searchedTags = this.props.searchedTags.butLast();
-       this.props.onSearchedTagsUpdate(searchedTags);
-     }
+    if (event.keyCode === 8 && this.props.inputValue === '') {
+      this.props.onDeleteLastSearchedTag();
+    }
   }
 
 
@@ -52,9 +51,9 @@ class SearchBox extends React.Component {
 
 SearchBox.propTypes = {
   tags: PropTypes.instanceOf(Immutable.Map).isRequired,
-  proposedTags: PropTypes.instanceOf(Immutable.Set).isRequired,
-  searchedTags: PropTypes.instanceOf(Immutable.Set).isRequired,
   onSearchBoxValueChange: PropTypes.func.isRequired,
+  onDeleteLastSearchedTag: PropTypes.func.isRequired,
+  inputValue: PropTypes.string.isRequired,
 };
 
 export default SearchBox;

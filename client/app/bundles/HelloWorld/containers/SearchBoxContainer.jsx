@@ -6,6 +6,7 @@ import {
   updateSearchedTag,
   updateSearchBoxValue,
   addSearchedTag,
+  deleteLastSearchedTag,
 } from '../actions/searchBoxActionCreators';
 
 import { getTagsIdsAssociateToTags } from '../reducers/entitiesReducer';
@@ -58,6 +59,7 @@ const mapDispatchToProps = (dispatch) => {
     onSearchedTagsUpdate: (value) => { dispatch(updateSearchedTag(value)); },
     onDeleteTagsClick: () => { dispatch(updateSearchedTag(Set([]))); },
     onSearchBoxValueChange: (tags, value) => { dispatch(onUserInputChange(tags, value)); },
+    onDeleteLastSearchedTag: () => { dispatch(deleteLastSearchedTag()); },
   };
 };
 
