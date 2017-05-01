@@ -11,9 +11,7 @@ class BookmarkAddTag extends React.Component {
     this.state = {
       isEditing: false,
       isNewTag: true,
-      addedTagId: '1',
       inputValue: '',
-      tags: this.props.tags,
 
     };
     this.onEditClick = this.onEditClick.bind(this);
@@ -59,7 +57,7 @@ class BookmarkAddTag extends React.Component {
   }
 
   getProposedTags() {
-    return ( this.state.tags.filter(t => RegExp(this.state.inputValue).exec(t.get('title'))));
+    return ( this.props.tags.filter(t => RegExp(this.state.inputValue).exec(t.get('title'))));
   }
 
   isTagsToPropose(){
