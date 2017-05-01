@@ -4,16 +4,25 @@ import { connect } from 'react-redux';
 import BookmarkAddTag from '../components/BookmarkAddTag';
 import { createTag , addTagToBookmark } from '../actions/bookmarkActionCreators';
 
-// Which part of the Redux global state does our component want to receive as props?
 
+
+
+// What are the tags to propose ? 
+const getProposedTags = (tags, inputValue) => {
+  return ( tags.filter(t => RegExp(inputValue).exec(t.get('title'))));
+}
+
+// Is this tag is new ?
 const isNewTag = (tags, value) => {
   return (!tags.map(t => t.get('title')).toSet().has(value));
 }
 
+// What is the tag UUid for this title.
 const getTagUuidByTitle = (tags, title) => {
   return ((tags.find(t => t.get('title') === title)).get('id')) ;
 }
 
+// What to do when an user submit a tag ?
 const onTagSubmit = (tags, tagTitle, bookmarkId) => {
   const newTag = isNewTag(tags, tagTitle);
   if (newTag) {
@@ -24,9 +33,11 @@ const onTagSubmit = (tags, tagTitle, bookmarkId) => {
   }
 };
 
+// Which part of the Redux global state does our component want to receive as props?
 const mapStateToProps = (state, ownprops) => ({
   bookmark: ownprops.bookmark,
   tags: state.get('entities').get('tags'),
+  getProposedTags: (tags, inputValue) => getProposedTags(tags, inputValue)
 });
 
 

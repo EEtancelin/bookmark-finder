@@ -16,7 +16,6 @@ class BookmarkAddTag extends React.Component {
     };
     this.onEditClick = this.onEditClick.bind(this);
     this.onUserInputChange = this.onUserInputChange.bind(this);
-    this.getProposedTags = this.getProposedTags.bind(this);
     this.onProposedTagCLick = this.onProposedTagCLick.bind(this);
     this.isTagsToPropose = this.isTagsToPropose.bind(this);
     this.submitNewTag = this.submitNewTag.bind(this);
@@ -56,12 +55,9 @@ class BookmarkAddTag extends React.Component {
     });
   }
 
-  getProposedTags() {
-    return ( this.props.tags.filter(t => RegExp(this.state.inputValue).exec(t.get('title'))));
-  }
 
   isTagsToPropose(){
-    const proposedTags = this.getProposedTags();
+    const proposedTags = this.props.getProposedTags(this.props.tags, this.state.inputValue);
     const inputValue = this.state.inputValue;
 
     return(
@@ -72,7 +68,6 @@ class BookmarkAddTag extends React.Component {
         proposedTags.count() > 1
       )
     )
-
   }
 
 
@@ -110,7 +105,7 @@ class BookmarkAddTag extends React.Component {
       paddingLeft: '8px',
       cursor:'pointer',
     }
-    const proposedTags = this.getProposedTags()
+    const proposedTags = this.props.getProposedTags(this.props.tags, this.state.inputValue)
     return (
       <div style={style}>
         { this.state.isEditing ? (
