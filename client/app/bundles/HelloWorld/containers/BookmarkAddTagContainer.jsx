@@ -6,7 +6,6 @@ import { createTag , addTagToBookmark } from '../actions/bookmarkActionCreators'
 
 // Which part of the Redux global state does our component want to receive as props?
 
-
 const isNewTag = (tags, value) => {
   return (!tags.map(t => t.get('title')).toSet().has(value));
 }
@@ -28,7 +27,6 @@ const onTagSubmit = (tags, tagTitle, bookmarkId) => {
 const mapStateToProps = (state, ownprops) => ({
   bookmark: ownprops.bookmark,
   tags: state.get('entities').get('tags'),
-  newTagId: parseInt(state.get('entities').get('tags').filter(t => t.get('id')).max().first()) + 1,
 });
 
 
