@@ -77,8 +77,8 @@ const tags = (state = Map({}), action) => {
 const bookmarkTag = (state = Map({}), action) => {
   switch (action.type) {
     case 'ADD_TAG_TO_BOOKMARK':
-      const bookmarkTag = Map({ id: action.bookmarkTagId, tag_uuid: action.tagUuid, bookmark_id: action.bookmark });
-      return state.setIn(['bookmarkTag', action.bookmarkTagId ], bookmarkTag);
+      const bookmarkTagg = Map({ id: action.bookmarkTagId, tag_uuid: action.tagUuid, bookmark_id: action.bookmark });
+      return state.set(action.bookmarkTagId, bookmarkTagg);
 
     case 'CREATE_TAG':
         const newBookmarkTag =
