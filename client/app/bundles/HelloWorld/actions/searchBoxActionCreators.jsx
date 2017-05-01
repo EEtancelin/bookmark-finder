@@ -1,6 +1,9 @@
 
-import { UPDATE_SEARCHED_TAG } from '../constants/mainContentConstants';
-import { UPDATE_SEARCH_BOX_VALUE } from '../constants/mainContentConstants';
+import {
+  UPDATE_SEARCHED_TAG,
+  ADD_SEARCHED_TAG,
+  UPDATE_SEARCH_BOX_VALUE,
+} from '../constants/mainContentConstants';
 
 
 export const updateSearchedTag = tags => ({
@@ -14,6 +17,6 @@ export const updateSearchBoxValue = value => ({
 });
 
 export const addSearchedTag = tagId => ({
-  type: 'ADD_SEARCHED_TAG',
+  type: ADD_SEARCHED_TAG,
   tagId,
 });

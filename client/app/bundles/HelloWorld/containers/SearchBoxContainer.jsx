@@ -2,10 +2,13 @@
 import { connect } from 'react-redux';
 import { Set } from 'immutable';
 import SearchBox from '../components/SearchBox';
-import { updateSearchedTag } from '../actions/searchBoxActionCreators';
-import { updateSearchBoxValue } from '../actions/searchBoxActionCreators';
+import {
+  updateSearchedTag,
+  updateSearchBoxValue,
+  addSearchedTag,
+} from '../actions/searchBoxActionCreators';
+
 import { getTagsIdsAssociateToTags } from '../reducers/entitiesReducer';
-import { addSearchedTag } from '../actions/searchBoxActionCreators';
 
 
 //Whitch action triger when user Input Change ?
