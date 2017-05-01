@@ -3,7 +3,7 @@ import {
   UPDATE_SEARCHED_TAG,
   ADD_SEARCHED_TAG,
   UPDATE_SEARCH_BOX_VALUE,
-} from '../constants/mainContentConstants';
+} from '../constants/appConstants';
 
 const searchBoxValue = (state = Map({}), action) => {
   switch (action.type) {
