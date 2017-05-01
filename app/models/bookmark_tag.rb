@@ -10,7 +10,6 @@ class BookmarkTag < ApplicationRecord
 
   def to_redux_hash
     attr = self.attributes
-    attr["tag_id"] = self.tag.uuid
     attr["tag_uuid"] = self.tag.uuid
     return attr
   end
