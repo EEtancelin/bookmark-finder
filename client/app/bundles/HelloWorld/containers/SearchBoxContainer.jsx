@@ -2,7 +2,6 @@
 import { connect } from 'react-redux';
 import SearchBox from '../components/SearchBox';
 import {
-  updateSearchedTag,
   updateSearchBoxValue,
   addSearchedTag,
   deleteLastSearchedTag,
@@ -12,16 +11,20 @@ import {
 import {
   getTagsRelatedToSearchedTags,
   getAllTags,
+  findTagByTitle,
+  hasSearchedTags,
 } from '../reducers/entitiesReducer';
 
 // Methods
-// What is the tag hash corresponding to this title ?
 
-const findTagByTitle = (tags, title) => tags.find(t => t.get('title') === title);
-// Is there Searched Tags ?
-const hasSearchedTags = state => !state.getIn(['ui', 'searchedTags']).isEmpty();
+// Listen Backslach to delete the last Tag.
+const onKeyDown = (event) => {
+  if (event.keyCode === 8 && this.props.inputValue === '') {
+    this.props.onDeleteLastSearchedTag();
+  }
+}
 
-// Whitch action triger when user Input Change ?
+// Whitch action dispatch when user Input Change ?
 const onUserInputChange = (tags, userInput) => {
   const tag = findTagByTitle(tags, userInput);
   let action;
@@ -49,16 +52,14 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    onSearchedTagsUpdate: (value) => { dispatch(updateSearchedTag(value)); },
-    onDeleteTagsClick: () => { dispatch(deleteSearchedTags()); },
-    onSearchBoxValueChange: (tags, value) => { dispatch(onUserInputChange(tags, value)); },
-    onDeleteLastSearchedTag: () => { dispatch(deleteLastSearchedTag()); },
-  };
-};
+// Use Map Dispath to Props Shorthand Notation.
+// https://egghead.io/lessons/javascript-redux-using-mapdispatchtoprops-shorthand-notation
 
-// Don't forget to actually use connect!
-// Note that we don't export HelloWorld, but the redux "connected" version of it.
-// See https://github.com/reactjs/react-redux/blob/master/docs/api.md#examples
-export default connect(mapStateToProps, mapDispatchToProps)(SearchBox);
+export default connect(
+  mapStateToProps,
+  {
+    onDeleteTagsClick: deleteSearchedTags,
+    onSearchBoxValueChange: onUserInputChange,
+    onDeleteLastSearchedTag: deleteLastSearchedTag,
+  },
+)(SearchBox);
