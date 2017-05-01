@@ -16,7 +16,7 @@ class BookmarkAddTag extends React.Component {
     this.onEditClick = this.onEditClick.bind(this);
     this.onUserInputChange = this.onUserInputChange.bind(this);
     this.onProposedTagCLick = this.onProposedTagCLick.bind(this);
-    this.isTagsToPropose = this.isTagsToPropose.bind(this);
+    this.shouldProposeTags = this.shouldProposeTags.bind(this);
     this.onTagSubmit = this.onTagSubmit.bind(this);
     this.onKeyDown = this.onKeyDown.bind(this);
   }
@@ -54,7 +54,7 @@ class BookmarkAddTag extends React.Component {
   }
 
 
-  isTagsToPropose(){
+  shouldProposeTags(){
     const proposedTags = this.props.getProposedTags(this.props.tags, this.state.inputValue);
     const inputValue = this.state.inputValue;
 
@@ -125,7 +125,7 @@ class BookmarkAddTag extends React.Component {
             >
             Ajouter
           </Button>
-            { this.isTagsToPropose() &&
+            { this.shouldProposeTags() &&
               <div style={ tagProposalsBoxStyle } >
                   {proposedTags.valueSeq().map(t => (
                     <div key={t.get('id')}
