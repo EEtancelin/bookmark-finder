@@ -5,8 +5,6 @@ import BookmarkAddTag from '../components/BookmarkAddTag';
 import { createTag , addTagToBookmark } from '../actions/bookmarkActionCreators';
 
 
-
-
 // What are the tags to propose ?
 const getProposedTags = (tags, inputValue) => {
   return ( tags.filter(t => RegExp(inputValue).exec(t.get('title'))));

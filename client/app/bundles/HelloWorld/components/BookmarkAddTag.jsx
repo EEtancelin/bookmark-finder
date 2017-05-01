@@ -11,8 +11,8 @@ class BookmarkAddTag extends React.Component {
     this.state = {
       isEditing: false,
       inputValue: '',
-
     };
+    
     this.onEditClick = this.onEditClick.bind(this);
     this.onUserInputChange = this.onUserInputChange.bind(this);
     this.onProposedTagCLick = this.onProposedTagCLick.bind(this);
