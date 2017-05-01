@@ -26,7 +26,7 @@ const onUserInputChange = (tags, userInput) => {
 
 
 const findTagByTitle = (tags, title) => {
-  tags.find(t => t.get('title') === title);
+  return (tags.find(t => t.get('title') === title));
 };
 
 
