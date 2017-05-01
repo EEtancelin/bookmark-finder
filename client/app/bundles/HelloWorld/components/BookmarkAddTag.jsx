@@ -10,7 +10,6 @@ class BookmarkAddTag extends React.Component {
     super(props);
     this.state = {
       isEditing: false,
-      isNewTag: true,
       inputValue: '',
 
     };
