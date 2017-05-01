@@ -17,13 +17,12 @@ class BookmarkAddTag extends React.Component {
     this.onUserInputChange = this.onUserInputChange.bind(this);
     this.onProposedTagCLick = this.onProposedTagCLick.bind(this);
     this.isTagsToPropose = this.isTagsToPropose.bind(this);
-    this.submitNewTag = this.submitNewTag.bind(this);
+    this.onTagSubmit = this.onTagSubmit.bind(this);
     this.onKeyDown = this.onKeyDown.bind(this);
   }
 
-  submitNewTag() {
-
-    this.props.onTagSubmit(this.props.tags, this.state.inputValue, this.props.bookmark)
+  onTagSubmit() {
+    this.props.submitTag(this.props.tags, this.state.inputValue, this.props.bookmark)
     this.setState({
       isEditing: false,
       inputValue: '',
@@ -31,7 +30,7 @@ class BookmarkAddTag extends React.Component {
   }
 
   onKeyDown(event) {
-    event.keyCode === 13 && this.submitNewTag();
+    event.keyCode === 13 && this.onTagSubmit();
     event.keyCode === 27 && this.setState({ isEditing: false });
   }
 
@@ -122,7 +121,7 @@ class BookmarkAddTag extends React.Component {
           <Button
             style={addButtonStyle}
             color="danger"
-            onClick={() => { this.submitNewTag()}}
+            onClick={() => { this.onTagSubmit()}}
             >
             Ajouter
           </Button>

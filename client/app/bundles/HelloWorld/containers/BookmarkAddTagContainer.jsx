@@ -7,7 +7,7 @@ import { createTag , addTagToBookmark } from '../actions/bookmarkActionCreators'
 
 
 
-// What are the tags to propose ? 
+// What are the tags to propose ?
 const getProposedTags = (tags, inputValue) => {
   return ( tags.filter(t => RegExp(inputValue).exec(t.get('title'))));
 }
@@ -23,7 +23,7 @@ const getTagUuidByTitle = (tags, title) => {
 }
 
 // What to do when an user submit a tag ?
-const onTagSubmit = (tags, tagTitle, bookmarkId) => {
+const submitTag = (tags, tagTitle, bookmarkId) => {
   const newTag = isNewTag(tags, tagTitle);
   if (newTag) {
     return createTag(tagTitle, bookmarkId)
@@ -43,7 +43,7 @@ const mapStateToProps = (state, ownprops) => ({
 
 const mapDispatchToProps = (dispatch, ownprops) => {
   return {
-    onTagSubmit: (tags, tagTitle, bookmarkId) => {dispatch(onTagSubmit(tags, tagTitle, bookmarkId));}
+    submitTag: (tags, tagTitle, bookmarkId) => {dispatch(submitTag(tags, tagTitle, bookmarkId));}
   };
 };
 
