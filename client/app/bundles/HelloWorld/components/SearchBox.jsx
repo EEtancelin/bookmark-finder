@@ -7,40 +7,23 @@ import DeleteTagsButton from './DeleteTagsButton';
 class SearchBox extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { userInput: '' };
-    this.extractTagId = this.extractTagId.bind(this);
     this.onUserInputChange = this.onUserInputChange.bind(this);
     this.onKeyDown = this.onKeyDown.bind(this);
   }
 
   onUserInputChange(e) {
     const userInput = e.target.value;
-    const extractedTag = this.extractTagId(userInput, this.props.tags);
-    const searchedTags = this.props.searchedTags.concat(extractedTag);
-    const isTagExtracted = extractedTag.count() > 0;
-    this.props.onSearchBoxValueChange(userInput);
-
-    isTagExtracted ? (this.props.onSearchedTagsUpdate(searchedTags)) : '';
-
-    this.setState({
-      userInput: (isTagExtracted || userInput === ' ') ? '' : userInput,
-    });
+    this.props.onSearchBoxValueChange(this.props.tags, userInput);
   }
 
   // Listen Backslach to delete the last Tag.
   onKeyDown(event) {
-     if (event.keyCode === 8 && this.state.userInput === "") {
+     if (event.keyCode === 8 && this.props.inputValue === "") {
        const searchedTags = this.props.searchedTags.butLast();
        this.props.onSearchedTagsUpdate(searchedTags);
      }
   }
 
-  // Took a user input a return the tags which have been selected.
-  extractTagId(string) {
-    return (this.props.tags.filter(t => t.get('title') === string)
-    .map(t => t.get('uuid'))
-    .toSet());
-  }
 
   // Took a string and find the bookmarks where the title === string
   render() {
@@ -54,7 +37,7 @@ class SearchBox extends React.Component {
             name="search"
             placeholder="Enter you're tag"
             autoFocus="true"
-            value={this.state.userInput}
+            value={this.props.inputValue}
             onChange={this.onUserInputChange}
             onKeyDown={this.onKeyDown}
           />

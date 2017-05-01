@@ -12,7 +12,7 @@ class BookmarkAddTag extends React.Component {
       isEditing: false,
       inputValue: '',
     };
-    
+
     this.onEditClick = this.onEditClick.bind(this);
     this.onUserInputChange = this.onUserInputChange.bind(this);
     this.onProposedTagCLick = this.onProposedTagCLick.bind(this);
@@ -150,9 +150,7 @@ class BookmarkAddTag extends React.Component {
 
 BookmarkAddTag.propTypes = {
   tags: PropTypes.any.isRequired,
-  onTagAddedToBookmark: PropTypes.func.isRequired,
   bookmark: PropTypes.number.isRequired,
-  onTagCreated: PropTypes.func.isRequired,
 };
 
 export default BookmarkAddTag;

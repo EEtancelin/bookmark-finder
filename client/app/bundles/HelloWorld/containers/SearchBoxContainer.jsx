@@ -5,6 +5,23 @@ import SearchBox from '../components/SearchBox';
 import { updateSearchedTag } from '../actions/searchBoxActionCreators';
 import { updateSearchBoxValue } from '../actions/searchBoxActionCreators';
 import { getTagsIdsAssociateToTags } from '../reducers/entitiesReducer';
+import { addSearchedTag } from '../actions/searchBoxActionCreators';
+
+
+//Whitch action triger when user Input Change ?
+const onUserInputChange = (tags, userInput) => {
+  const tag = findTagByTitle(tags, userInput)
+  if (tag) {
+    return (addSearchedTag(tag.get('uuid')))
+  } else {
+    return (updateSearchBoxValue(userInput))
+  }
+}
+
+
+const findTagByTitle = (tags, title) =>  {
+  return (tags.find(t => t.get('title') === title))
+}
 
 
 // Is there Searched Tags ?
@@ -29,6 +46,7 @@ const mapStateToProps = (state) => {
     inputValue: state.get('ui').get('searchBoxValue'),
     searchedTags: state.get('ui').get('searchedTags').toSet(),
     proposedTags: getProposedTags(state),
+    onUserInputChange: (tags, userInput) => onUserInputChange(tags, userInput),
   };
 };
 
@@ -36,7 +54,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     onSearchedTagsUpdate: (value) => { dispatch(updateSearchedTag(value)); },
     onDeleteTagsClick: () => { dispatch(updateSearchedTag(Set([]))); },
-    onSearchBoxValueChange: (value) => { dispatch(updateSearchBoxValue(value)); },
+    onSearchBoxValueChange: (tags, value) => { dispatch(onUserInputChange(tags, value)); },
   };
 };
 
