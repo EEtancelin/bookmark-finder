@@ -22,19 +22,12 @@ class BookmarkAddTag extends React.Component {
     this.onProposedTagCLick = this.onProposedTagCLick.bind(this);
     this.isTagsToPropose = this.isTagsToPropose.bind(this);
     this.submitNewTag = this.submitNewTag.bind(this);
-    this.isNewtag = this.isNewTag.bind(this);
-    this.getTagIdByTitle = this.getTagIdByTitle.bind(this);
     this.onKeyDown = this.onKeyDown.bind(this);
   }
 
   submitNewTag() {
-    const isNewTag = this.isNewTag(this.props.tags, this.state.inputValue);
-    const inputValue = this.state.inputValue;
-    if (isNewTag) {
-      this.props.onTagCreated(this.state.addedTagId, inputValue, this.props.bookmark)
-    } else {
-      this.props.onTagAddedToBookmark(this.props.tags, inputValue, this.props.bookmark);
-    }
+
+    this.props.onTagSubmit(this.props.tags, this.state.inputValue, this.props.bookmark)
     this.setState({
       isEditing: false,
       inputValue: '',
@@ -44,25 +37,6 @@ class BookmarkAddTag extends React.Component {
   onKeyDown(event) {
     event.keyCode === 13 && this.submitNewTag();
     event.keyCode === 27 && this.setState({ isEditing: false });
-  }
-
-  isNewTag(tags, value) {
-    return (!tags.map(t => t.get('title')).toSet().has(value));
-}
-
-  getTagIdByTitle(tags, title) {
-    return ((tags.find(t => t.get('title') === title)).get('id')) ;
-  }
-
-  getAddedTagId(tags, value) {
-    const isNewTag = this.isNewTag(tags, value)
-    let tagId = 1
-    if (isNewTag) {
-      tagId = tags.map(t => parseInt(t.get('uuid'))).max() + 1
-    } else {
-      tagId = this.getTagIdByTitle(tags, value)
-    }
-    return(tagId)
   }
 
   onEditClick() {
@@ -81,8 +55,6 @@ class BookmarkAddTag extends React.Component {
   onUserInputChange(e) {
     this.setState({
       inputValue: e.target.value,
-      isNewTag: this.isNewTag(this.props.tags, e.target.value),
-      addedTagId: this.getAddedTagId(this.props.tags, e.target.value),
     });
   }
 

@@ -11,9 +11,26 @@ const onTagAddedToBookmark = (tags, tagTitle, bookmark) => {
   return(addTagToBookmark(tagUuid, bookmark))
 }
 
-const onTagCreated = (tagId, title, bookmark) => {
-  return(createTag(tagId, title, bookmark))
+const onTagCreated = (title, bookmark) => {
+  return(createTag('1', title, bookmark))
 }
+
+const isNewTag = (tags, value) => {
+  return (!tags.map(t => t.get('title')).toSet().has(value));
+}
+
+const getTagUuidByTitle = (tags, title) => {
+  return ((tags.find(t => t.get('title') === title)).get('id')) ;
+}
+
+const onTagSubmit = (tags, tagTitle, bookmarkId) => {
+  const newTag = isNewTag(tags, tagTitle);
+  if (newTag) {
+    return onTagCreated(tagTitle, bookmarkId)
+  } else {
+    return onTagAddedToBookmark(tags, tagTitle, bookmarkId);
+  }
+};
 
 const mapStateToProps = (state, ownprops) => ({
   bookmark: ownprops.bookmark,
@@ -24,8 +41,7 @@ const mapStateToProps = (state, ownprops) => ({
 
 const mapDispatchToProps = (dispatch, ownprops) => {
   return {
-    onTagAddedToBookmark: (tags, tagTitle, bookmark) => { dispatch(onTagAddedToBookmark(tags, tagTitle, bookmark)); },
-    onTagCreated: (tagId, tagTitle, bookmark) => { dispatch(createTag(tagId, tagTitle, bookmark)); }
+    onTagSubmit: (tags, tagTitle, bookmarkId) => {dispatch(onTagSubmit(tags, tagTitle, bookmarkId));}
   };
 };
 
