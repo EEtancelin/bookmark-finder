@@ -1,9 +1,12 @@
 import { combineReducers } from 'redux-immutable';
+import { Set } from 'immutable';
+
 import {
   UPDATE_SEARCHED_TAG,
   ADD_SEARCHED_TAG,
   DELETE_LAST_SEARCHED_TAG,
   UPDATE_SEARCH_BOX_VALUE,
+  DELETE_SEARCHED_TAGS,
 } from '../constants/appConstants';
 
 const searchBoxValue = (state = Map({}), action) => {
@@ -29,6 +32,8 @@ const searchedTags = (state = Map({}), action) => {
       return state.add(action.tagId);
     case DELETE_LAST_SEARCHED_TAG:
       return state.butLast();
+    case DELETE_SEARCHED_TAGS:
+      return Set([]);
     default:
       return state;
   }

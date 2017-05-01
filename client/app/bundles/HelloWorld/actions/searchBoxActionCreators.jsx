@@ -4,6 +4,7 @@ import {
   ADD_SEARCHED_TAG,
   UPDATE_SEARCH_BOX_VALUE,
   DELETE_LAST_SEARCHED_TAG,
+  DELETE_SEARCHED_TAGS,
 } from '../constants/appConstants';
 
 
@@ -25,4 +26,8 @@ export const addSearchedTag = tagId => ({
 export const deleteLastSearchedTag = tagId => ({
   type: DELETE_LAST_SEARCHED_TAG,
   tagId,
+});
+
+export const deleteSearchedTags = () => ({
+  type: DELETE_SEARCHED_TAGS,
 });

@@ -1,6 +1,17 @@
 import { combineReducers } from 'redux-immutable';
 import { Map } from 'immutable';
 
+
+// Which Tag have One bookmark in Common with the searchedTags ?
+export const getTagsRelatedToSearchedTags = (state) => {
+  return (getTagsIdsAssociateToTags(state.getIn(['entities', 'bookmarkTag']), state.getIn(['ui', 'searchedTags'])))
+}
+
+// Which are the Ids of all existing tag ?
+export const getAllTags = (state) => {
+  return (state.getIn(['entities', 'bookmarkTag']).map(bt => bt.get('tag_uuid')).toSet())
+};
+
 export const getTagsIdsAssociateToBookmarks = (bookmarkTag, bookmarks) => {
   return (getBookmarksIdsForEachTag(bookmarkTag)
     .filter(bookmarkTags => !bookmarkTags.intersect(bookmarks).isEmpty())
@@ -9,7 +20,6 @@ export const getTagsIdsAssociateToBookmarks = (bookmarkTag, bookmarks) => {
 };
 
 // Which tags have one bookmark in common with the provided tags ?
-
 export const getTagsIdsAssociateToTags = (bookmarkTag, tags) => {
   return (getTagsIdsAssociateToBookmarks(
       bookmarkTag, getBookmarksIdsAssociateToTags(bookmarkTag, tags)
