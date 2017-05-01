@@ -7,7 +7,7 @@ import { createTag , addTagToBookmark } from '../actions/bookmarkActionCreators'
 // Which part of the Redux global state does our component want to receive as props?
 
 const onTagAddedToBookmark = (tagId, bookmark) => {
-  return(addTagToBookmark(tagId, bookmark))
+  return(addTagToBookmark(bookmark))
 }
 
 const onTagCreated = (tagId, title, bookmark) => {

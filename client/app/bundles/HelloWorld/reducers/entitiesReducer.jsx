@@ -20,13 +20,13 @@ export const getTagsIdsAssociateToTags = (bookmarkTag, tags) => {
 export const getTagsIdsForEachBookmark = (bookmarkTag) => {
   return (bookmarkTag
     .groupBy(bt => bt.get('bookmark_id'))
-    .map(x => x.map(y => y.get('tag_id')).toSet())
+    .map(x => x.map(y => y.get('tag_uuid')).toSet())
   );
 };
 
 export const getBookmarksIdsForEachTag = (bookmarkTag) => {
   return (bookmarkTag
-    .groupBy(bt => bt.get('tag_id'))
+    .groupBy(bt => bt.get('tag_uuid'))
     .map(x => x.map(y => y.get('bookmark_id')).toSet())
   );
 };
@@ -42,7 +42,7 @@ export const getAssociationMatrix = (bookmarkTag) => {
     if (associationMatrix[bt.get('bookmark_id')] === undefined) {
       associationMatrix[bt.get('bookmark_id')] =[]
     }
-    associationMatrix[bt.get('bookmark_id')][bt.get('tag_id')] = 1
+    associationMatrix[bt.get('bookmark_id')][bt.get('tag_uuid')] = 1
   })
 }
 
@@ -68,7 +68,7 @@ const bookmarks = (state = Map({}), action) => {
 const tags = (state = Map({}), action) => {
   switch (action.type) {
     case 'CREATE_TAG':
-      return state.set(action.tagId, Map({ id :action.tagId, title: action.tagTitle}));
+      return state.set(action.tagUuid, Map({ uuid :action.tagUuId, title: action.tagTitle}));
     default:
       return state;
   }
@@ -77,7 +77,7 @@ const tags = (state = Map({}), action) => {
 const bookmarkTag = (state = Map({}), action) => {
   switch (action.type) {
     case 'ADD_TAG_TO_BOOKMARK':
-      const bookmarkTag = Map({ id: action.bookmarkTagId, tag_id: action.tagId, bookmark_id: action.bookmark });
+      const bookmarkTag = Map({ id: action.bookmarkTagId, tag_uuid: action.tagUuid, bookmark_id: action.bookmark });
       return state.setIn(['bookmarkTag', action.bookmarkTagId ], bookmarkTag);
 
     case 'CREATE_TAG':
@@ -85,12 +85,12 @@ const bookmarkTag = (state = Map({}), action) => {
           Map({
             id: action.bookmarkTagId,
             bookmark_id: action.bookmark,
-            tag_id: action.tagId })
-        return (state.set(action.bookmarkTagId, newBookmarkTag ))
+            tag_uuid: action.tagUuid })
+        return (state.set(action.bookmarkTagUuid, newBookmarkTag ))
     case 'REMOVE_BOOKMARK':
       return (state.filterNot( bt =>
         (bt.get('bookmark_id') !== action.bookmark) &&
-        (bt.get('tag_id') !== action.tag))
+        (bt.get('tag_uuid') !== action.tag))
         );
     default:
       return state;

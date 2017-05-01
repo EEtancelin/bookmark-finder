@@ -19,7 +19,7 @@ const getProposedTags = (state) => {
 
 // Which are the Ids of all existing tag ?
 const getAllTags = (state) => {
-  return (state.get('entities').get('bookmarkTag').map(bt => bt.get('tag_id')).toSet())
+  return (state.get('entities').get('bookmarkTag').map(bt => bt.get('tag_uuid')).toSet())
 };
 
 // Which part of the Redux global state does our component want to receive as props?

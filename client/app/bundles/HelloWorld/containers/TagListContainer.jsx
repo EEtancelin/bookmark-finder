@@ -6,8 +6,8 @@ import * as actions from '../actions/mainContentActionCreators';
 
 const getTagsByBookmark = (bookmarkTagList, bookmarkId) => (
   bookmarkTagList
-    .filter(t => t.get('bookmark') === bookmarkId)
-    .map(x => x.get('tag'))
+    .filter(t => t.get('bookmark_id') === bookmarkId)
+    .map(x => x.get('tag_uuid'))
     .toSet()
 );
 

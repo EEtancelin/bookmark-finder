@@ -1,7 +1,7 @@
 import React from 'react';
 import Immutable from 'immutable';
 import PropTypes from 'prop-types';
-import TagList from './TagList';
+import TagListContainer from '../containers/TagListContainer';
 import DeleteTagsButton from './DeleteTagsButton';
 
 class SearchBox extends React.Component {
@@ -38,7 +38,7 @@ class SearchBox extends React.Component {
   // Took a user input a return the tags which have been selected.
   extractTagId(string) {
     return (this.props.tags.filter(t => t.get('title') === string)
-    .map(t => t.get('id'))
+    .map(t => t.get('uuid'))
     .toSet());
   }
 
@@ -47,7 +47,7 @@ class SearchBox extends React.Component {
     return (
       <div style={{marginBottom: '13px'}}>
         <div className="search-bar" >
-          <TagList className={'input-tags-list'} tags={this.props.searchedTags} />
+          <TagListContainer className={'input-tags-list'} tags={this.props.searchedTags} />
           <input
             className="search-input"
             type="text"
@@ -61,7 +61,7 @@ class SearchBox extends React.Component {
           <DeleteTagsButton deleteTagsFn={this.props.onDeleteTagsClick} viewBox="0 0 7 16" />
         </div>
         <div style= {{marginTop: '8px' }}>
-        <TagList tags={this.props.proposedTags} />
+        <TagListContainer tags={this.props.proposedTags} />
       </div>
       </div>
     );
