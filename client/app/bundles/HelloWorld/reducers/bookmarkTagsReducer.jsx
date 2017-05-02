@@ -1,5 +1,5 @@
 
-const bookmarkTag = (state = Map({}), action) => {
+export const bookmarkTag = (state = Map({}), action) => {
   switch (action.type) {
     case 'ADD_TAG_TO_BOOKMARK':
       const bookmarkTagg = Map({ id: action.bookmarkTagId, tag_uuid: action.tagUuid, bookmark_id: action.bookmark });
@@ -21,5 +21,3 @@ const bookmarkTag = (state = Map({}), action) => {
       return state;
   }
 };
-
-export default bookmarkTag;
