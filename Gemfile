@@ -19,7 +19,7 @@ gem 'simple_form'
 gem 'autoprefixer-rails'
 gem "simple_token_authentication"
 gem 'forest_liana'
-
+gem "pundit"
 
 group :development, :test do
   gem 'binding_of_caller'
