@@ -9,8 +9,8 @@ export const findTagByTitle = (tags, title) => tags.find(t => t.get('title') ===
 
 // Which Tag have One bookmark in Common with the searchedTags ?
 export const getTagsRelatedToSearchedTags = (state) => {
-  return (getTagsIdsAssociateToTags(state.getIn(['entities', 'bookmarkTag']), state.getIn(['ui', 'searchedTags'])))
-}
+  return (getTagsIdsAssociateToTags(state.getIn(['entities', 'bookmarkTag']), state.getIn(['ui', 'searchedTags'])));
+};
 
 export const getTagsIdsAssociateToBookmarks = (bookmarkTag, bookmarks) => {
   return (getBookmarksIdsForEachTag(bookmarkTag)
@@ -45,16 +45,6 @@ export const getBookmarksIdsForEachTag = (bookmarkTag) => {
 export const isNewBookmark = (state, title) => {
   return (!(state.hasIn(['tags', 'title'], title)));
 };
-
-export const getAssociationMatrix = (bookmarkTag) => {
-  const associationMatrix = [];
-  bookmarkTag.forEach(bt => {
-    if (associationMatrix[bt.get('bookmark_id')] === undefined) {
-      associationMatrix[bt.get('bookmark_id')] =[]
-    }
-    associationMatrix[bt.get('bookmark_id')][bt.get('tag_uuid')] = 1
-  })
-}
 
 // Selector
 export const getTagsByBookmark = (bookmarkTag, bookmarkId) => {
