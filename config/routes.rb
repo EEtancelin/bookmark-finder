@@ -5,13 +5,8 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
-      resources :tags, only: [ :index ]
+      resources :tags, only: [ :index , :show ]
+      resources :bookmark_tags, only: [ :index, :show ]
     end
   end
-  namespace :api, defaults: { format: :json } do
-    namespace :v1 do
-      resources :bookmark_tags, only: [ :index ]
-    end
-  end
-
 end
