@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux-immutable';
 import { Map } from 'immutable';
+import { tags } from './tagsReducer';
 
 
 // What is the tag hash corresponding to this title ?
@@ -82,14 +83,6 @@ const bookmarks = (state = Map({}), action) => {
   }
 };
 
-const tags = (state = Map({}), action) => {
-  switch (action.type) {
-    case 'CREATE_TAG':
-      return state.set(action.tagUuid, Map({ uuid :action.tagUuId, title: action.tagTitle}));
-    default:
-      return state;
-  }
-};
 
 const bookmarkTag = (state = Map({}), action) => {
   switch (action.type) {
