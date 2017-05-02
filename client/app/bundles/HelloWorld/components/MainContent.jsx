@@ -9,7 +9,7 @@ const HomePage = ({ name, updateName }) => (
     <div style={{ width: '596px', padding: '15px', backgroundColor: 'white'}}>
       <SearchBoxContainer />
       <div className="section_overdue">
-      <h2 className="header">En retard </h2>
+      <h2 className="header">Mes marques Pages</h2>
         <div className="invisible_space"></div>
           <VisibleBookmarkList />
       </div>
