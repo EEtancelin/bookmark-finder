@@ -8,5 +8,10 @@ Rails.application.routes.draw do
       resources :tags, only: [ :index ]
     end
   end
+  namespace :api, defaults: { format: :json } do
+    namespace :v1 do
+      resources :bookmark_tags, only: [ :index ]
+    end
+  end
 
 end

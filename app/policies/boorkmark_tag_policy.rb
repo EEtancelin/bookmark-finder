@@ -1,10 +1,12 @@
-class BoorkmarkTagPolicy < ApplicationPolicy
+class BookmarkTagPolicy < ApplicationPolicy
+
+  def create?
+     return true
+   end
+
   class Scope < Scope
     def resolve
-      scope.all
-
-      # For a multi-tenant SaaS app, you may want to use:
-      # scope.where(user: user)
+      scope
     end
   end
 end
