@@ -1,4 +1,4 @@
-import { Map } from 'immutable'
+import { Map } from 'immutable';
 
 export const tags = (state = Map({}), action) => {
   switch (action.type) {
