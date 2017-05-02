@@ -7,3 +7,8 @@ export const tags = (state = Map({}), action) => {
       return state;
   }
 };
+
+// Which are the Ids of all existing tag ?
+export const getAllTags = (state) => {
+  return (state.getIn(['entities', 'bookmarkTag']).map(bt => bt.get('tag_uuid')).toSet())
+};

@@ -10,10 +10,11 @@ import {
 
 import {
   getTagsRelatedToSearchedTags,
-  getAllTags,
   findTagByTitle,
   hasSearchedTags,
 } from '../reducers/entitiesReducer';
+
+import { getAllTags } from '../reducers/tagsReducer';
 
 // Methods
 
