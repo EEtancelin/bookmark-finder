@@ -9,6 +9,9 @@ import {
   DELETE_SEARCHED_TAGS,
 } from '../constants/appConstants';
 
+// Is there Searched Tags ?
+export const hasSearchedTags = state => !state.getIn(['ui', 'searchedTags']).isEmpty();
+
 const searchBoxValue = (state = Map({}), action) => {
   switch (action.type) {
     case UPDATE_SEARCH_BOX_VALUE:

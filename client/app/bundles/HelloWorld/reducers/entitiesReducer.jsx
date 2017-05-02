@@ -6,9 +6,6 @@ import { bookmarkTag } from './bookmarkTagsReducer';
 // What is the tag hash corresponding to this title ?
 export const findTagByTitle = (tags, title) => tags.find(t => t.get('title') === title);
 
-// Is there Searched Tags ?
-export const hasSearchedTags = state => !state.getIn(['ui', 'searchedTags']).isEmpty();
-
 
 // Which Tag have One bookmark in Common with the searchedTags ?
 export const getTagsRelatedToSearchedTags = (state) => {

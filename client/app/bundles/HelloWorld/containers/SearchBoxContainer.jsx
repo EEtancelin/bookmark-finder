@@ -11,11 +11,10 @@ import {
 import {
   getTagsRelatedToSearchedTags,
   findTagByTitle,
-  hasSearchedTags,
 } from '../reducers/entitiesReducer';
 
 import { getAllTags } from '../reducers/tagsReducer';
-
+import { hasSearchedTags } from '../reducers/uiReducer';
 // Methods
 
 // Whitch action dispatch when user Input Change ?
