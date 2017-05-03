@@ -4,6 +4,9 @@ class BookmarkPolicy < ApplicationPolicy
      return true
   end
 
+  def destroy?
+     record.user == user
+  end
 
   def update?
     record.user == user

@@ -1,7 +1,7 @@
 # app/controllers/api/v1/bookmarks_controller.rb
 class Api::V1::BookmarksController < Api::V1::BaseController
   acts_as_token_authentication_handler_for User, except: [ :index, :show ]
-  before_action :set_bookmark, only: [ :show, :update]
+  before_action :set_bookmark, only: [ :show, :update, :destroy]
 
   def index
     @bookmarks = policy_scope(Bookmark)
@@ -13,11 +13,9 @@ class Api::V1::BookmarksController < Api::V1::BaseController
   end
 
   def create
-    binding.pry
     @bookmark = Bookmark.new(bookmark_params)
     @bookmark.user = current_user
     authorize @bookmark
-    binding.pry
     if @bookmark.save
       render :show, status: :created
     else
@@ -31,6 +29,12 @@ class Api::V1::BookmarksController < Api::V1::BaseController
     else
       render_error
     end
+  end
+
+  def destroy
+    @bookmark.destroy
+    head :no_content
+    # No need to create a `destroy.json.jbuilder` view
   end
 
   private
