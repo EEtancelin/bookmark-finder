@@ -10,7 +10,19 @@ class Api::V1::BookmarksController < Api::V1::BaseController
 
   def show
     @bookmarks = policy_scope(Bookmark)
-    @bookmarks = Bookmark.first
+  end
+
+  def create
+    binding.pry
+    @bookmark = Bookmark.new(bookmark_params)
+    @bookmark.user = current_user
+    authorize @bookmark
+    binding.pry
+    if @bookmark.save
+      render :show, status: :created
+    else
+      render_error
+    end
   end
 
   def update
