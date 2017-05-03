@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
       resources :tags, only: [ :index , :show ]
+      resources :bookmarks, only: [ :index , :show ]
       resources :bookmark_tags, only: [ :index, :show ]
     end
   end
