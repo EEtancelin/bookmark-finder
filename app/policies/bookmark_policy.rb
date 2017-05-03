@@ -6,7 +6,7 @@ class BookmarkPolicy < ApplicationPolicy
 
 
   def update?
-    true
+    record.user == user
   end
 
   class Scope < Scope
