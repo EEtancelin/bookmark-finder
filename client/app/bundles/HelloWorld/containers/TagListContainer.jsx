@@ -7,7 +7,7 @@ import * as actions from '../actions/mainContentActionCreators';
 
 // Which part of the Redux global state does our component want to receive as props?
 const mapStateToProps = (state, ownprops) => ({
-  tagsIds: ownprops.tagsIds.toSet(),
+  tagsIds: ownprops.tagsIds,
   bookmark: ownprops.bookmark,
 });
 

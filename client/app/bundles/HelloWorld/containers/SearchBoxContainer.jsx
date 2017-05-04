@@ -17,7 +17,10 @@ import {
 } from '../reducers/bookmarkTagsReducer';
 
 import { getAllTagsIds } from '../reducers/tagsReducer';
-import { hasSearchedTags } from '../reducers/uiReducer';
+import {
+  hasSearchedTags,
+  getSearchedTagsIds,
+} from '../reducers/uiReducer';
 // Methods
 
 // Whitch action dispatch when user Input Change ?
@@ -36,9 +39,9 @@ const onUserInputChange = (tags, userInput) => {
 const getProposedTags = state => {
   const searchedTags = state.getIn(['ui', 'searchedTags']);
   if (hasSearchedTags(state)) {
-    getTagsIdsWithCommonBookmarkWithTagsIds(state, searchedTags)
+    return (getTagsIdsWithCommonBookmarkWithTagsIds(state, searchedTags))
   } else {
-    getAllTagsIds(state)
+    return (getAllTagsIds(state))
   }
 };
 
@@ -47,7 +50,7 @@ const mapStateToProps = (state) => {
   return {
     tags: state.getIn(['entities', 'tags']),
     inputValue: state.getIn(['ui', 'searchBoxValue']),
-    searchedTagsIds: state.getIn(['ui', 'searchedTags']),
+    searchedTagsIds: getSearchedTagsIds(state),
     proposedTagsIds: getProposedTags(state),
     onUserInputChange: (tags, userInput) => onUserInputChange(tags, userInput),
   };

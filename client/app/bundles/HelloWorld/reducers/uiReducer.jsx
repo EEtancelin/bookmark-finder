@@ -11,6 +11,9 @@ import {
 
 // Is there Searched Tags ?
 export const hasSearchedTags = state => !state.getIn(['ui', 'searchedTags']).isEmpty();
+export const getSearchedTagsIds = state => state.getIn(['ui', 'searchedTags']).toSet();
+
+
 
 const searchBoxValue = (state = Map({}), action) => {
   switch (action.type) {

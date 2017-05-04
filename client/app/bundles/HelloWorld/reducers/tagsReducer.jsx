@@ -11,7 +11,7 @@ export const tags = (state = Map({}), action) => {
 
 // Which are the Ids of all existing tag ?
 export const getAllTagsIds = (state) => {
-  return (state.getIn(['entities', 'bookmarkTag']).map(bt => bt.get('tag_id')).toSet())
+  return (state.getIn(['entities', 'tags']).map(t => t.get('id')).toSet())
 };
 
 //

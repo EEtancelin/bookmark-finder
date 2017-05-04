@@ -18,6 +18,7 @@ const mapDispatchToProps = (dispatch, ownprops ) => {
 
 
 const mapStateToProps = (state, ownprops) => {
+  console.log(ownprops);
   const tag = getTagById(state, ownprops.tagId);
   return {
     title: tag.get('title'),
