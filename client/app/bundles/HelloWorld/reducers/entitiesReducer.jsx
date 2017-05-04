@@ -2,6 +2,7 @@ import { combineReducers } from 'redux-immutable';
 import { Map } from 'immutable';
 import { tags } from './tagsReducer';
 import { bookmarkTag } from './bookmarkTagsReducer';
+import { bookmarks } from './bookmarksReducer'
 
 // What is the tag hash corresponding to this title ?
 export const findTagByTitle = (tags, title) => tags.find(t => t.get('title') === title);
@@ -56,13 +57,6 @@ export const getBookmarksIdsAssociateToTags = (bookmarkTag, tags) => {
     .filter(bookmarkTags => bookmarkTags.isSuperset(tags))
     .keySeq()
   );
-};
-
-const bookmarks = (state = Map({}), action) => {
-  switch (action.type) {
-    default:
-      return state;
-  }
 };
 
 const entitiesReducer = combineReducers({

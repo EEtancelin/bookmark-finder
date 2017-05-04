@@ -22,7 +22,7 @@ class BookmarkAddTag extends React.Component {
   }
 
   onTagSubmit() {
-    this.props.submitTag(this.props.tags, this.state.inputValue, this.props.bookmark)
+    this.props.submitTag(this.props.tags, this.state.inputValue, this.props.bookmarkId)
     this.setState({
       isEditing: false,
       inputValue: '',
@@ -150,7 +150,7 @@ class BookmarkAddTag extends React.Component {
 
 BookmarkAddTag.propTypes = {
   tags: PropTypes.any.isRequired,
-  bookmark: PropTypes.number.isRequired,
+  bookmarkId: PropTypes.string.isRequired,
 };
 
 export default BookmarkAddTag;

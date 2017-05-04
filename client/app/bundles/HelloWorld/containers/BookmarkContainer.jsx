@@ -1,7 +1,7 @@
 
 import { connect } from 'react-redux';
 import Bookmark from '../components/Bookmark';
-import { getTagsByBookmark } from '../reducers/entitiesReducer';
+import { getTagIdsForBookmark } from '../reducers/bookmarkTagsReducer';
 import * as actions from '../actions/mainContentActionCreators';
 
 // Which part of the Redux global state does our component want to receive as props?
@@ -14,7 +14,7 @@ const mapStateToProps = (state, ownprops) => {
     title: bookmark.get('title'),
     url: bookmark.get('url'),
     date: bookmark.get('created_at'),
-    tags: getTagsByBookmark(state.get('entities').get('bookmarkTag'), bookmark.get('id')),
+    tagsIds: getTagIdsForBookmark(state, ownprops.bookmarkId),
     thumbnail: bookmark.get('thumbnail'),
   };
 };

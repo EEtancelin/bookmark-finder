@@ -16,7 +16,7 @@ import BookmarkThumbnail from './BookmarkThumbnail';
 // Style constants
 const dateStyle = { textDecoration: 'underline', fontSize: '12px' };
 
-const Bookmark = ({ bookmarkId, tags, title, url, date = '', thumbnail }) => (
+const Bookmark = ({ bookmarkId, tagsIds, title, url, date = '', thumbnail }) => (
   <div className="bookmark" >
     <BookmarkThumbnail />
     <div className="bookmark-inner-wrap">
@@ -32,7 +32,7 @@ const Bookmark = ({ bookmarkId, tags, title, url, date = '', thumbnail }) => (
 
       <div className="bookmark-bottom">
         <div style={{ display: 'flex', flexDirection: 'row', marginBottom: '3px' }}>
-        <TagListContainer tags={tags} bookmark={bookmarkId} />
+        <TagListContainer tagsIds={tagsIds} bookmark={bookmarkId} />
         <BookmarkAddTagContainer bookmark={bookmarkId}/>
       </div>
       </div>
@@ -42,7 +42,7 @@ const Bookmark = ({ bookmarkId, tags, title, url, date = '', thumbnail }) => (
 
 
 Bookmark.propTypes = {
-  bookmarkId: PropTypes.number.isRequired,
+  bookmarkId: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   url: PropTypes.string.isRequired,
   date: PropTypes.string.isRequired,

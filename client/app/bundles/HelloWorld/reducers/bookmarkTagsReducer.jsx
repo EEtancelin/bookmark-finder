@@ -1,4 +1,32 @@
-import { Map } from 'immutable';
+import { Map, Set } from 'immutable';
+
+export const getBookmarksIdForTags = (state, tags) => {
+  return (
+    state.getIn(['entities', 'bookmarkTag'])
+      .filter(bt => tags.has(bt.get('tag_id')))
+      .map(bt => bt.get('bookmark_id'))
+      .toSet()
+  );
+};
+
+export const getTagIdForBookmarks = (state, bookmarksIds) => {
+  return (
+    state.getIn(['entities', 'bookmarkTag'])
+      .filter(bt => bookmarksIds.has(bt.get('bookmark_id')))
+      .map(bt => bt.get('tag_id'))
+      .toSet()
+  );
+};
+
+export const getTagIdsForBookmark = (state, bookmarkId) => {
+  return (state.getIn(['entities', 'bookmarkTag'])
+      .filter(bt => bookmarkId === bt.get('bookmark_id'))
+      .map(bt => bt.get('tag_id'))
+      .toSet()
+  );
+};
+
+
 export const bookmarkTag = (state = Map({}), action) => {
   switch (action.type) {
     case 'ADD_TAG_TO_BOOKMARK':

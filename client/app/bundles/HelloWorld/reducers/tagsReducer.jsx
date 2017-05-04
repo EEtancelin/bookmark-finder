@@ -13,3 +13,8 @@ export const tags = (state = Map({}), action) => {
 export const getAllTags = (state) => {
   return (state.getIn(['entities', 'bookmarkTag']).map(bt => bt.get('tag_uuid')).toSet())
 };
+
+//
+export const getTagById = (state, tagId) => {
+  return (state.getIn(['entities', 'tags', tagId]))
+};

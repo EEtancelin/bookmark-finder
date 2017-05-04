@@ -4,16 +4,10 @@ import { connect } from 'react-redux';
 import TagList from '../components/TagList';
 import * as actions from '../actions/mainContentActionCreators';
 
-const getTagsByBookmark = (bookmarkTagList, bookmarkId) => (
-  bookmarkTagList
-    .filter(t => t.get('bookmark_id') === bookmarkId)
-    .map(x => x.get('tag_uuid'))
-    .toSet()
-);
 
 // Which part of the Redux global state does our component want to receive as props?
 const mapStateToProps = (state, ownprops) => ({
-  tags: ownprops.tags.toSet(),
+  tagsIds: ownprops.tagsIds.toSet(),
   bookmark: ownprops.bookmark,
 });
 

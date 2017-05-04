@@ -16,9 +16,9 @@ class PagesController < ApplicationController
 
 
 
-    bookmarks = Bookmark.all.map{ |x| [x.id, x]}.to_h
-    bookmark_tag = BookmarkTag.all.map{ |x| [x.uuid, x.to_redux_hash]}.to_h
-    tag = Tag.all.map{ |x| [x.uuid, x]}.to_h
+    bookmarks = Bookmark.all.map{ |x| [x.id.to_s, x.to_redux_hash]}.to_h
+    bookmark_tag = BookmarkTag.all.map{ |x| [x.id.to_s, x.to_redux_hash]}.to_h
+    tag = Tag.all.map{ |x| [x.id.to_s, x.to_redux_hash]}.to_h
 
     searchedTags = []
 
