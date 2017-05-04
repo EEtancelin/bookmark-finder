@@ -9,8 +9,8 @@ export const addTagToBookmark = (tagid, bookmark) => ({
 
 export const createTag = (tagTitle, bookmark) => ({
   type: 'CREATE_TAG',
-  tagUuid: uuidV4(),
-  bookmarkTagUuid: uuidV4(),
+  tagId: uuidV4(),
+  bookmarkTagId: uuidV4(),
   tagTitle,
   bookmark,
 });
