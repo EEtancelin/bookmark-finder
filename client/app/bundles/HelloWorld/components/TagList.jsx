@@ -2,9 +2,9 @@ import React from 'react';
 import TagContainer from '../containers/TagContainer';
 import { Set } from 'Immutable'
 
-const TagList = ({ tags, bookmark }) => (
+const TagList = ({ tagIds, bookmark }) => (
   <div className="tag-list">
-    {(tags ? tags : Set([])).valueSeq().map(tagId => (
+    {(tagIds ? tagIds : Set([])).valueSeq().map(tagId => (
       <TagContainer key={tagId} tagId={tagId} bookmark={bookmark} />
     ))}
   </div>
