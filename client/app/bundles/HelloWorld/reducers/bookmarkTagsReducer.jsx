@@ -1,6 +1,6 @@
 import { Map, Set } from 'immutable';
 
-export const getBookmarksIdForTags = (state, tags) => {
+export const getBookmarksIdsForTagsIds = (state, tags) => {
   return (
     state.getIn(['entities', 'bookmarkTag'])
       .filter(bt => tags.has(bt.get('tag_id')))
@@ -9,7 +9,7 @@ export const getBookmarksIdForTags = (state, tags) => {
   );
 };
 
-export const getTagIdForBookmarks = (state, bookmarksIds) => {
+export const getTagsIdsForBookmarksIds = (state, bookmarksIds) => {
   return (
     state.getIn(['entities', 'bookmarkTag'])
       .filter(bt => bookmarksIds.has(bt.get('bookmark_id')))
@@ -26,6 +26,15 @@ export const getTagIdsForBookmark = (state, bookmarkId) => {
   );
 };
 
+// Which Tag have one bookmark in Common with the searchedTags ?
+export const getTagsIdsWithCommonBookmarkWithTagsIds = (state, tagsIds) => {
+
+  const searchedBookmarksIds = getBookmarksIdsForTagsIds(state, tagsIds);
+  const associateTagsIds = getTagsIdsForBookmarksIds(state, searchedBookmarksIds);
+  return associateTagsIds;
+};
+
+
 export const bookmarkTag = (state = Map({}), action) => {
   switch (action.type) {
     case 'ADD_TAG_TO_BOOKMARK':
@@ -33,17 +42,17 @@ export const bookmarkTag = (state = Map({}), action) => {
       return state.set(action.bookmarkTagId, bookmarkTagg);
 
     case 'CREATE_TAG':
-        const newBookmarkTag =
-          Map({
-            id: action.bookmarkTagId,
-            bookmark_id: action.bookmark,
-            tag_uuid: action.tagUuid })
-        return (state.set(action.bookmarkTagUuid, newBookmarkTag ))
+      const newBookmarkTag =
+        Map({
+          id: action.bookmarkTagId,
+          bookmark_id: action.bookmark,
+          tag_uuid: action.tagUuid })
+      return (state.set(action.bookmarkTagUuid, newBookmarkTag))
     case 'REMOVE_BOOKMARK':
-      return (state.filterNot( bt =>
+      return (state.filterNot(bt =>
         (bt.get('bookmark_id') !== action.bookmark) &&
         (bt.get('tag_uuid') !== action.tag))
-        );
+      );
     default:
       return state;
   }

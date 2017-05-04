@@ -8,10 +8,7 @@ import { bookmarks } from './bookmarksReducer'
 export const findTagByTitle = (tags, title) => tags.find(t => t.get('title') === title);
 
 
-// Which Tag have One bookmark in Common with the searchedTags ?
-export const getTagsRelatedToSearchedTags = (state) => {
-  return (getTagsIdsAssociateToTags(state.getIn(['entities', 'bookmarkTag']), state.getIn(['ui', 'searchedTags'])));
-};
+// Which Tag have one bookmark in Common with the searchedTags ?
 
 export const getTagsIdsAssociateToBookmarks = (bookmarkTag, bookmarks) => {
   return (getBookmarksIdsForEachTag(bookmarkTag)

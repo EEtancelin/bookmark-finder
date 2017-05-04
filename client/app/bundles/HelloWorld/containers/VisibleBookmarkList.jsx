@@ -3,7 +3,7 @@
 import { connect } from 'react-redux';
 import BookmarkList from '../components/BookmarkList';
 import * as actions from '../actions/mainContentActionCreators';
-import { getBookmarksIdForTags } from '../reducers/bookmarkTagsReducer';
+import { getBookmarksIdsForTagsIds } from '../reducers/bookmarkTagsReducer';
 
 // Which part of the Redux global state does our component want to receive as props?
 const mapStateToProps = state => (
@@ -12,7 +12,7 @@ const mapStateToProps = state => (
     .map(bt => bt.get('id'))
     .toSet(),
 
-    bookmarksId: getBookmarksIdForTags(state, state.getIn(['ui', 'searchedTags'])),
+    bookmarksId: getBookmarksIdsForTagsIds(state, state.getIn(['ui', 'searchedTags'])),
   });
 
 // Don't forget to actually use connect!

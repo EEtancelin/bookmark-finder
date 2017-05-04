@@ -28,7 +28,6 @@ class SearchBox extends React.Component {
     return (
       <div style={{marginBottom: '13px'}}>
         <div className="search-bar" >
-          <TagListContainer className={'input-tags-list'} tagsIds={this.props.searchedTags} />
           <input
             className="search-input"
             type="text"

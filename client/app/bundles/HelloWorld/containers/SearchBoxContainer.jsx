@@ -9,11 +9,14 @@ import {
 } from '../actions/searchBoxActionCreators';
 
 import {
-  getTagsRelatedToSearchedTags,
   findTagByTitle,
 } from '../reducers/entitiesReducer';
 
-import { getAllTags } from '../reducers/tagsReducer';
+import {
+  getTagsIdsWithCommonBookmarkWithTagsIds,
+} from '../reducers/bookmarkTagsReducer';
+
+import { getAllTagsIds } from '../reducers/tagsReducer';
 import { hasSearchedTags } from '../reducers/uiReducer';
 // Methods
 
@@ -30,17 +33,22 @@ const onUserInputChange = (tags, userInput) => {
 };
 
 // Which Tag to propose to the user ?
-const getProposedTags = state => (
-  hasSearchedTags(state) ? getTagsRelatedToSearchedTags(state).toSet() : getAllTags(state)
-);
+const getProposedTags = state => {
+  const searchedTags = state.getIn(['ui', 'searchedTags']);
+  if (hasSearchedTags(state)) {
+    getTagsIdsWithCommonBookmarkWithTagsIds(state, searchedTags)
+  } else {
+    getAllTagsIds(state)
+  }
+};
 
 // Which part of the Redux global state does our component want to receive as props?
 const mapStateToProps = (state) => {
   return {
     tags: state.getIn(['entities', 'tags']),
     inputValue: state.getIn(['ui', 'searchBoxValue']),
-    searchedTags: state.getIn(['ui', 'searchedTags']),
-    proposedTags: getProposedTags(state),
+    searchedTagsIds: state.getIn(['ui', 'searchedTags']),
+    proposedTagsIds: getProposedTags(state),
     onUserInputChange: (tags, userInput) => onUserInputChange(tags, userInput),
   };
 };
