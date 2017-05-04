@@ -26,7 +26,6 @@ export const getTagIdsForBookmark = (state, bookmarkId) => {
   );
 };
 
-
 export const bookmarkTag = (state = Map({}), action) => {
   switch (action.type) {
     case 'ADD_TAG_TO_BOOKMARK':
