@@ -22,7 +22,7 @@ const onUserInputChange = (tags, userInput) => {
   const tag = findTagByTitle(tags, userInput);
   let action;
   if (tag) {
-    action = addSearchedTag(tag.get('uuid'));
+    action = addSearchedTag(tag.get('id'));
   } else {
     action = updateSearchBoxValue(userInput);
   }

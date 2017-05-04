@@ -28,6 +28,7 @@ class SearchBox extends React.Component {
     return (
       <div style={{marginBottom: '13px'}}>
         <div className="search-bar" >
+          <TagListContainer className={'input-tags-list'} tagsIds={this.props.searchedTags} />
           <input
             className="search-input"
             type="text"
@@ -41,7 +42,6 @@ class SearchBox extends React.Component {
           <DeleteTagsButton deleteTagsFn={this.props.onDeleteTagsClick} viewBox="0 0 7 16" />
         </div>
         <div style= {{marginTop: '8px' }}>
-
       </div>
       </div>
     );
