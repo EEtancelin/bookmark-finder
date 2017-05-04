@@ -26,8 +26,8 @@ const submitTag = (tags, tagTitle, bookmarkId) => {
   if (newTag) {
     return createTag(tagTitle, bookmarkId)
   } else {
-    const tagUuid = tags.find(t => (t.get('title') === tagTitle)).get('uuid');
-    return addTagToBookmark(tagUuid, bookmarkId);
+    const tagId = tags.find(t => (t.get('title') === tagTitle)).get('id');
+    return addTagToBookmark(tagId, bookmarkId);
   }
 };
 
