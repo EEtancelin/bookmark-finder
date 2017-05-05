@@ -39,9 +39,9 @@ class SearchBox extends React.Component {
             onChange={this.onUserInputChange}
             onKeyDown={this.onKeyDown}
           />
-          <DeleteTagsButton deleteTagsFn={this.props.onDeleteTagsClick} viewBox="0 0 7 16" />
+        <DeleteTagsButton deleteTagsFn={this.props.onDeleteTagsClick} viewBox="0 0 7 16" />
         </div>
-        <div style= {{marginTop: '8px' }}>
+        <div style={{ marginTop: '8px' }}>
           <TagListContainer tagsIds={this.props.proposedTagsIds} />
         </div>
       </div>
