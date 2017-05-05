@@ -38,7 +38,7 @@ export const getTagsIdsWithCommonBookmarkWithTagsIds = (state, tagsIds) => {
 export const bookmarkTag = (state = Map({}), action) => {
   switch (action.type) {
     case 'ADD_TAG_TO_BOOKMARK':
-      const bookmarkTagg = Map({ id: action.bookmarkTagId, tag_id: action.tagid, bookmark_id: action.bookmark });
+      const bookmarkTagg = Map({ id: action.bookmarkTagId, tag_id: action.tagId, bookmark_id: action.bookmark });
       return state.set(action.bookmarkTagId, bookmarkTagg);
 
     case 'CREATE_TAG':
@@ -46,8 +46,8 @@ export const bookmarkTag = (state = Map({}), action) => {
         Map({
           id: action.bookmarkTagId,
           bookmark_id: action.bookmark,
-          tag_id: action.tagid })
-      return (state.set(action.bookmarkTagid, newBookmarkTag))
+          tag_id: action.tagId })
+      return (state.set(action.bookmarkTagId, newBookmarkTag))
     case 'REMOVE_BOOKMARK':
       return (state.filterNot(bt =>
         (bt.get('bookmark_id') !== action.bookmark) &&

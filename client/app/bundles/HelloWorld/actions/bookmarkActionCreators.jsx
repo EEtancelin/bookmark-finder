@@ -1,9 +1,9 @@
 const uuidV4 = require('uuid/v4');
 
-export const addTagToBookmark = (tagid, bookmark) => ({
+export const addTagToBookmark = (tagId, bookmark) => ({
   type: 'ADD_TAG_TO_BOOKMARK',
   bookmarkTagId: uuidV4(),
-  tagid,
+  tagId,
   bookmark,
 });
 

@@ -3,7 +3,7 @@ import { Map } from 'immutable';
 export const tags = (state = Map({}), action) => {
   switch (action.type) {
     case 'CREATE_TAG':
-      return state.set(action.tagUuid, Map({ uuid :action.tagUuId, title: action.tagTitle}));
+      return state.set(action.tagId, Map({ id :action.tagId, title: action.tagTitle}));
     default:
       return state;
   }
