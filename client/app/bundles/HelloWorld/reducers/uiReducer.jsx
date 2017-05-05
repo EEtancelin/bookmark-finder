@@ -14,7 +14,6 @@ export const hasSearchedTags = state => !state.getIn(['ui', 'searchedTags']).isE
 export const getSearchedTagsIds = state => state.getIn(['ui', 'searchedTags']).toSet();
 
 
-
 const searchBoxValue = (state = Map({}), action) => {
   switch (action.type) {
     case UPDATE_SEARCH_BOX_VALUE:
@@ -35,7 +34,7 @@ const searchedTags = (state = Map({}), action) => {
     case UPDATE_SEARCHED_TAG:
       return action.tags.toSet();
     case ADD_SEARCHED_TAG:
-      return state.add(action.tagId);
+      return state.push(action.tagId);
     case DELETE_LAST_SEARCHED_TAG:
       return state.butLast();
     case DELETE_SEARCHED_TAGS:

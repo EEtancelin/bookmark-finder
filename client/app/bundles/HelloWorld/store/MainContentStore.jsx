@@ -1,14 +1,20 @@
 import { createStore, applyMiddleware  } from 'redux';
 import { fromJS } from 'immutable';
+import { createLogger } from 'redux-logger';
 import thunk from 'redux-thunk';
 import MainContentReducer from '../reducers/MainContentReducer';
 
+
+
+const middleware = [ thunk ]
+middleware.push(createLogger())
 
 const configureStore = (railsProps) => (
   createStore(
     MainContentReducer,
     fromJS(railsProps),
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
-);
+    applyMiddleware(...middleware),
+  )
+  );
 
 export default configureStore;
