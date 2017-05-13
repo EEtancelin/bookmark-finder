@@ -23,9 +23,8 @@ export const addSearchedTag = tagId => ({
   tagId,
 });
 
-export const deleteLastSearchedTag = tagId => ({
+export const deleteLastSearchedTag = () => ({
   type: DELETE_LAST_SEARCHED_TAG,
-  tagId,
 });
 
 export const deleteSearchedTags = () => ({
