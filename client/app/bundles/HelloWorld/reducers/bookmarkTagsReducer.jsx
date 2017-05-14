@@ -1,11 +1,21 @@
 import { Map, Set } from 'immutable';
 
+// Whats are the tag associated to all bookmark ?
+const getTagsIdsforAllBookmarks = (state) => {
+  const extractTags = state.getIn(['entities', 'bookmarkTag'])
+    .groupBy(bt => bt.get('bookmark_id'))
+    .map(x => x.map(y => y.get('tag_id')))
+    .map(z => z.toSet());
+
+  return (state.getIn(['entities', 'bookmarks'])
+    .map(b => extractTags.get(b.get('id')) || Set([])));
+};
+
+// Whicht bookmarks contains all the tags ?
 export const getBookmarksIdsForTagsIds = (state, tags) => {
-  return (
-    state.getIn(['entities', 'bookmarkTag'])
-      .filter(bt => tags.has(bt.get('tag_id')))
-      .map(bt => bt.get('bookmark_id'))
-      .toSet()
+  return (getTagsIdsforAllBookmarks(state)
+    .filter(tagsList => tagsList.isSuperset(tags))
+    .keySeq().toSet()
   );
 };
 
