@@ -17,7 +17,7 @@ export const getSearchedTagsIds = state => state.getIn(['ui', 'searchedTags']).t
 const searchBoxValue = (state = Map({}), action) => {
   switch (action.type) {
     case UPDATE_SEARCH_BOX_VALUE:
-      return action.value;
+      return action.value.toLowerCase();
     case UPDATE_SEARCHED_TAG:
       return '';
     case ADD_SEARCHED_TAG:
