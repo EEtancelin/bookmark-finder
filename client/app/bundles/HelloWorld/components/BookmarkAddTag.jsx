@@ -49,7 +49,7 @@ class BookmarkAddTag extends React.Component {
 
   onUserInputChange(e) {
     this.setState({
-      inputValue: e.target.value,
+      inputValue: e.target.value.toLowerCase(),
     });
   }
 
