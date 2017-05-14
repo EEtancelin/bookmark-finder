@@ -60,8 +60,8 @@ export const bookmarkTag = (state = Map({}), action) => {
       return (state.set(action.bookmarkTagId, newBookmarkTag))
     case 'REMOVE_BOOKMARK':
       return (state.filterNot(bt =>
-        (bt.get('bookmark_id') !== action.bookmark) &&
-        (bt.get('tag_uuid') !== action.tag))
+        (bt.get('bookmark_id') == action.bookmark) &&
+        (bt.get('tag_id') == action.tag))
       );
     default:
       return state;
