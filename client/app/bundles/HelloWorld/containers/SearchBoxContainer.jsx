@@ -14,6 +14,7 @@ import {
 
 import {
   getTagsIdsWithCommonBookmarkWithTagsIds,
+  tagsOccurrences,
 } from '../reducers/bookmarkTagsReducer';
 
 import { getAllTagsIds } from '../reducers/tagsReducer';
@@ -41,7 +42,12 @@ const getProposedTags = state => {
   if (hasSearchedTags(state)) {
     return (getTagsIdsWithCommonBookmarkWithTagsIds(state, searchedTags))
   } else {
-    return (getAllTagsIds(state))
+    return (
+      tagsOccurrences(state)
+      .filter(tagOc => tagOc > 0)
+      .keySeq()
+      .toSet()
+    )
   }
 };
 

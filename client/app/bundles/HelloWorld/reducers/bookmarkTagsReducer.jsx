@@ -2,6 +2,7 @@ import { Map, Set } from 'immutable';
 
 // Whats are the tag associated to all bookmark ?
 const getTagsIdsforAllBookmarks = (state) => {
+  console.log(tagsOccurrences(state));
   const extractTags = state.getIn(['entities', 'bookmarkTag'])
     .groupBy(bt => bt.get('bookmark_id'))
     .map(x => x.map(y => y.get('tag_id')))
@@ -9,6 +10,14 @@ const getTagsIdsforAllBookmarks = (state) => {
 
   return (state.getIn(['entities', 'bookmarks'])
     .map(b => extractTags.get(b.get('id')) || Set([])));
+};
+
+// In how many bookmark each Tag Appear ?
+export const tagsOccurrences = (state) => {
+  const countTags = state.getIn(['entities', 'bookmarkTag'])
+    .countBy(bt => bt.get('tag_id'));
+  return (state.getIn(['entities', 'tags'])
+      .map(tag => countTags.get(tag.get('id')) || 0));
 };
 
 // Whicht bookmarks contains all the tags ?
