@@ -4,10 +4,6 @@ class BookmarkTag < ApplicationRecord
 
   attr_reader :tag_uuid
 
-  def initialize
-    @tag_uuid = self.tag.uuid
-  end
-
   def to_redux_hash
     attr = self.attributes.to_h
     attr["id"] = attr["id"].to_s

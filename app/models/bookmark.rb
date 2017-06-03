@@ -1,7 +1,7 @@
 class Bookmark < ApplicationRecord
   belongs_to :user
-  has_many :BookmarkTag
-  has_many :tag, through: :BookmarkTag
+  has_many :bookmarkTag
+  has_many :tags, through: :bookmarkTag
 
 
   def to_redux_hash

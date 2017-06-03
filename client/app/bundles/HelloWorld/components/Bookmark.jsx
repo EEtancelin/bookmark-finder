@@ -16,9 +16,10 @@ import BookmarkThumbnail from './BookmarkThumbnail';
 // Style constants
 const dateStyle = { textDecoration: 'underline', fontSize: '12px' };
 
-const Bookmark = ({ bookmarkId, tagsIds, title, url, date = '', thumbnail }) => (
+// Component
+const Bookmark = ({ bookmarkId, tagsIds, title, url, date = '', thumbnailUrl }) => (
   <div className="bookmark" >
-    <BookmarkThumbnail />
+    <BookmarkThumbnail url={thumbnailUrl}  />
     <div className="bookmark-inner-wrap">
       <div className="info-top" onClick={() => window.open(url, '_blank')}>
         <BookmarkBody key={bookmarkId} url={url} title={title} />

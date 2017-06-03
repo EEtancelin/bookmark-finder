@@ -4,4 +4,17 @@
 # Examples:
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+#   Character.create(name: 'Luke', movie: movies.first
+
+require_relative 'tags_seeds'
+require_relative 'bookmarks_seeds'
+require_relative 'bookmarks_tags_seeds'
+
+
+BookmarkTag.destroy_all
+Bookmark.destroy_all
+Tag.destroy_all
+
+seed_tags
+seed_bookmarks
+seed_bookmarks_tags
