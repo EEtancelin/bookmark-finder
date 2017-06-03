@@ -1,5 +1,7 @@
 import { combineReducers } from 'redux-immutable';
-import { Set } from 'immutable';
+import { List } from 'immutable';
+
+import { sortTagsIdsByTitle } from './tagsReducer';
 
 import {
   UPDATE_SEARCHED_TAG,
@@ -11,8 +13,10 @@ import {
 
 // Is there Searched Tags ?
 export const hasSearchedTags = state => !state.getIn(['ui', 'searchedTags']).isEmpty();
-export const getSearchedTagsIds = state => state.getIn(['ui', 'searchedTags']).toSet();
-
+// Whats are the id of the searchedTags sort by title.
+export const getSearchedTagsIds = (state) => {
+  return (state, state.getIn(['ui', 'searchedTags']).toSet())
+}
 
 const searchBoxValue = (state = Map({}), action) => {
   switch (action.type) {
@@ -38,7 +42,7 @@ const searchedTags = (state = Map({}), action) => {
     case DELETE_LAST_SEARCHED_TAG:
       return state.butLast();
     case DELETE_SEARCHED_TAGS:
-      return Set([]);
+      return List([]);
     default:
       return state;
   }

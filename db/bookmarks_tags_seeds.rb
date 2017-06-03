@@ -40,5 +40,10 @@ def seed_bookmarks_tags
   create_bt('shakacode/react_on_rails', 'package')
 
   create_bt('CSS - Level 4 Selectors', 'css')
+    
+  create_bt('Immutable Set', 'immutable')
+  create_bt('Immutable Set', 'doc')
 
+  create_bt('Immutable Map', 'immutable')
+  create_bt('Immutable Map', 'doc')
 end

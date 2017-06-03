@@ -63,7 +63,17 @@ bookmarks = [
     thumbnail_url: 'http://css4.rocks/img/logo.png',
     user: user
   },
-
+  { url: '  https://facebook.github.io/immutable-js/docs/#/Map',
+    title: 'Immutable Map',
+    thumbnail_url: 'https://cloudinary-a.akamaihd.net/bountysource/image/upload/d_noaoqqwxegvmulwus0un.png,c_pad,w_200,h_200,b_white/pfxsayjjyvwk3amjidxo.png',
+    user: user
+  },
+  { url: '  https://facebook.github.io/immutable-js/docs/#/Set',
+    title: 'Immutable Set',
+    thumbnail_url: 'https://cloudinary-a.akamaihd.net/bountysource/image/upload/d_noaoqqwxegvmulwus0un.png,c_pad,w_200,h_200,b_white/pfxsayjjyvwk3amjidxo.png',
+    user: user
+  }
 ]
+
 Bookmark.create(bookmarks)
 end

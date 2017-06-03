@@ -17,7 +17,10 @@ import {
   tagsOccurrences,
 } from '../reducers/bookmarkTagsReducer';
 
-import { getAllTagsIds } from '../reducers/tagsReducer';
+import {
+  getAllTagsIds,
+  sortTagsIdsByTitle,
+} from '../reducers/tagsReducer';
 import {
   hasSearchedTags,
   getSearchedTagsIds,
@@ -40,14 +43,14 @@ const onUserInputChange = (tags, userInput) => {
 const getProposedTags = state => {
   const searchedTags = state.getIn(['ui', 'searchedTags']);
   if (hasSearchedTags(state)) {
-    return (getTagsIdsWithCommonBookmarkWithTagsIds(state, searchedTags))
+    const proposedTags = getTagsIdsWithCommonBookmarkWithTagsIds(state, searchedTags)
+    return (sortTagsIdsByTitle(state, proposedTags))
   } else {
-    return (
-      tagsOccurrences(state)
+      const proposedTags = tagsOccurrences(state)
       .filter(tagOc => tagOc > 0)
       .keySeq()
       .toSet()
-    )
+    return (sortTagsIdsByTitle(state, proposedTags))
   }
 };
 
