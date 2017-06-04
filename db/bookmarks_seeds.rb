@@ -72,6 +72,26 @@ bookmarks = [
     title: 'Immutable Set',
     thumbnail_url: 'https://cloudinary-a.akamaihd.net/bountysource/image/upload/d_noaoqqwxegvmulwus0un.png,c_pad,w_200,h_200,b_white/pfxsayjjyvwk3amjidxo.png',
     user: user
+  },
+  { url: 'https://react.semantic-ui.com/',
+    title: 'React Semantic Ui',
+    thumbnail_url: 'https://semantic-ui.com/images/logo.png',
+    user: user
+  },
+  { url: 'https://circleci.com/',
+    title: 'Circle Ci',
+    thumbnail_url: 'https://d3r49iyjzglexf.cloudfront.net/logo-wordmark-26f8eaea9b0f6e13b90d3f4a8fd8fda31490f5af41daab98bbede45037682576.svg',
+    user: user
+  },
+  { url: 'https://flexboxfroggy.com/',
+    title: 'FlexBox Froggy',
+    thumbnail_url: 'https://d3r49iyjzglexf.cloudfront.net/logo-wordmark-26f8eaea9b0f6e13b90d3f4a8fd8fda31490f5af41daab98bbede45037682576.svg',
+    user: user
+  },
+  { url: 'http://cssgridgarden.com/',
+    title: 'CSS Grid Garden game',
+    thumbnail_url: 'https://d3r49iyjzglexf.cloudfront.net/logo-wordmark-26f8eaea9b0f6e13b90d3f4a8fd8fda31490f5af41daab98bbede45037682576.svg',
+    user: user
   }
 ]
 

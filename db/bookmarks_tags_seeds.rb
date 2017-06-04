@@ -40,10 +40,25 @@ def seed_bookmarks_tags
   create_bt('shakacode/react_on_rails', 'package')
 
   create_bt('CSS - Level 4 Selectors', 'css')
-    
+
   create_bt('Immutable Set', 'immutable')
   create_bt('Immutable Set', 'doc')
 
   create_bt('Immutable Map', 'immutable')
   create_bt('Immutable Map', 'doc')
+
+  create_bt('React Semantic Ui', 'react')
+  create_bt('React Semantic Ui', 'front')
+
+  create_bt('Circle Ci', 'ci')
+
+  create_bt('FlexBox Froggy', 'code')
+  create_bt('FlexBox Froggy', 'css')
+  create_bt('FlexBox Froggy', 'flex')
+  create_bt('FlexBox Froggy', 'game')
+
+  create_bt('CSS Grid Garden game', 'code')
+  create_bt('CSS Grid Garden game', 'css')
+  create_bt('CSS Grid Garden game', 'game')
+  create_bt('CSS Grid Garden game', 'grid')
 end
