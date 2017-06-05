@@ -2,7 +2,7 @@ import { createStore, applyMiddleware  } from 'redux';
 import { fromJS } from 'immutable';
 import { createLogger } from 'redux-logger';
 import thunk from 'redux-thunk';
-import MainContentReducer from '../reducers/MainContentReducer';
+import mainContentReducer from '../reducers/mainContentReducer';
 
 
 
@@ -11,7 +11,7 @@ middleware.push(createLogger())
 
 const configureStore = (railsProps) => (
   createStore(
-    MainContentReducer,
+    mainContentReducer,
     fromJS(railsProps),
     applyMiddleware(...middleware),
   )

@@ -1,6 +1,6 @@
 import React from 'react';
 import TagContainer from '../containers/TagContainer';
-import { Set } from 'Immutable'
+import { Set } from 'immutable';
 
 const style = {
   display: 'flex',

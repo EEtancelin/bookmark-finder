@@ -1,5 +1,5 @@
 import React from 'react';
-import Immutable from 'immutable';
+import immutable from 'immutable';
 import PropTypes from 'prop-types';
 import TagListContainer from '../containers/TagListContainer';
 import DeleteTagsButton from './DeleteTagsButton';
@@ -50,8 +50,8 @@ class SearchBox extends React.Component {
 }
 
 SearchBox.propTypes = {
-  tags: PropTypes.instanceOf(Immutable.Map).isRequired,
-  proposedTagsIds: PropTypes.instanceOf(Immutable.Set).isRequired,
+  tags: PropTypes.instanceOf(immutable.Map).isRequired,
+  proposedTagsIds: PropTypes.instanceOf(immutable.Set).isRequired,
   onSearchBoxValueChange: PropTypes.func.isRequired,
   onDeleteLastSearchedTag: PropTypes.func.isRequired,
   inputValue: PropTypes.string.isRequired,
