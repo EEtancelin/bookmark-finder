@@ -10,6 +10,14 @@ const getTagsIdsforAllBookmarks = (state) => {
     .map(b => extractTags.get(b.get('id')) || Set([])));
 };
 
+// In how many tags there is each in Bookmark?
+export const tagsByBookmarkCount = (state) => {
+    const countTags = state.getIn(['entities', 'bookmarkTag'])
+      .countBy(bt => bt.get('bookmark_id'));
+    return (state.getIn(['entities', 'bookmarks'])
+        .map(tag => countTags.get(tag.get('id')) || 0));
+};
+
 // In how many bookmark each Tag Appear ?
 export const tagsOccurrences = (state) => {
   const countTags = state.getIn(['entities', 'bookmarkTag'])

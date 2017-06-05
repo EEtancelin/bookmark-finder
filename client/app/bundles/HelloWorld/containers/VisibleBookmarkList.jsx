@@ -3,14 +3,16 @@
 import { connect } from 'react-redux';
 import BookmarkList from '../components/BookmarkList';
 import * as actions from '../actions/mainContentActionCreators';
-import { getBookmarksIdsForTagsIds } from '../reducers/bookmarkTagsReducer';
+import { getBookmarksIdsForTagsIds, tagsByBookmarkCount } from '../reducers/bookmarkTagsReducer';
 import { hasSearchedTags } from '../reducers/uiReducer';
 
 const getProposedBookmarksIds = (state) => {
+  const tagsCount = tagsByBookmarkCount(state);
   return (
-    getBookmarksIdsForTagsIds(state, state.getIn(['ui', 'searchedTags'])).sort()
-  )
-}
+    getBookmarksIdsForTagsIds(state, state.getIn(['ui', 'searchedTags']))
+    .sortBy(bookmarkId => tagsCount.get(bookmarkId))
+  );
+};
 // Which part of the Redux global state does our component want to receive as props?
 const mapStateToProps = state => (
   {
