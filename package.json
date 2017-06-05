@@ -22,8 +22,7 @@
     "react-addons-transition-group": "^15.5.2",
     "react-dom": "^15.5.4",
     "reactstrap": "^4.5.0",
-    "semantic-ui-react": "^0.68.0",
-    "yarn": "^0.24.5"
+    "semantic-ui-react": "^0.68.0"
   },
   "devDependencies": {
     "babel-eslint": "^7.2.1",
