@@ -6,3 +6,7 @@ export const updateName = (text) => ({
   type: HELLO_WORLD_NAME_UPDATE,
   text,
 });
+
+export const showAddBookmarkForm = () => ({
+  type: 'SHOW_ADD_BOOKMARK_FORM',
+});

@@ -28,7 +28,8 @@ class PagesController < ApplicationController
       },
       ui:{
         searchedTags: searchedTags,
-        searchBoxValue: ''
+        searchBoxValue: '',
+        showAddBookmarkForm: false
       },
       user: user
     }

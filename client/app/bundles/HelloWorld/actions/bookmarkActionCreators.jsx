@@ -15,6 +15,13 @@ export const createTag = (tagTitle, bookmark) => ({
   bookmark,
 });
 
+export const createBookmark = (values) => ({
+  type: 'CREATE_BOOKMARK',
+  id: uuidV4(),
+  title: values.title,
+  url: values.url,
+});
+
 const postAddedTag = (tagUuid, bookmark ) => dispatch => {
   dispatch(addTagToBookmark(tagUuid, bookmark))
   return fetch(`https://www.reddit.com/r/${reddit}.json`)

@@ -6,8 +6,8 @@ import PropTypes from 'prop-types';
 const placeholderUrl = 'https://image.flaticon.com/icons/svg/139/139076.svg';
 
 // Style constants
-const placeholderWrapperStyle = {height: '80px', width:'80px', padding: '5px'}
-const wrapperStyle = {height: '80px', width:'80px'};
+const placeholderWrapperStyle = { height: '80px', width:'80px', padding: '5px'}
+const wrapperStyle = { height: '80px', width:'80px' };
 
 
 const BookmarkThumbnail = ({ url }) => (
@@ -26,7 +26,6 @@ const BookmarkThumbnail = ({ url }) => (
 );
 
 BookmarkThumbnail.propTypes = {
-  url: PropTypes.string.isRequired,
 };
 
 export default BookmarkThumbnail;

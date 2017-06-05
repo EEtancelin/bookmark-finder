@@ -15,8 +15,8 @@ import {
 export const hasSearchedTags = state => !state.getIn(['ui', 'searchedTags']).isEmpty();
 // Whats are the id of the searchedTags sort by title.
 export const getSearchedTagsIds = (state) => {
-  return (state, state.getIn(['ui', 'searchedTags']).toSet())
-}
+  return (state, state.getIn(['ui', 'searchedTags']).toSet());
+};
 
 const searchBoxValue = (state = Map({}), action) => {
   switch (action.type) {
@@ -47,11 +47,21 @@ const searchedTags = (state = Map({}), action) => {
       return state;
   }
 };
-
+const showAddBookmarkForm = (state = true, action) => {
+  switch (action.type) {
+    case '@@INIT':
+      return state;
+      case 'SHOW_ADD_BOOKMARK_FORM':
+        return true;
+    default:
+      return state;
+  }
+};
 
 const ui = combineReducers({
   searchedTags,
   searchBoxValue,
+  showAddBookmarkForm,
 });
 
 export default ui;
