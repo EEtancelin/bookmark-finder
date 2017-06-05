@@ -1,13 +1,12 @@
 
 import { connect } from 'react-redux';
 import AddBookmark from '../components/AddBookmark';
-import { createBookmark } from '../actions/bookmarkActionCreators';
+import { postBookmark } from '../actions/bookmarkActionCreators';
 
 // Which part of the Redux global state does our component want to receive as props?
 
 const onBookmarkCreated = (dispatch, values) => {
-  dispatch(createBookmark(values))
-  dispatch({type: 'HIDE_ADD_BOOKMARK_FORM'})
+  dispatch(postBookmark(values))
 }
 
 const mapStateToProps = (state) => {

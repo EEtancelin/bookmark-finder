@@ -10,3 +10,7 @@ export const updateName = (text) => ({
 export const showAddBookmarkForm = () => ({
   type: 'SHOW_ADD_BOOKMARK_FORM',
 });
+
+export const fetchData = () => ({
+  type: 'IS_FETCHING_DATA',
+});

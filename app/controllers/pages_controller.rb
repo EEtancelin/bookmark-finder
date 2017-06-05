@@ -31,7 +31,10 @@ class PagesController < ApplicationController
         searchBoxValue: '',
         showAddBookmarkForm: false
       },
-      user: user
+      user: user,
+      api: {
+        isFetching: false
+      }
     }
 
   end

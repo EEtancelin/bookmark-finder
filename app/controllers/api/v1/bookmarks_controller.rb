@@ -44,7 +44,7 @@ class Api::V1::BookmarksController < Api::V1::BaseController
   end
 
   def bookmark_params
-    params.require(:bookmark).permit(:title)
+    params.require(:bookmark).permit(:title, :url)
   end
 
   def render_error
