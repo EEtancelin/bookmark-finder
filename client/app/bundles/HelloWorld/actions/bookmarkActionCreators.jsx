@@ -1,4 +1,6 @@
 import { fetchData } from './mainContentActionCreators';
+import { getAPIHeader } from './apiActionCreators';
+
 const uuidV4 = require('uuid/v4');
 
 export const addTagToBookmark = (tagId, bookmark) => ({
@@ -23,15 +25,11 @@ export const createBookmark = values => ({
   url: values.url,
 });
 
-export const postBookmark = values => (dispatch) => {
+export const postBookmark = values => (dispatch, getState) => {
   dispatch(createBookmark(values));
   fetch('/api/v1/bookmarks', {
     method: 'post',
-    headers: new Headers({
-      'Content-Type': 'application/json',
-      'X-User-Email': 'etancelin.edouard+test6@gmail.com',
-      'X-User-Token': 'PLoTBvSyjysAZMs4aMBo',
-    }),
+    headers: getAPIHeader(getState()),
     body: JSON.stringify({
       bookmark: {
         title: values.title,
