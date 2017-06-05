@@ -2,19 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import BookmarkContainer from '../containers/BookmarkContainer';
 
-const BookmarkList = ({ bookmarksId, allbookmarks, isTagsSearched }) => (
+const BookmarkList = ({ bookmarksIds }) => (
   <div>
-    { bookmarksId.count() > 0 &&
-      bookmarksId.map(bookmarkId => (
+    { bookmarksIds.count() > 0 &&
+      bookmarksIds.map(bookmarkId => (
         <BookmarkContainer key={bookmarkId} bookmarkId={bookmarkId} />
       ))
     }
-    { bookmarksId.isEmpty() && !isTagsSearched &&
-      allbookmarks.map(bookmarkId => (
-        <BookmarkContainer key={bookmarkId} bookmarkId={bookmarkId} />
-      ))
-    }
-    { bookmarksId.isEmpty() && isTagsSearched &&
+    { bookmarksIds.isEmpty() &&
       <div>No Bookmark Found</div>
     }
   </div>

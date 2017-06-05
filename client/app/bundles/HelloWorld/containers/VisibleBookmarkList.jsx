@@ -6,15 +6,15 @@ import * as actions from '../actions/mainContentActionCreators';
 import { getBookmarksIdsForTagsIds } from '../reducers/bookmarkTagsReducer';
 import { hasSearchedTags } from '../reducers/uiReducer';
 
+const getProposedBookmarksIds = (state) => {
+  return (
+    getBookmarksIdsForTagsIds(state, state.getIn(['ui', 'searchedTags'])).sort()
+  )
+}
 // Which part of the Redux global state does our component want to receive as props?
 const mapStateToProps = state => (
   {
-    allbookmarks: state.get('entities').get('bookmarks')
-    .map(bt => bt.get('id'))
-    .toSet(),
-
-    bookmarksId: getBookmarksIdsForTagsIds(state, state.getIn(['ui', 'searchedTags'])),
-    isTagsSearched: hasSearchedTags(state),
+    bookmarksIds: getProposedBookmarksIds(state),
   });
 
 // Don't forget to actually use connect!

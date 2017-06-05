@@ -1,5 +1,9 @@
 import { Map } from 'immutable';
 
+export const getAllBookmarksIds = (state) => {
+
+}
+
 export const bookmarks = (state = Map({}), action) => {
   switch (action.type) {
     case 'CREATE_BOOKMARK':
