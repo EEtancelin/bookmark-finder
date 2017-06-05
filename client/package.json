@@ -38,7 +38,8 @@
     "redux-immutable": "^4.0.0",
     "redux-thunk": "^2.2.0",
     "uuid": "^3.0.1",
-    "webpack": "^2.3.1"
+    "webpack": "^2.3.1",
+    "yarn": "^0.24.5"
   },
   "devDependencies": {
     "redux-logger": "^3.0.1"
