@@ -4,9 +4,13 @@ import { Icon } from 'semantic-ui-react';
 
 // Style constants
 
+const tagStyle = {
+  fontFamily: "'Mukta Vaani', sans-serif",
+  position: 'relative',
+};
 
 const Tag = ({ title ,logo,showRemoveButton, onRemoveClick, onClick }) => (
-  <div className="tag" style={{ fontFamily: "'Mukta Vaani', sans-serif", position:'relative' }} >
+  <div className="tag" style={tagStyle} >
     {logo &&
       <div className="tag-logo" style= {{backgroundImage: `url(${logo})`}}> </div>
     }

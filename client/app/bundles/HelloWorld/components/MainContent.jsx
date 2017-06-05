@@ -5,10 +5,16 @@ import LeftMenu from './LeftMenu'
 import AddBookmarkContainer from '../containers/AddBookmarkContainer'
 import { showAddBookmarkForm } from '../actions/mainContentActionCreators';
 
-const onShowAddBookmarkFormClick = () => {console.log('chat')}
+const style = {
+  display: 'flex',
+  flexDirection: 'row',
+  backgroundColor: '#FAFAFA',
+  justifyContent: 'center',
+  minHeight: '100vh'
+}
 
 const HomePage = ({ name, updateName, onShowAddBookmarkFormClick }) => (
-    <div style={{display: 'flex', flexDirection:'row', backgroundColor: '#FAFAFA', justifyContent: 'center', minHeight: '100vh'}}>
+  <div style={style}>
     <LeftMenu onShowAddBookmarkFormClick={onShowAddBookmarkFormClick} />
     <div style={{ width: '596px', padding: '15px', backgroundColor: 'white'}}>
       <SearchBoxContainer />

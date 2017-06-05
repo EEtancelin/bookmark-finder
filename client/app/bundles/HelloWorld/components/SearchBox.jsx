@@ -28,7 +28,7 @@ class SearchBox extends React.Component {
     return (
       <div style={{marginBottom: '13px'}}>
         <div className="search-bar" >
-          <TagListContainer className={'input-tags-list'} tagsIds={this.props.searchedTagsIds} />
+          <TagListContainer className={'input-tags-list'} tagsIds={this.props.searchedTagsIds}  />
           <input
             className="search-input"
             type="text"
@@ -41,8 +41,8 @@ class SearchBox extends React.Component {
           />
         <DeleteTagsButton deleteTagsFn={this.props.onDeleteTagsClick} viewBox="0 0 7 16" />
         </div>
-        <div style={{ marginTop: '8px', height: '16px' }}>
-          <TagListContainer tagsIds={this.props.proposedTagsIds} />
+        <div style={{ marginTop: '8px', height: '40px' }}>
+          <TagListContainer className={'proposed-tags-list'} tagsIds={this.props.proposedTagsIds} flexWrap={'wrap'} />
         </div>
       </div>
     );
