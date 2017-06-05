@@ -5,6 +5,10 @@ import { createBookmark } from '../actions/bookmarkActionCreators';
 
 // Which part of the Redux global state does our component want to receive as props?
 
+const onBookmarkCreated = (dispatch, values) => {
+  dispatch(createBookmark(values))
+  dispatch({type: 'HIDE_ADD_BOOKMARK_FORM'})
+}
 
 const mapStateToProps = (state) => {
   return {
@@ -14,7 +18,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch, ownprops ) => {
   return {
-    onSubmit: (values) => { dispatch(createBookmark(values)); },
+    onSubmit: (values) => { onBookmarkCreated(dispatch, values)},
   };
 };
 
