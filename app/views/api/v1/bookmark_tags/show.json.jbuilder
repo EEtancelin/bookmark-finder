@@ -1,1 +1,1 @@
-json.extract! @bookmark_tag, :id, :uuid, :tag_id, :bookmark_id
+json.extract! @bookmark_tag, :id , :bookmark_id , :tag_id

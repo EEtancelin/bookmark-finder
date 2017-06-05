@@ -26,7 +26,7 @@ class Api::V1::BaseController < ActionController::Base
       response = { type: exception.class.to_s, error: exception.message }
     else
       response = { error: "Internal Server Error" }
+      render json: response, status: :internal_server_error
     end
-    render json: response, status: :internal_server_error
   end
 end

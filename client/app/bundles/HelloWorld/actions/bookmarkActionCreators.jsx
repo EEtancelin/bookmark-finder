@@ -40,3 +40,18 @@ export const postBookmark = values => (dispatch, getState) => {
   dispatch(fetchData());
   dispatch({ type: 'HIDE_ADD_BOOKMARK_FORM' });
 };
+
+export const postTag = (tagTitle, bookmark) => (dispatch, getState) => {
+  dispatch(createTag(tagTitle, bookmark));
+  fetch('/api/v1/bookmark_tags', {
+    method: 'post',
+    headers: getAPIHeader(getState()),
+    body: JSON.stringify({
+      bookmark_tag: {
+        tag_title: tagTitle,
+        bookmark_id: bookmark,
+      }
+    })
+  });
+  dispatch(fetchData());
+};

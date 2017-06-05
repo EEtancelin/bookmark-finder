@@ -2,7 +2,7 @@
 
 import { connect } from 'react-redux';
 import BookmarkAddTag from '../components/BookmarkAddTag';
-import { createTag , addTagToBookmark } from '../actions/bookmarkActionCreators';
+import { postTag , addTagToBookmark } from '../actions/bookmarkActionCreators';
 
 
 // What are the tags to propose ?
@@ -24,7 +24,7 @@ const getTagUuidByTitle = (tags, title) => {
 const submitTag = (tags, tagTitle, bookmarkId) => {
   const newTag = isNewTag(tags, tagTitle);
   if (newTag) {
-    return createTag(tagTitle, bookmarkId)
+    return postTag(tagTitle, bookmarkId)
   } else {
     const tagId = tags.find(t => (t.get('title') === tagTitle)).get('id');
     return addTagToBookmark(tagId, bookmarkId);
