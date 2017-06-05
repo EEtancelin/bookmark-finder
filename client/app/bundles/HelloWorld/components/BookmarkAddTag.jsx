@@ -79,7 +79,13 @@ class BookmarkAddTag extends React.Component {
       fontWeight: '600',
     }
     const flexRowCenteredStyle = { display: 'flex', flexDirection: 'row', alignItems: 'center' };
-    const style = { display: 'flex', flexDirection: 'row', alignItems: 'center', position: 'relative' };
+    const style = {
+      height: '23px',
+      display: 'flex',
+      flexDirection: 'row',
+      alignItems: 'center',
+      position: 'relative'
+    };
     const tagProposalsBoxStyle = {
       paddingTop: '5px',
       paddingBottom: '3px',
@@ -109,7 +115,7 @@ class BookmarkAddTag extends React.Component {
         { this.state.isEditing ? (
           <div style={flexRowCenteredStyle}>
             <input
-              className="search-input"
+              className="add-tag-input"
               type="text"
               name="search"
               placeholder="Tag this Bookmark"

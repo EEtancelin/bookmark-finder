@@ -3,6 +3,13 @@ import { getAPIHeader } from './apiActionCreators';
 
 const uuidV4 = require('uuid/v4');
 
+const prependHttp = (url) => {
+  let returnValue = '';
+  if (!url.match(/^[a-zA-Z]+:\/\//)) { returnValue = `http://${url}`; }
+  else { returnValue = url; }
+  return (returnValue);
+};
+
 export const addTagToBookmark = (tagId, bookmark) => ({
   type: 'ADD_TAG_TO_BOOKMARK',
   bookmarkTagId: uuidV4(),
@@ -22,7 +29,7 @@ export const createBookmark = values => ({
   type: 'CREATE_BOOKMARK',
   id: uuidV4(),
   title: values.title,
-  url: values.url,
+  url: prependHttp(values.url),
 });
 
 export const postBookmark = values => (dispatch, getState) => {
@@ -33,7 +40,7 @@ export const postBookmark = values => (dispatch, getState) => {
     body: JSON.stringify({
       bookmark: {
         title: values.title,
-        url: values.url,
+        url: prependHttp(values.url),
       }
     })
   });
