@@ -4,16 +4,11 @@ import { Map } from 'immutable';
 // Which are the Ids of all existing tag ?
 export const getAll = state => state.getIn(['entities', 'tags']).toOrderedSet();
 export const sortTagsIdsByTitle = (state, tagsIds) => {
-  const wv = getAll(state)
+  return (getAll(state)
     .sortBy(tag => tag.get('title'))
     .map(tag => tag.get('id'))
-  const wvv = wv
     .intersect(tagsIds)
-  console.log('wv');
-  console.log(wv);
-  console.log('wvv');
-  console.log(wvv);
-  return (wvv)
+  );
 }
 // Which are the Ids of all existing tag ?
 export const getAllTagsIds = (state) => {
