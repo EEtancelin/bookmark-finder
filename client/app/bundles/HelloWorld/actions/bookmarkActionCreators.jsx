@@ -1,3 +1,4 @@
+import { utc } from 'moment';
 import { fetchData } from './mainContentActionCreators';
 import { getAPIHeader } from './apiActionCreators';
 
@@ -30,6 +31,7 @@ export const createBookmark = values => ({
   id: uuidV4(),
   title: values.title,
   url: prependHttp(values.url),
+  created_at: utc().format(),
 });
 
 export const postBookmark = values => (dispatch, getState) => {
