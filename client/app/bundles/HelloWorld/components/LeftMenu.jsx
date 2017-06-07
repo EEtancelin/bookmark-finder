@@ -4,7 +4,7 @@ import { showAddBookmarkForm } from '../actions/mainContentActionCreators';
 
 
 const LeftMenu = ({onShowAddBookmarkFormClick}) => (
-    <div style={{width: '200px', backgroundColor: '#FAFAFA'}}>
+    <div style={{width: '200px', backgroundColor: '#FAFAFA', padding: '5px'}}>
       <Button color='orange' toggle={true} onClick={onShowAddBookmarkFormClick} >Add Bookmark</Button>
     </div>
 
