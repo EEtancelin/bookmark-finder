@@ -5,7 +5,6 @@ import { Set } from 'immutable';
 const style = {
   display: 'flex',
   flexDirection: 'row',
-  alignItems: 'center',
   marginLeft: '8px',
 };
 

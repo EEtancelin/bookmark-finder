@@ -230,6 +230,11 @@
 .proposed-tags-list{
   flex-wrap: wrap;
   height: 48px;
+  align-items: flex-start;
+}
+
+.input-tags-list {
+  align-items: center;
 }
 
 .tag-img{
