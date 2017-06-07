@@ -22,7 +22,7 @@ export const getSearchedTagsIds = (state) => {
 
 export const getSearchedTagsString = (state) => {
   const searchedTags = state.getIn(['ui', 'searchedTags']).toOrderedSet();
-  return (tagsIdsToString(state, searchedTags))
+  return (tagsIdsToString(state, searchedTags) || '');
 };
 
 const searchBoxValue = (state = Map({}), action) => {
