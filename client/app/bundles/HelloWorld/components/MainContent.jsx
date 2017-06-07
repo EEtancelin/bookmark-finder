@@ -2,11 +2,16 @@
 import React, { PropTypes } from 'react';
 import { Icon } from 'semantic-ui-react';
 
-import VisibleBookmarkList from '../containers/VisibleBookmarkList'
-import SearchBoxContainer from '../containers/SearchBoxContainer'
-import LeftMenu from './LeftMenu'
-import AddBookmarkContainer from '../containers/AddBookmarkContainer'
+// Action
 import { showAddBookmarkForm } from '../actions/mainContentActionCreators';
+
+// Component
+import VisibleBookmarkList from '../containers/VisibleBookmarkList';
+import LeftMenu from './LeftMenu';
+
+// Container
+import SearchBoxContainer from '../containers/SearchBoxContainer';
+import AddBookmarkContainer from '../containers/AddBookmarkContainer';
 
 const style = {
   display: 'flex',

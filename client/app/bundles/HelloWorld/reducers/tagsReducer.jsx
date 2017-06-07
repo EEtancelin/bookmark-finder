@@ -9,7 +9,8 @@ export const tagsIdsToString = (state, tagsIds) => {
   const tagsEntities = state.getIn(['entities', 'tags']);
   return (tagsIds
     .map(tagId => tagsEntities.get(tagId).get('title'))
-    .reduce((x, y) => `${x} ${y}`));
+    .reduce((x, y) => `${x} ${y}`)
+  );
 };
 
 export const sortTagsIdsByTitle = (state, tagsIds) => {
