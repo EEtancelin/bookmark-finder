@@ -32,7 +32,12 @@ class AddBookmark extends React.Component {
         <Form onSubmit={this.handleSubmit}>
           <Form.Field>
             <label>Title</label>
-            <input placeholder='First Name'  onChange={this.onTitleChange} value={this.state.title} />
+            <input
+              placeholder='First Name'
+              onChange={this.onTitleChange}
+              value={this.state.title}
+              autoFocus="true"
+              />
           </Form.Field>
           <Form.Field>
             <label>Url</label>

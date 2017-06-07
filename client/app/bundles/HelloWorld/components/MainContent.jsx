@@ -1,4 +1,7 @@
+//Absolutes
 import React, { PropTypes } from 'react';
+import { Icon } from 'semantic-ui-react';
+
 import VisibleBookmarkList from '../containers/VisibleBookmarkList'
 import SearchBoxContainer from '../containers/SearchBoxContainer'
 import LeftMenu from './LeftMenu'
@@ -12,17 +15,25 @@ const style = {
   justifyContent: 'center',
   minHeight: '100vh'
 }
+const invisibleSpaceStyle = { marginBottom : '4px' };
 
 const HomePage = ({ name, updateName, onShowAddBookmarkFormClick }) => (
   <div style={style}>
     <LeftMenu onShowAddBookmarkFormClick={onShowAddBookmarkFormClick} />
     <div style={{ width: '596px', padding: '15px', backgroundColor: 'white'}}>
       <SearchBoxContainer />
-      <AddBookmarkContainer />
       <div className="section_overdue">
-      <h2 className="header">My Bookmarks</h2>
-        <div className="invisible_space"></div>
-          <VisibleBookmarkList />
+        <div style={{borderBottom: '1px solid #f0f0f0', display: "flex", justifyContent: 'space-between'}}>
+          <h2 className="header">My Bookmarks</h2>
+          <div onClick={onShowAddBookmarkFormClick} style={{cursor: "pointer"}}>
+            Add
+            <Icon name="plus" />
+          </div>
+        </div>
+
+      <div className="invisible_space" style={invisibleSpaceStyle}/>
+        <AddBookmarkContainer />
+        <VisibleBookmarkList />
       </div>
     </div>
   </div>
