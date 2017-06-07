@@ -7,6 +7,7 @@ import { Icon } from 'semantic-ui-react';
 const tagStyle = {
   fontFamily: "'Mukta Vaani', sans-serif",
   position: 'relative',
+  cursor: 'pointer',
 };
 
 const Tag = ({ title ,logo,showRemoveButton, onRemoveClick, onClick }) => (
@@ -14,7 +15,7 @@ const Tag = ({ title ,logo,showRemoveButton, onRemoveClick, onClick }) => (
     {logo &&
       <div className="tag-logo" style= {{backgroundImage: `url(${logo})`}}> </div>
     }
-    <div className="tag-title" onClick={onClick} style={{ cursor: 'default' }}>
+    <div className="tag-title" onClick={onClick} >
       {title}
     </div>
 
