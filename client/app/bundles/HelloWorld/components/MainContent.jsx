@@ -20,7 +20,7 @@ const HomePage = ({ name, updateName, onShowAddBookmarkFormClick }) => (
       <SearchBoxContainer />
       <AddBookmarkContainer />
       <div className="section_overdue">
-      <h2 className="header">Mes marques Pages</h2>
+      <h2 className="header">My Bookmarks</h2>
         <div className="invisible_space"></div>
           <VisibleBookmarkList />
       </div>
