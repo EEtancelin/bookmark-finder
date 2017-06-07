@@ -13,7 +13,7 @@ class SearchBox extends React.Component {
   }
 
   onUserInputChange(e) {
-    this.props.onSearchBoxValueChange(this.props.tags, e.target.value.toLowerCase());
+    this.props.onSearchBoxValueChange(this.props.tags, e.target.value);
   }
 
   // Listen Backslach to delete the last Tag.

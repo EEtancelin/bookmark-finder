@@ -29,14 +29,19 @@ const getGoogleQueryString = (state, inputValue) =>  {
   return (getSearchedTagsString(state) + ' ' + inputValue);
 }
 
+// Given a User Input return a normalize version of it.
+// => Lower case, no leading whitespace.
+const normalizeUserInput = string => string.toLowerCase().replace(/^\s/, '');
+
 // Whitch action dispatch when user Input Change ?
 const onUserInputChange = (tags, userInput) => {
-  const tag = findTagByTitle(tags, userInput);
+  const nUserInput = normalizeUserInput(userInput);
+  const tag = findTagByTitle(tags, nUserInput);
   let action;
   if (tag) {
     action = addSearchedTag(tag.get('id'));
   } else {
-    action = updateSearchBoxValue(userInput);
+    action = updateSearchBoxValue(nUserInput);
   }
   return action;
 };
