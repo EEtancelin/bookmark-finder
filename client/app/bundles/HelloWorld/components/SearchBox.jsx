@@ -9,6 +9,7 @@ class SearchBox extends React.Component {
     super(props);
     this.onUserInputChange = this.onUserInputChange.bind(this);
     this.onKeyDown = this.onKeyDown.bind(this);
+    this.getGoogleQueryUrl = this.getGoogleQueryUrl.bind(this);
   }
 
   onUserInputChange(e) {
@@ -16,14 +17,22 @@ class SearchBox extends React.Component {
   }
 
   // Listen Backslach to delete the last Tag.
+  // Listen enter to run a google Query.
+  getGoogleQueryUrl(props){
+    return(`http://www.google.fr/search?q=${this.props.getGoogleQueryString(this.props.inputValue)}`)
+  }
+
+  // Listen Backslach to delete the last Tag.
+  // Listen enter to run a google Query.
   onKeyDown(event) {
     if (event.keyCode === 8 && this.props.inputValue === '') {
       this.props.onDeleteLastSearchedTag();
     }
+    if (event.keyCode === 13) {
+      window.open(this.getGoogleQueryUrl(this.props), '_blank')
+    }
   }
 
-
-  // Took a string and find the bookmarks where the title === string
   render() {
     return (
       <div style={{marginBottom: '13px'}}>

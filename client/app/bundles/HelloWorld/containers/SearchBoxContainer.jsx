@@ -17,15 +17,17 @@ import {
   tagsOccurrences,
 } from '../reducers/bookmarkTagsReducer';
 
-import {
-  getAllTagsIds,
-  sortTagsIdsByTitle,
-} from '../reducers/tagsReducer';
+import { sortTagsIdsByTitle } from '../reducers/tagsReducer';
 import {
   hasSearchedTags,
   getSearchedTagsIds,
+  getSearchedTagsString,
 } from '../reducers/uiReducer';
+
 // Methods
+const getGoogleQueryString = (state, inputValue) =>  {
+  return (getSearchedTagsString(state) + ' ' + inputValue);
+}
 
 // Whitch action dispatch when user Input Change ?
 const onUserInputChange = (tags, userInput) => {
@@ -62,6 +64,7 @@ const mapStateToProps = (state) => {
     searchedTagsIds: getSearchedTagsIds(state),
     proposedTagsIds: getProposedTags(state),
     onUserInputChange: (tags, userInput) => onUserInputChange(tags, userInput),
+    getGoogleQueryString: inputValue => getGoogleQueryString(state, inputValue),
   };
 };
 

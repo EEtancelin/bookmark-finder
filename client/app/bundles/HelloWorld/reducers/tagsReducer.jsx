@@ -3,6 +3,15 @@ import { Map } from 'immutable';
 
 // Which are the Ids of all existing tag ?
 export const getAll = state => state.getIn(['entities', 'tags']).toOrderedSet();
+
+// Concatenate Title of tagsIds seprae by a Space.
+export const tagsIdsToString = (state, tagsIds) => {
+  const tagsEntities = state.getIn(['entities', 'tags']);
+  return (tagsIds
+    .map(tagId => tagsEntities.get(tagId).get('title'))
+    .reduce((x, y) => `${x} ${y}`));
+};
+
 export const sortTagsIdsByTitle = (state, tagsIds) => {
   return (getAll(state)
     .sortBy(tag => tag.get('title'))
