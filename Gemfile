@@ -20,6 +20,7 @@ gem 'autoprefixer-rails'
 gem "simple_token_authentication"
 gem 'forest_liana'
 gem "pundit"
+gem 'rake'
 gem 'rspec'
 
 group :development, :test do
