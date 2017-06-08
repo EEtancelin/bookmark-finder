@@ -251,6 +251,7 @@ DEPENDENCIES
   puma
   pundit
   rails (= 5.0.2)
+  rake
   react_on_rails (~> 6)
   redis
   rspec
