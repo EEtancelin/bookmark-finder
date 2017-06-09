@@ -7,14 +7,21 @@
 #   Character.create(name: 'Luke', movie: movies.first
 
 require_relative 'tags_seeds'
+require_relative 'teams_seeds'
+require_relative 'users_seeds'
 require_relative 'bookmarks_seeds'
 require_relative 'bookmarks_tags_seeds'
+require_relative 'team_members_seeds'
 
-
+TeamMember.destroy_all
+Team.destroy_all
 BookmarkTag.destroy_all
 Bookmark.destroy_all
 Tag.destroy_all
 
+seed_teams
 seed_tags
+seed_users
 seed_bookmarks
 seed_bookmarks_tags
+seed_team_members

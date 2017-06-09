@@ -1,8 +1,9 @@
 import { combineReducers } from 'redux-immutable';
-import { Map } from 'immutable';
 import { tags } from './tagsReducer';
 import { bookmarkTag } from './bookmarkTagsReducer';
-import { bookmarks } from './bookmarksReducer'
+import { bookmarks } from './bookmarksReducer';
+import { teams } from './teamsReducer';
+import { teamMembers } from './teamMembersReducer';
 
 // What is the tag hash corresponding to this title ?
 export const findTagByTitle = (tags, title) => tags.find(t => t.get('title') === title);
@@ -60,6 +61,8 @@ const entitiesReducer = combineReducers({
   bookmarks,
   bookmarkTag,
   tags,
+  teams,
+  teamMembers,
 });
 
 export default entitiesReducer;
