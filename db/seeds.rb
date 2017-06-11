@@ -12,7 +12,9 @@ require_relative 'users_seeds'
 require_relative 'bookmarks_seeds'
 require_relative 'bookmarks_tags_seeds'
 require_relative 'team_members_seeds'
+require_relative 'bookmark_teams_seeds'
 
+BookmarkTeam.destroy_all
 TeamMember.destroy_all
 Team.destroy_all
 BookmarkTag.destroy_all
@@ -25,3 +27,4 @@ seed_users
 seed_bookmarks
 seed_bookmarks_tags
 seed_team_members
+seed_bookmark_team

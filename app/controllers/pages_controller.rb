@@ -3,15 +3,15 @@ class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :home ]
 
   def home
-
-    bookmarks = Bookmark.all.map{ |x| x.to_redux_entitie }.to_h
-    bookmark_tag = BookmarkTag.all.map{ |x| x.to_redux_entitie}.to_h
-    tag = Tag.all.map{ |x| x.to_redux_entitie }.to_h
     searchedTags = []
 
     if current_user
+      bookmarks = current_user.user_and_teams_bookmarks.map{ |x| x.to_redux_entitie }.to_h
+      bookmark_tag = current_user.user_and_teams_bookmark_tags.map{ |x| x.to_redux_entitie }.to_h
+      tags = current_user.user_and_teams_tags.map{ |x| x.to_redux_entitie }.to_h
       user = {  userEmail: current_user.email ,
-                token: current_user.authentication_token
+                token: current_user.authentication_token,
+                id: current_user.id
               }
       teams = Team.all.map{ |x| x.to_redux_entitie }.to_h
       team_member = TeamMember.all.map{ |x| x.to_redux_entitie }.to_h
@@ -20,6 +20,8 @@ class PagesController < ApplicationController
       user = {  userEmail: 'not loged',
             token:  'not loged'
           }
+      bookmarks = Bookmark.all.map{ |x| x.to_redux_entitie }.to_h
+      tags = Tag.all.map{ |x| x.to_redux_entitie }.to_h
       teams = {}
       team_member = {}
       bookmark_teams = {}
@@ -28,7 +30,7 @@ class PagesController < ApplicationController
     @hello_world_props = {
       entities: {
         bookmarks: bookmarks,
-        tags: tag,
+        tags: tags,
         bookmarkTag: bookmark_tag,
         teams: teams,
         teamMembers: team_member,

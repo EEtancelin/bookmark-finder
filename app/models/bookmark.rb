@@ -1,8 +1,8 @@
 class Bookmark < ApplicationRecord
   belongs_to :user
-  has_many :bookmarkTags
-  has_many :tags, through: :bookmarkTag
+  has_many :bookmark_tags
+  has_many :tags, through: :bookmark_tag
 
-  has_many :bookmarkTeams
-  has_many :teams, through: :bookmarkTeams
+  has_many :bookmark_teams
+  has_many :teams, through: :bookmark_teams
 end
