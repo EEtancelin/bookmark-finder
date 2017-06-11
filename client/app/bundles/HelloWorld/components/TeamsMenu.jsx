@@ -9,12 +9,14 @@ import { List } from 'semantic-ui-react';
 // Style constants
 const style={ marginTop:'8px' };
 
-const TeamsMenu = () => (
+const TeamsMenu = ({teams}) => (
   <div style={style} >
     <h2 className="header">My Teams</h2>
+    {console.log(teams)}
     <List >
-      <List.Item icon="users" content="Gopala" />
-      <List.Item icon="users" content="Testor" />
+      {teams.map( team =>
+        <List.Item icon="users" content={team.get('name')} />
+      )}
     </List>
   </div>
 );
