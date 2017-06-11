@@ -13,15 +13,12 @@ require_relative 'bookmarks_seeds'
 require_relative 'bookmarks_tags_seeds'
 require_relative 'team_members_seeds'
 require_relative 'bookmark_teams_seeds'
+require_relative './seeds/destroy_seeds.rb'
 
-puts 'Destroy all entities'
-BookmarkTeam.destroy_all
-TeamMember.destroy_all
-Team.destroy_all
-BookmarkTag.destroy_all
-Bookmark.destroy_all
-Tag.destroy_all
+#Destroy
+destroy_entities
 
+#Seeds
 seed_teams
 seed_tags
 seed_users
