@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux-immutable';
 import { tags } from './tagsReducer';
 import { bookmarkTag } from './bookmarkTagsReducer';
+import { bookmarkTeams } from './bookmarkTeamsReducer';
 import { bookmarks } from './bookmarksReducer';
 import { teams } from './teamsReducer';
 import { teamMembers } from './teamMembersReducer';
@@ -63,6 +64,7 @@ const entitiesReducer = combineReducers({
   tags,
   teams,
   teamMembers,
+  bookmarkTeams,
 });
 
 export default entitiesReducer;

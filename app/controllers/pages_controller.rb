@@ -15,12 +15,14 @@ class PagesController < ApplicationController
               }
       teams = Team.all.map{ |x| x.to_redux_entitie }.to_h
       team_member = TeamMember.all.map{ |x| x.to_redux_entitie }.to_h
+      bookmark_team = BookmarkTeam.all.map{ |x| x.to_redux_entitie }.to_h
     else
       user = {  userEmail: 'not loged',
             token:  'not loged'
           }
       teams = {}
       team_member = {}
+      bookmark_teams = {}
     end
 
     @hello_world_props = {
@@ -29,7 +31,8 @@ class PagesController < ApplicationController
         tags: tag,
         bookmarkTag: bookmark_tag,
         teams: teams,
-        teamMembers: team_member
+        teamMembers: team_member,
+        bookmarkTeams: bookmark_team
       },
       ui:{
         searchedTags: searchedTags,
