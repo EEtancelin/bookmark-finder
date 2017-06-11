@@ -1,5 +1,6 @@
 
 def seed_bookmarks
+  puts 'Seed Bookmarks'
 
 user = User.first
 bookmarks = [

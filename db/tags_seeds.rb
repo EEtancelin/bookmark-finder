@@ -1,5 +1,6 @@
 
 def seed_tags
+  puts 'Seed tags'
   tags = [
     {title: 'blog'},
     {title: 'ci'},

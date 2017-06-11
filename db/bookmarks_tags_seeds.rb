@@ -8,6 +8,7 @@ end
 
 def seed_bookmarks_tags
 
+  puts 'Seed Bookmark Tags'
   create_bt('The myth of the Genius Programmer', 'video')
   create_bt('The myth of the Genius Programmer', 'howto')
   create_bt('The myth of the Genius Programmer', 'design')
