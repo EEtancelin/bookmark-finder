@@ -1,5 +1,4 @@
-import { Map } from 'immutable';
-
+  import { Map } from 'immutable';
 
 // Which are the Ids of all existing tag ?
 export const getAll = state => state.getIn(['entities', 'tags']).toOrderedSet();
