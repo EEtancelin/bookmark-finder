@@ -183,37 +183,10 @@
     outline: none;
 }
 
-.tag{
-  border-radius: 3px;
-  background-color: rgba(0, 0, 0, 0.02);
-  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1);
-  margin-left: 5px;
-  margin-right: 5px;
-  font-size: 13px;
-  line-height: 12px;
-  display: flex;
-  flex-direction: row;
-  align-items:center;
-  text-align: center;
-  height: 16px;
-  color: #303333;
-  font-family: 'Roboto Condensed',arial,sans-serif;
-
-}
-
-.tag:active {
-  top: 4px;
-  right: 2px;
-}
-
 .blue{
   background-color: blue;
 }
 
-.tag-title{
-  margin: 5px;
-  font-size: 13px;
-}
 
 .icon-xs{
   height: 12px;
@@ -224,13 +197,6 @@
   align-items: center;
 }
 
-
-.tag-logo{
-  margin: 5px;
-  height: 18px;
-  width: 18px;
-}
-
 .proposed-tags-list{
   flex-wrap: wrap;
   height: 72px;
@@ -239,10 +205,6 @@
 
 .input-tags-list {
   align-items: center;
-}
-
-.tag-img{
-  height: 18px;
 }
 
 .view_header{

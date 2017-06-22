@@ -1,0 +1,32 @@
+
+.tag-img{
+  height: 18px;
+}
+
+.tag{
+  border-radius: 3px;
+  background-color: rgba(0, 0, 0, 0.02);
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1);
+  margin-left: 5px;
+  margin-right: 5px;
+  font-size: 13px;
+  line-height: 12px;
+  display: flex;
+  flex-direction: row;
+  align-items:center;
+  text-align: center;
+  height: 16px;
+  color: #303333;
+  font-family: 'Roboto Condensed',arial,sans-serif;
+
+}
+
+.tag:active {
+  top: 4px;
+  right: 2px;
+}
+
+.tag-title{
+  margin: 5px;
+  font-size: 13px;
+}
