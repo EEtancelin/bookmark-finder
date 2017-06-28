@@ -9,11 +9,12 @@ const tagStyle = {
   position: 'relative',
   cursor: 'pointer',
 };
-const removeButtonStyle = { position: 'absolute', top: '-7px', right: '-16px' };
-const removeIconStyle = { color: 'rgba(0,0,0,0.75)' } ;
+
 
 const Tag = ({ title ,logo,showRemoveButton, onRemoveClick, onClick }) => (
-  <div className="tag" style={tagStyle} >
+  <div className="tag"
+    style={tagStyle}
+    id="hover-me">
     {logo &&
       <div className="tag-logo" style= {{backgroundImage: `url(${logo})`}}> </div>
     }
@@ -23,8 +24,9 @@ const Tag = ({ title ,logo,showRemoveButton, onRemoveClick, onClick }) => (
 
     { showRemoveButton &&
       <div onClick={onRemoveClick}
-        style={removeButtonStyle } >
-        <Icon style={removeIconStyle} name="remove" />
+        className="remove-button"
+        id="hover-content">
+        <Icon name="remove" />
       </div>
     }
 
