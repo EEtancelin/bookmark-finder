@@ -2,6 +2,39 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
+const flatBookmarkTreeNodes = function(treeNodes) {
+  let flatNodes = [];
+  treeNodes.forEach(function (treeNode) {
+      if (treeNode.children) {
+        flatNodes = flatNodes.concat(flatBookmarkTreeNodes(treeNode.children))
+      } else {
+        flatNodes = flatNodes.concat(treeNode)
+      }
+   });
+   return(flatNodes);
+};
+const flatSmartTreeNodes = function(treeNodes) {
+  let flatNodes = [];
+  treeNodes.forEach(function (treeNode) {
+      if (treeNode.children) {
+        flatNodes = flatNodes.concat(flatSmartTreeNodes(treeNode.children))
+        delete treeNode.children
+        flatNodes = flatNodes.concat(treeNode);
+      }
+   });
+   return(flatNodes);
+};
+
+const fct = flatBookmarkTreeNodes;
+const bookmarkTreeNodes = chrome.bookmarks.getTree(
+  function(bookmarkTreeNodes) {
+    console.log("dumpNodes");
+    console.log(flatBookmarkTreeNodes(bookmarkTreeNodes));
+    console.log("dumpNodes");
+    console.log(flatSmartTreeNodes(bookmarkTreeNodes));
+  }
+);
+
 // Detect form submit
 $(function() {
   $( "#target" ).submit(function( event ) {
@@ -12,6 +45,7 @@ $(function() {
       values[this.name] = $(this).val();
     });
     postBookmark(values);
+
   });
 });
 
