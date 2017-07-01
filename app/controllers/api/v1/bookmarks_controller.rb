@@ -1,6 +1,6 @@
 # app/controllers/api/v1/bookmarks_controller.rb
 class Api::V1::BookmarksController < Api::V1::BaseController
-  acts_as_token_authentication_handler_for User, except: [ :index, :show, :create ]
+  acts_as_token_authentication_handler_for User, except: [ :index, :show]
   before_action :set_bookmark, only: [ :show, :update, :destroy]
 
   def index
@@ -14,8 +14,7 @@ class Api::V1::BookmarksController < Api::V1::BaseController
 
   def create
     @bookmark = Bookmark.new(bookmark_params)
-    # Skip for test purpose
-    #@bookmark.user = current_user
+    @bookmark.user = current_user
     authorize @bookmark
     if @bookmark.save
       render :show, status: :created
