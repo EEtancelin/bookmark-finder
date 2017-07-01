@@ -22,6 +22,7 @@ gem 'forest_liana'
 gem "pundit"
 gem 'rake'
 gem 'rspec'
+gem 'rack-cors', :require => 'rack/cors'
 
 group :development, :test do
   gem 'binding_of_caller'

@@ -250,6 +250,7 @@ DEPENDENCIES
   pry-rails
   puma
   pundit
+  rack-cors
   rails (= 5.0.2)
   rake
   react_on_rails (~> 6)
