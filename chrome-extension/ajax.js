@@ -2,8 +2,8 @@ const getAPIHeader = () => {
   return (
     new Headers({
       'Content-Type': 'application/json',
-      'X-User-Email': 'edouard.etancelin@gmail.com',
-      'X-User-Token': 'dkZdfMnysXsGHsV1GFKA',
+      'X-User-Email': 'etancelin.edouard@gmail.com',
+      'X-User-Token': 'VpdPxLYHs5XJgHp-s2Ni',
     })
   );
 };
