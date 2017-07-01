@@ -2,6 +2,20 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
+// Detect form submit
+$(function() {
+  $( "#target" ).submit(function( event ) {
+    event.preventDefault();
+   var $inputs = $('.input');
+   var values = {};
+    $inputs.each(function() {
+      values[this.name] = $(this).val();
+    });
+    console.log(values);
+    postBookmark(values);
+  });
+});
+
 // Search the bookmarks when entering the search keyword.
 $(function() {
   $('#search').change(function() {

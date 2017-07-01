@@ -2,9 +2,16 @@
 <head>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
   <script src="popup.js"></script>
+  <script src="ajax.js"></script>
 </head>
 <body style="width: 400px">
-  <div>Search Bookmarks: <input id="search"></div>
+  <input id="search"></div>
+  <div>Search Bookmarks: </div>
+  <form id="target" action="destination.html">
+    <input name="url" class="input" type="text" value="Url">
+    <input name="title" class="input" type="text" value="Title">
+    <input type="submit" value="Go">
+  </form>
   <div id="bookmarks"></div>
   <div id="editdialog"></div>
   <div id="deletedialog"></div>
