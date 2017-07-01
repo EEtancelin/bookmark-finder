@@ -22,6 +22,7 @@ class PagesController < ApplicationController
           }
       bookmarks = Bookmark.all.map{ |x| x.to_redux_entitie }.to_h
       tags = Tag.all.map{ |x| x.to_redux_entitie }.to_h
+      bookmark_tag = {}
       teams = {}
       team_member = {}
       bookmark_teams = {}
