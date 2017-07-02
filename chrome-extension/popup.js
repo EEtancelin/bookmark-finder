@@ -5,37 +5,48 @@
 const flatBookmarkTreeNodes = function(treeNodes) {
   let flatNodes = {};
   treeNodes.forEach(function (treeNode) {
+      flatNodes[treeNode.id] = treeNode
       if (treeNode.children) {
         flatNodes = Object.assign(flatNodes, flatBookmarkTreeNodes(treeNode.children))
-      } else {
-        let node = {}
-        node[treeNode.id] = treeNode
-        flatNodes = Object.assign(flatNodes, node);
-      }
-   });
-   return(flatNodes);
-};
-const flatSmartTreeNodes = function(treeNodes) {
-  let flatNodes = {};
-  treeNodes.forEach(function (treeNode) {
-      if (treeNode.children) {
-        flatNodes = Object.assign(flatNodes, flatSmartTreeNodes(treeNode.children));
-        delete treeNode.children
-        let node = {}
-        node[treeNode.id] = treeNode
-        flatNodes = Object.assign(flatNodes, node);
       }
    });
    return(flatNodes);
 };
 
-const fct = flatBookmarkTreeNodes;
+const extractTagRec = function(treeNodeObjects, treeNodeId) {
+  let treeNode = treeNodeObjects[treeNodeId];
+  let tags = [];
+  if (treeNode.parentId) {
+    tags = [treeNode.title];
+    tags = tags.concat(extractTagRec(treeNodeObjects, treeNode.parentId));
+  }
+  return tags;
+}
+ const extractTag = function(treeNodeObjects, treeNodeId) {
+   let treeNode = treeNodeObjects[treeNodeId];
+   let tags = [];
+   if (treeNode.parentId) {
+     tags = extractTagRec(treeNodeObjects, treeNode.parentId)
+   }
+   return tags;
+ }
+
+ const addTagsToNodes = function(treeNodeObjects) {
+   for (var key in treeNodeObjects) {
+     if (treeNodeObjects.hasOwnProperty(key)) {
+       treeNodeObjects[key]['tag'] = extractTag(treeNodeObjects, key)
+     }
+   }
+   return treeNodeObjects;
+ }
+
+
 const bookmarkTreeNodes = chrome.bookmarks.getTree(
   function(bookmarkTreeNodes) {
-    console.log("dumpNodes");
-    console.log(flatBookmarkTreeNodes(bookmarkTreeNodes));
-    console.log("dumpNodes");
-    console.log(flatSmartTreeNodes(bookmarkTreeNodes));
+    let nodes = flatBookmarkTreeNodes(bookmarkTreeNodes);
+    console.log(nodes);
+    nodeWithTags = addTagsToNodes(nodes)
+    console.log(nodeWithTags);
   }
 );
 
