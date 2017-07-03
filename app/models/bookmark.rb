@@ -5,4 +5,5 @@ class Bookmark < ApplicationRecord
 
   has_many :bookmark_teams
   has_many :teams, through: :bookmark_teams
+  validates :url, uniqueness: { scope: :user_id }
 end
