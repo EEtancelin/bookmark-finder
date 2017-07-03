@@ -12,7 +12,7 @@
   },
   "background": {
     "scripts": [
-      "ajax.js"
+      "ajax.js",
     ]
 },
   "manifest_version": 2,

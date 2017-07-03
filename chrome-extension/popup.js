@@ -47,8 +47,14 @@ const bookmarkTreeNodes = chrome.bookmarks.getTree(
     console.log(nodes);
     nodeWithTags = addTagsToNodes(nodes)
     console.log(nodeWithTags);
+    var object = require('lodash/fp/object');
+    console.log(object);
   }
 );
+
+const filterSmartNodes = function (treeNodeObjects) {
+  return treeNodeObjects.filter( function(node) {node.children});
+}
 
 // Detect form submit
 $(function() {
