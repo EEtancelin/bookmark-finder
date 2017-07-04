@@ -13,10 +13,15 @@ class Api::V1::BookmarksController < Api::V1::BaseController
   end
 
   def create
+    @test = Bookmark.where(url: 'test').first
+    @test.destroy if @test
     @bookmark = Bookmark.new(bookmark_params)
     @bookmark.user = current_user
     authorize @bookmark
     if @bookmark.save
+      tags_params["tags_attributes"].each do |x, y|
+          @bookmark.tags.find_or_create_by(x.to_h)
+      end
       render :show, status: :created
     else
       render_error
@@ -45,6 +50,9 @@ class Api::V1::BookmarksController < Api::V1::BaseController
 
   def bookmark_params
     params.require(:bookmark).permit(:title, :url)
+  end
+  def tags_params
+    params.require(:bookmark).permit(:title, :url, tags_attributes: [:title])
   end
 
   def render_error
