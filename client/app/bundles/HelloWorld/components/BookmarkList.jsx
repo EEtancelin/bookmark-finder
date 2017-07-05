@@ -7,7 +7,7 @@ const BookmarkList = ({ bookmarksIds, loadMore, hasMore }) => (
     <InfiniteScroll
       pageStart={0}
       loadMore={() => loadMore()}
-      hasMore={true}
+      hasMore={hasMore}
       loader={<div className="loader">Loading ...</div>}
     >
     { bookmarksIds.count() > 0 &&

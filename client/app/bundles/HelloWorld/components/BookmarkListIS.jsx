@@ -24,7 +24,7 @@ class BookmarkListIS extends React.Component {
       <BookmarkList
         bookmarksIds={this.getItems()}
         loadMore={this.onLoadMore}
-        hasMore={ this.state.displayed >= this.props.bookmarksIds.count()}
+        hasMore={ this.state.displayed <= this.props.bookmarksIds.count()}
       />
     )
   }
