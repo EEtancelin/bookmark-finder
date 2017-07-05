@@ -8,6 +8,7 @@ const tagStyle = {
   fontFamily: "'Mukta Vaani', sans-serif",
   position: 'relative',
   cursor: 'pointer',
+  whiteSpace: 'nowrap',
 };
 
 
