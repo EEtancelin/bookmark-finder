@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import { truncate } from 'lodash'; // False Alarm
 
-const BookmarkBody = ({title, url}) => (
+const BookmarkBody = ({ title, url }) => (
 
   <div className="bookmark-body">
     <div className="bookmark-title">
