@@ -1,6 +1,7 @@
 //Absolutes
 import React, { PropTypes } from 'react';
 import { Icon } from 'semantic-ui-react';
+import InfiniteScroll from 'react-infinite-scroller';
 
 // Action
 import { showAddBookmarkForm } from '../actions/mainContentActionCreators';
