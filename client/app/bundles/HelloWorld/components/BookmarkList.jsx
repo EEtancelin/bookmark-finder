@@ -1,9 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import InfiniteScroll from 'react-infinite-scroller';
 import BookmarkContainer from '../containers/BookmarkContainer';
 
-const BookmarkList = ({ bookmarksIds }) => (
-  <div>
+const BookmarkList = ({ bookmarksIds, loadMore, hasMore }) => (
+    <InfiniteScroll
+      pageStart={0}
+      loadMore={() => loadMore()}
+      hasMore={true}
+      loader={<div className="loader">Loading ...</div>}
+    >
     { bookmarksIds.count() > 0 &&
       bookmarksIds.map(bookmarkId => (
         <BookmarkContainer key={bookmarkId} bookmarkId={bookmarkId} />
@@ -12,7 +18,7 @@ const BookmarkList = ({ bookmarksIds }) => (
     { bookmarksIds.isEmpty() &&
       <div>No Bookmark Found</div>
     }
-  </div>
+    </InfiniteScroll>
 
 );
 BookmarkList.PropTypes = {

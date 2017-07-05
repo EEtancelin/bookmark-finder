@@ -1,7 +1,7 @@
 // Simple example of a React "smart" component
 
 import { connect } from 'react-redux';
-import BookmarkList from '../components/BookmarkList';
+import BookmarkListIS from '../components/BookmarkListIS';
 import * as actions from '../actions/mainContentActionCreators';
 import { getBookmarksIdsForTagsIds, tagsByBookmarkCount } from '../reducers/bookmarkTagsReducer';
 import { hasSearchedTags } from '../reducers/uiReducer';
@@ -22,4 +22,4 @@ const mapStateToProps = state => (
 // Don't forget to actually use connect!
 // Note that we don't export HelloWorld, but the redux "connected" version of it.
 // See https://github.com/reactjs/react-redux/blob/master/docs/api.md#examples
-export default connect(mapStateToProps, actions)(BookmarkList);
+export default connect(mapStateToProps, actions)(BookmarkListIS);
