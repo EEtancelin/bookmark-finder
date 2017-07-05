@@ -2,6 +2,7 @@
 import React from 'react';
 import moment from 'moment';
 import PropTypes from 'prop-types';
+import { truncate } from 'lodash';
 
 // Containers
 import TagListContainer from '../containers/TagListContainer';
