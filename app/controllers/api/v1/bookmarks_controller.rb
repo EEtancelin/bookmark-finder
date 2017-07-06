@@ -20,7 +20,8 @@ class Api::V1::BookmarksController < Api::V1::BaseController
     authorize @bookmark
     if @bookmark.save
       tags_params["tags_attributes"].each do |x, y|
-          @tag = Tag.find_or_create_by(x.to_h)
+          @paramss = x.to_h['title'] = x.to_h['title'].downcase
+          @tag = Tag.find_or_create_by(@paramss)
           @bookmark.tags << @tag
       end
       render :show, status: :created
