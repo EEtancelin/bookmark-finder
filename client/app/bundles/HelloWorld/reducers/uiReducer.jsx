@@ -33,6 +33,8 @@ const searchBoxValue = (state = Map({}), action) => {
       return '';
     case ADD_SEARCHED_TAG:
       return '';
+    case DELETE_SEARCHED_TAGS:
+      return '';
     default:
       return state;
   }
