@@ -7,10 +7,10 @@ import { getBookmarksIdsForTagsIds, tagsByBookmarkCount } from '../reducers/book
 import { hasSearchedTags } from '../reducers/uiReducer';
 
 const getProposedBookmarksIds = (state) => {
-  const tagsCount = tagsByBookmarkCount(state);
+  const bookmarks = state.getIn(['entities', 'bookmarks']);
   return (
     getBookmarksIdsForTagsIds(state, state.getIn(['ui', 'searchedTags']))
-    .sortBy(bookmarkId => tagsCount.get(bookmarkId))
+    .sortBy(bookmarkId => bookmarks.get(bookmarkId).get('created_at'))
   );
 };
 // Which part of the Redux global state does our component want to receive as props?
