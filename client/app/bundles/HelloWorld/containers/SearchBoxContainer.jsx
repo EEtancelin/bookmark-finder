@@ -40,13 +40,13 @@ const getGoogleQueryString = (state, inputValue) =>  {
 const normalizeUserInput = string => string.toLowerCase().replace(/^\s/, '');
 
 // Whitch action dispatch when user Input Change ?
-const onUserInputChange = (tags, userInput) => {
-  const tag = findTagByTitle(tags, userInput);
+const onUserInputChange = (allTagsTitles, userInput) => {
+  const nUserInput = normalizeUserInput(userInput);
   let action;
-  if (tag) {
-    action = addSearchedTag(normalizeUserInput(userInput));
+  if (allTagsTitles.has(nUserInput)) {
+    action = addSearchedTag(nUserInput);
   } else {
-    action = updateSearchBoxValue(userInput);
+    action = updateSearchBoxValue(nUserInput);
   }
   return action;
 };
@@ -84,19 +84,20 @@ const mapStateToProps = (state) => {
     inputValue: state.getIn(['ui', 'searchBoxValue']),
     searchedTagsTitles: getSearchedTagsTitles(state),
     proposedTagsTitle: getProposedTagsTitles(state),
-    onUserInputChange: (tags, userInput) => onUserInputChange(tags, userInput),
+    onUserInputChange: userInput => onUserInputChange(getAllTags(state), userInput),
     getGoogleQueryString: inputValue => getGoogleQueryString(state, inputValue),
   };
 };
 
-// Use Map Dispath to Props Shorthand Notation.
-// https://egghead.io/lessons/javascript-redux-using-mapdispatchtoprops-shorthand-notation
+const mapDispatchToProps = (dispatch, ownprops) => {
+  return {
+    onDeleteTagsClick: () => dispatch(deleteSearchedTags()),
+    onDeleteLastSearchedTag: () => dispatch(deleteLastSearchedTag()),
+    onSearchBoxValueChange: (tagsTitles, userInput) => dispatch(onUserInputChange(tagsTitles, userInput)),
+  };
+};
 
 export default connect(
   mapStateToProps,
-  {
-    onDeleteTagsClick: deleteSearchedTags,
-    onSearchBoxValueChange: onUserInputChange,
-    onDeleteLastSearchedTag: deleteLastSearchedTag,
-  },
+  mapDispatchToProps,
 )(SearchBox);
