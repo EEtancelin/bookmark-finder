@@ -11,19 +11,19 @@ const prependHttp = (url) => {
   return (returnValue);
 };
 
-export const addTagToBookmark = (tagId, bookmark) => ({
+export const addTagToBookmark = (tagId, bookmarkId) => ({
   type: 'ADD_TAG_TO_BOOKMARK',
   bookmarkTagId: uuidV4(),
   tagId,
-  bookmark,
+  bookmarkId,
 });
 
-export const createTag = (tagTitle, bookmark) => ({
-  type: 'CREATE_TAG',
+export const createTag = (tagTitle, bookmarkId) => ({
+  type: 'ADD_TAG_TO_BOOKMARK',
   tagId: uuidV4(),
   bookmarkTagId: uuidV4(),
   tagTitle,
-  bookmark,
+  bookmarkId,
 });
 
 export const createBookmark = values => ({

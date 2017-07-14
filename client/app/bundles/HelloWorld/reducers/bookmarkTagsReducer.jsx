@@ -62,17 +62,6 @@ export const getTagsIdsWithCommonBookmarkWithTagsIds = (state, tagsIds) => {
 
 export const bookmarkTag = (state = Map({}), action) => {
   switch (action.type) {
-    case 'ADD_TAG_TO_BOOKMARK':
-      const bookmarkTagg = Map({ id: action.bookmarkTagId, tag_id: action.tagId, bookmark_id: action.bookmark });
-      return state.set(action.bookmarkTagId, bookmarkTagg);
-
-    case 'CREATE_TAG':
-      const newBookmarkTag =
-        Map({
-          id: action.bookmarkTagId,
-          bookmark_id: action.bookmark,
-          tag_id: action.tagId })
-      return (state.set(action.bookmarkTagId, newBookmarkTag))
     default:
       return state;
   }

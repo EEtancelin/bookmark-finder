@@ -31,7 +31,7 @@ export const getTagById = (state, tagId) => {
 
 export const tags = (state = Map({}), action) => {
   switch (action.type) {
-    case 'CREATE_TAG':
+    case 'ADD_TAG_TO_BOOKMARK':
       return state.set(action.tagId, Map({ id :action.tagId, title: action.tagTitle.toLowerCase()}));
     default:
       return state;

@@ -21,14 +21,8 @@ const getTagUuidByTitle = (tags, title) => {
 }
 
 // What to do when an user submit a tag ?
-const submitTag = (tags, tagTitle, bookmarkId) => {
-  const newTag = isNewTag(tags, tagTitle);
-  if (newTag) {
-    return postTag(tagTitle, bookmarkId)
-  } else {
-    const tagId = tags.find(t => (t.get('title') === tagTitle)).get('id');
-    return addTagToBookmark(tagId, bookmarkId);
-  }
+const submitTag = (tagTitle, bookmarkId) => {
+  return (postTag(tagTitle, bookmarkId))
 };
 
 // Which part of the Redux global state does our component want to receive as props?
@@ -41,7 +35,7 @@ const mapStateToProps = (state, ownprops) => ({
 
 const mapDispatchToProps = (dispatch, ownprops) => {
   return {
-    submitTag: (tags, tagTitle, bookmarkId) => {dispatch(submitTag(tags, tagTitle, bookmarkId));}
+    submitTag: (tagTitle, bookmarkId) => {dispatch(submitTag(tagTitle, bookmarkId));}
   };
 };
 

@@ -17,6 +17,10 @@ export const bookmarks = (state = Map({}), action) => {
           url: action.url,
           created_at: action.created_at,
         })));
+    case 'ADD_TAG_TO_BOOKMARK':
+      console.log(state.getIn([action.bookmarkId, 'tags_a']));
+      const tagss = state.getIn([action.bookmarkId, 'tags_a']).concat(action.tagTitle);
+      return (state.setIn([action.bookmarkId, 'tags_a'], tagss));
 
     case 'REMOVE_TAG':
       const tags = state.getIn([action.bookmarkId, 'tags_a'])
