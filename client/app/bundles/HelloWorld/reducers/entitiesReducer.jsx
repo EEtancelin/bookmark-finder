@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux-immutable';
+import { Set } from 'immutable';
 import { tags } from './tagsReducer';
 import { bookmarkTag } from './bookmarkTagsReducer';
 import { bookmarkTeams } from './bookmarkTeamsReducer';
@@ -11,10 +12,11 @@ export const findTagByTitle = (tags, title) => tags.find(t => t.get('title') ===
 
 
 export const getProposedTagsTitles = (state) => {
-  const searchedTags = state.getIn(['ui', 'searchedTags'])
+  const searchedTags = state.getIn(['ui', 'searchedTags']);
   return (
     state.getIn(['entities', 'bookmarks'])
-    .filter()
+    .filter(bookmark => bookmark.get('tags_a').isSuperset(searchedTags))
+    .reduce((total, value) => total.concat(value.get('tags_a')), Set([]))
   );
 };
 

@@ -10,6 +10,7 @@ import {
 
 import {
   findTagByTitle,
+  getProposedTagsTitles,
 } from '../reducers/entitiesReducer';
 
 import {
@@ -82,7 +83,7 @@ const mapStateToProps = (state) => {
     tagsTitles: getAllTags(state),
     inputValue: state.getIn(['ui', 'searchBoxValue']),
     searchedTagsIds: getSearchedTagsIds(state),
-    proposedTagsIds: getProposedTags(state),
+    proposedTagsTitle: getProposedTagsTitles(state),
     onUserInputChange: (tags, userInput) => onUserInputChange(tags, userInput),
     getGoogleQueryString: inputValue => getGoogleQueryString(state, inputValue),
   };
