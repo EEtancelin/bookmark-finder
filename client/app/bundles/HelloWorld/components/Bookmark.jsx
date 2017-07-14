@@ -25,7 +25,7 @@ const tagsListStyle = {
 };
 
 // Component
-const Bookmark = ({ bookmarkId, tagsIds, tagsTitles, title, url, date = '', thumbnailUrl }) => (
+const Bookmark = ({ bookmarkId, tagsIds, tagsTitles, title, url, date = '', thumbnailUrl, onRemoveTagClick }) => (
   <div className="bookmark" >
     <BookmarkThumbnail url={thumbnailUrl}  />
     <div className="bookmark-inner-wrap">
@@ -43,7 +43,11 @@ const Bookmark = ({ bookmarkId, tagsIds, tagsTitles, title, url, date = '', thum
         <div style={{ display: 'flex', flexDirection: 'row', marginBottom: '3px' }}>
           <div style={tagsListStyle} >
             {(tagsTitles ? tagsTitles : Set([])).map(tagTitle => (
-              <Tag key={tagTitle} title={tagTitle} showRemoveButton={true} bookmark={bookmarkId} />
+              <Tag key={tagTitle}
+                title={tagTitle}
+                showRemoveButton={true}
+                bookmark={bookmarkId}
+                onRemoveClick={() => onRemoveTagClick(tagTitle)} />
             ))}
           </div>
         <BookmarkAddTagContainer bookmark={bookmarkId}/>
