@@ -63,7 +63,7 @@ class SearchBox extends React.Component {
         </div>
         <div style={{ marginTop: '8px' }}>
           <div style={{ display: 'flex', flexWrap: 'wrap', flexDirection: 'row', marginLeft: '8px' }} >
-            {(this.props.proposedTagsTitle ? this.props.proposedTagsTitle : Set([])).map(tagTitle => (
+            {(this.props.proposedTagsTitles ? this.props.proposedTagsTitles : Set([])).map(tagTitle => (
               <Tag key={tagTitle}
                 title={tagTitle}
                 showRemoveButton={true}

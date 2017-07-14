@@ -11,7 +11,7 @@ import { teamMembers } from './teamMembersReducer';
 export const findTagByTitle = (tags, title) => tags.find(t => t.get('title') === title);
 
 
-export const getProposedTagsTitles = (state) => {
+export const getProposedBookmarksTagsTitles = (state) => {
   const searchedTags = state.getIn(['ui', 'searchedTags']);
   return (
     state.getIn(['entities', 'bookmarks'])

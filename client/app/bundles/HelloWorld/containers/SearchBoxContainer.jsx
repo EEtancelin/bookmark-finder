@@ -10,7 +10,7 @@ import {
 
 import {
   findTagByTitle,
-  getProposedTagsTitles,
+  getProposedBookmarksTagsTitles,
 } from '../reducers/entitiesReducer';
 
 import {
@@ -53,27 +53,11 @@ const onUserInputChange = (allTagsTitles, userInput) => {
 
 // Which Tag to propose to the user ?
 const getProposedTags = state => {
-  const searchBoxValue = state.getIn(['ui', 'searchBoxValue'])
-  const searchedTags = state.getIn(['ui', 'searchedTags']);
-  const tagsOc = tagsOccurrences(state);
-  const tags = state
-    .getIn(['entities', 'tags'])
-    .map(tag => tag.set('occurences', tagsOc.get(tag.get('id'))))
-    .filter(tag => RegExp(searchBoxValue).exec(tag.get('title')))
-    .sortBy(tag => tag.get('title'));
-  if (hasSearchedTags(state)) {
-    const proposedTags = getTagsIdsWithCommonBookmarkWithTagsIds(state, searchedTags);
-    return (tags
-      .filter(tag => proposedTags.has(tag.get('id')))
-      .keySeq()
-    );
-  } else {
-    return (tags
-    .filter(tag => tag.get('occurences') > 0)
-    .keySeq()
-    .toSet()
-    );
-  }
+  const searchBoxValue = state.getIn(['ui', 'searchBoxValue']);
+  return (getProposedBookmarksTagsTitles(state)
+    .filter(tag => RegExp(searchBoxValue).exec(tag))
+    .sort()
+  );
 };
 
 // Which part of the Redux global state does our component want to receive as props?
@@ -83,7 +67,7 @@ const mapStateToProps = (state) => {
     tagsTitles: getAllTags(state),
     inputValue: state.getIn(['ui', 'searchBoxValue']),
     searchedTagsTitles: getSearchedTagsTitles(state),
-    proposedTagsTitle: getProposedTagsTitles(state),
+    proposedTagsTitles: getProposedTags(state),
     onUserInputChange: userInput => onUserInputChange(getAllTags(state), userInput),
     getGoogleQueryString: inputValue => getGoogleQueryString(state, inputValue),
   };
