@@ -11,16 +11,8 @@ const prependHttp = (url) => {
   return (returnValue);
 };
 
-export const addTagToBookmark = (tagId, bookmarkId) => ({
+export const addTagToBookmark = (tagTitle, bookmarkId) => ({
   type: 'ADD_TAG_TO_BOOKMARK',
-  bookmarkTagId: uuidV4(),
-  tagId,
-  bookmarkId,
-});
-
-export const createTag = (tagTitle, bookmarkId) => ({
-  type: 'ADD_TAG_TO_BOOKMARK',
-  tagId: uuidV4(),
   bookmarkTagId: uuidV4(),
   tagTitle,
   bookmarkId,
@@ -51,7 +43,7 @@ export const postBookmark = values => (dispatch, getState) => {
 };
 
 export const postTag = (tagTitle, bookmark) => (dispatch, getState) => {
-  dispatch(createTag(tagTitle, bookmark));
+  dispatch(addTagToBookmark(tagTitle, bookmark));
   fetch('/api/v1/bookmark_tags', {
     method: 'post',
     headers: getAPIHeader(getState()),
