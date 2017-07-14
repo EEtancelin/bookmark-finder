@@ -3,6 +3,8 @@ def create_bt(bookmark_title, tag_title)
   bookmark = Bookmark.where(title: bookmark_title).first
   tag = Tag.where(title: tag_title).first
   BookmarkTag.create(bookmark: bookmark, tag: tag)
+  bookmark.tags_a << tag_title
+  bookmark.save
 end
 
 

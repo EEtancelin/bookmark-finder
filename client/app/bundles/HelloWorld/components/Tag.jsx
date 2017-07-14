@@ -12,7 +12,7 @@ const tagStyle = {
 };
 
 
-const Tag = ({ title ,logo,showRemoveButton, onRemoveClick, onClick }) => (
+const Tag = ({ title, logo, showRemoveButton, onRemoveClick, onClick }) => (
   <div className="tag"
     style={tagStyle}
     id="hover-me">

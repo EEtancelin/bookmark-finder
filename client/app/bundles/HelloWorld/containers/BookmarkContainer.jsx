@@ -14,6 +14,7 @@ const mapStateToProps = (state, ownprops) => {
     title: bookmark.get('title'),
     url: bookmark.get('url'),
     date: bookmark.get('created_at'),
+    tagsTitles: bookmark.get('tags_a'),
     tagsIds: getTagIdsForBookmark(state, ownprops.bookmarkId),
     thumbnailUrl: bookmark.get('thumbnail_url'),
   };

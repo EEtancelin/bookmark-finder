@@ -2,7 +2,7 @@
 import React from 'react';
 import moment from 'moment';
 import PropTypes from 'prop-types';
-import { truncate } from 'lodash';
+import { Set } from 'immutable';
 
 // Containers
 import TagListContainer from '../containers/TagListContainer';
@@ -10,6 +10,7 @@ import BookmarkAddTagContainer from '../containers/BookmarkAddTagContainer';
 
 // Components
 import BookmarkBody from './BookmarkBody';
+import Tag from './Tag';
 import Clipboard from './Clipboard';
 import BookmarkThumbnail from './BookmarkThumbnail';
 
@@ -17,8 +18,14 @@ import BookmarkThumbnail from './BookmarkThumbnail';
 // Style constants
 const dateStyle = { textDecoration: 'underline', fontSize: '12px' };
 
+const tagsListStyle = {
+  display: 'flex',
+  flexDirection: 'row',
+  marginLeft: '8px',
+};
+
 // Component
-const Bookmark = ({ bookmarkId, tagsIds, title, url, date = '', thumbnailUrl }) => (
+const Bookmark = ({ bookmarkId, tagsIds, tagsTitles, title, url, date = '', thumbnailUrl }) => (
   <div className="bookmark" >
     <BookmarkThumbnail url={thumbnailUrl}  />
     <div className="bookmark-inner-wrap">
@@ -34,7 +41,11 @@ const Bookmark = ({ bookmarkId, tagsIds, title, url, date = '', thumbnailUrl }) 
 
       <div className="bookmark-bottom">
         <div style={{ display: 'flex', flexDirection: 'row', marginBottom: '3px' }}>
-        <TagListContainer tagsIds={tagsIds} bookmark={bookmarkId} />
+          <div style={tagsListStyle} >
+            {(tagsTitles ? tagsTitles : Set([])).map(tagTitle => (
+              <Tag key={tagTitle} title={tagTitle} showRemoveButton={true} bookmark={bookmarkId} />
+            ))}
+          </div>
         <BookmarkAddTagContainer bookmark={bookmarkId}/>
       </div>
       </div>
