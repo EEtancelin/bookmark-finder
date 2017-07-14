@@ -21,8 +21,10 @@ export const getSearchedTagsTitles = (state) => {
 };
 
 export const getSearchedTagsString = (state) => {
-  const searchedTags = state.getIn(['ui', 'searchedTags']).toOrderedSet();
-  return (tagsIdsToString(state, searchedTags) || '');
+  return (state
+    .getIn(['ui', 'searchedTags'])
+    .reduce((collector, value) => `${collector} ${value}`, '')
+  );
 };
 
 const searchBoxValue = (state = Map({}), action) => {
