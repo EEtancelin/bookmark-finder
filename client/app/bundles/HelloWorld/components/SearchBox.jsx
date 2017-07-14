@@ -1,8 +1,12 @@
 import React from 'react';
 import immutable from 'immutable';
+import { Set } from 'immutable'
 import PropTypes from 'prop-types';
 import TagListContainer from '../containers/TagListContainer';
 import DeleteTagsButton from './DeleteTagsButton';
+
+// Components
+import Tag from './Tag';
 
 class SearchBox extends React.Component {
   constructor(props) {
@@ -37,7 +41,14 @@ class SearchBox extends React.Component {
     return (
       <div style={{marginBottom: '13px'}}>
         <div className="search-bar" >
-          <TagListContainer className={'input-tags-list'} tagsIds={this.props.searchedTagsIds}  />
+          <div style={{ display: 'flex', flexDirection: 'row', marginLeft: '8px',}} >
+            {(Set([]) ? Set([]) : Set([])).map(tagTitle => (
+              <Tag key={tagTitle}
+                title={tagTitle}
+                showRemoveButton={true}
+               />
+            ))}
+          </div>
           <input
             className="search-input"
             type="text"
@@ -51,7 +62,14 @@ class SearchBox extends React.Component {
         <DeleteTagsButton deleteTagsFn={this.props.onDeleteTagsClick} viewBox="0 0 7 16" />
         </div>
         <div style={{ marginTop: '8px' }}>
-          <TagListContainer className={'proposed-tags-list'} tagsIds={this.props.proposedTagsIds} flexWrap={'wrap'} />
+          <div style={{ display: 'flex', flexWrap: 'wrap',  flexDirection: 'row', marginLeft: '8px' }} >
+            {(this.props.tagsTitles ? this.props.tagsTitles : Set([])).map(tagTitle => (
+              <Tag key={tagTitle}
+                title={tagTitle}
+                showRemoveButton={true}
+               />
+            ))}
+          </div>
         </div>
       </div>
     );

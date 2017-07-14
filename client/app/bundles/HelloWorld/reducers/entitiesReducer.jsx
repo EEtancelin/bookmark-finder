@@ -10,8 +10,15 @@ import { teamMembers } from './teamMembersReducer';
 export const findTagByTitle = (tags, title) => tags.find(t => t.get('title') === title);
 
 
-// Which Tag have one bookmark in Common with the searchedTags ?
+export const getProposedTagsTitles = (state) => {
+  const searchedTags = state.getIn(['ui', 'searchedTags'])
+  return (
+    state.getIn(['entities', 'bookmarks'])
+    .filter()
+  );
+};
 
+// Which Tag have one bookmark in Common with the searchedTags ?
 export const getTagsIdsAssociateToBookmarks = (bookmarkTag, bookmarks) => {
   return (getBookmarksIdsForEachTag(bookmarkTag)
     .filter(bookmarkTags => !bookmarkTags.intersect(bookmarks).isEmpty())

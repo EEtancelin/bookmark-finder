@@ -18,9 +18,9 @@ export const updateSearchBoxValue = value => ({
   value,
 });
 
-export const addSearchedTag = tagId => ({
+export const addSearchedTag = tagTitle => ({
   type: ADD_SEARCHED_TAG,
-  tagId,
+  tagTitle,
 });
 
 export const deleteLastSearchedTag = () => ({

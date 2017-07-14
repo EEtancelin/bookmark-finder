@@ -13,6 +13,11 @@ import {
 } from '../reducers/entitiesReducer';
 
 import {
+  getAllTags,
+} from '../reducers/bookmarksReducer';
+
+
+import {
   getTagsIdsWithCommonBookmarkWithTagsIds,
   tagsOccurrences,
 } from '../reducers/bookmarkTagsReducer';
@@ -35,13 +40,12 @@ const normalizeUserInput = string => string.toLowerCase().replace(/^\s/, '');
 
 // Whitch action dispatch when user Input Change ?
 const onUserInputChange = (tags, userInput) => {
-  const nUserInput = normalizeUserInput(userInput);
-  const tag = findTagByTitle(tags, nUserInput);
+  const tag = findTagByTitle(tags, userInput);
   let action;
   if (tag) {
-    action = addSearchedTag(tag.get('id'));
+    action = addSearchedTag(normalizeUserInput(userInput));
   } else {
-    action = updateSearchBoxValue(nUserInput);
+    action = updateSearchBoxValue(userInput);
   }
   return action;
 };
@@ -75,6 +79,7 @@ const getProposedTags = state => {
 const mapStateToProps = (state) => {
   return {
     tags: state.getIn(['entities', 'tags']),
+    tagsTitles: getAllTags(state),
     inputValue: state.getIn(['ui', 'searchBoxValue']),
     searchedTagsIds: getSearchedTagsIds(state),
     proposedTagsIds: getProposedTags(state),

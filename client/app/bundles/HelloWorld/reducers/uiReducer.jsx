@@ -47,7 +47,7 @@ const searchedTags = (state = Map({}), action) => {
     case UPDATE_SEARCHED_TAG:
       return action.tags.toSet();
     case ADD_SEARCHED_TAG:
-      return state.push(action.tagId);
+      return state.push(action.tagTitle);
     case DELETE_LAST_SEARCHED_TAG:
       return state.butLast();
     case DELETE_SEARCHED_TAGS:

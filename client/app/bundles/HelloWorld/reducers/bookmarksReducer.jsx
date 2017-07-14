@@ -1,4 +1,11 @@
-import { Map } from 'immutable';
+import { Map, Set } from 'immutable';
+
+export const getAllTags = state => {
+  return (state
+    .getIn(['entities', 'bookmarks'])
+    .reduce((total, value) => total.concat(value.get('tags_a')), Set())
+  );
+};
 
 export const bookmarks = (state = Map({}), action) => {
   switch (action.type) {
@@ -10,6 +17,7 @@ export const bookmarks = (state = Map({}), action) => {
           url: action.url,
           created_at: action.created_at,
         })));
+
     case 'REMOVE_TAG':
       const tags = state.getIn([action.bookmarkId, 'tags_a'])
         .filter(tag => tag !== action.tagTitle);
