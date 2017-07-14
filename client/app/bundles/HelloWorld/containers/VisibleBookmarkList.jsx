@@ -8,9 +8,10 @@ import { hasSearchedTags } from '../reducers/uiReducer';
 
 const getProposedBookmarksIds = (state) => {
   const bookmarks = state.getIn(['entities', 'bookmarks']);
-  return (
-    getBookmarksIdsForTagsIds(state, state.getIn(['ui', 'searchedTags']))
-    .sortBy(bookmarkId => bookmarks.get(bookmarkId).get('created_at'))
+  const searchedTagsTitles = state.getIn(['ui', 'searchedTags']);
+  return (bookmarks
+    .filter(bookmark => bookmark.get('tags_a').isSuperset(searchedTagsTitles))
+    .map(bookmark => bookmark.get('id'))
   );
 };
 // Which part of the Redux global state does our component want to receive as props?
