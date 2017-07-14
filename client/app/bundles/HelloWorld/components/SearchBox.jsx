@@ -41,8 +41,8 @@ class SearchBox extends React.Component {
     return (
       <div style={{marginBottom: '13px'}}>
         <div className="search-bar" >
-          <div style={{ display: 'flex', flexDirection: 'row', marginLeft: '8px',}} >
-            {(Set([]) ? Set([]) : Set([])).map(tagTitle => (
+          <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', flexDirection: 'row', marginLeft: '8px' }} >
+            {(this.props.searchedTagsTitles ? this.props.searchedTagsTitles : Set([])).map(tagTitle => (
               <Tag key={tagTitle}
                 title={tagTitle}
                 showRemoveButton={true}
@@ -62,7 +62,7 @@ class SearchBox extends React.Component {
         <DeleteTagsButton deleteTagsFn={this.props.onDeleteTagsClick} viewBox="0 0 7 16" />
         </div>
         <div style={{ marginTop: '8px' }}>
-          <div style={{ display: 'flex', flexWrap: 'wrap',  flexDirection: 'row', marginLeft: '8px' }} >
+          <div style={{ display: 'flex', flexWrap: 'wrap', flexDirection: 'row', marginLeft: '8px' }} >
             {(this.props.proposedTagsTitle ? this.props.proposedTagsTitle : Set([])).map(tagTitle => (
               <Tag key={tagTitle}
                 title={tagTitle}

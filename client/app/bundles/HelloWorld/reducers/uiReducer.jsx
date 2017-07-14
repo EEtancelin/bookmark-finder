@@ -16,7 +16,7 @@ import {
 // Is there Searched Tags ?
 export const hasSearchedTags = state => !state.getIn(['ui', 'searchedTags']).isEmpty();
 // Whats are the id of the searchedTags sort by title.
-export const getSearchedTagsIds = (state) => {
+export const getSearchedTagsTitles = (state) => {
   return (state, state.getIn(['ui', 'searchedTags']).toSet());
 };
 

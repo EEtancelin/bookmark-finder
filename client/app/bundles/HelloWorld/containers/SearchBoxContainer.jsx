@@ -26,7 +26,7 @@ import {
 import { sortTagsIdsByTitle } from '../reducers/tagsReducer';
 import {
   hasSearchedTags,
-  getSearchedTagsIds,
+  getSearchedTagsTitles,
   getSearchedTagsString,
 } from '../reducers/uiReducer';
 
@@ -82,7 +82,7 @@ const mapStateToProps = (state) => {
     tags: state.getIn(['entities', 'tags']),
     tagsTitles: getAllTags(state),
     inputValue: state.getIn(['ui', 'searchBoxValue']),
-    searchedTagsIds: getSearchedTagsIds(state),
+    searchedTagsTitles: getSearchedTagsTitles(state),
     proposedTagsTitle: getProposedTagsTitles(state),
     onUserInputChange: (tags, userInput) => onUserInputChange(tags, userInput),
     getGoogleQueryString: inputValue => getGoogleQueryString(state, inputValue),
