@@ -16,6 +16,7 @@ export const bookmarks = (state = Map({}), action) => {
           title: action.title,
           url: action.url,
           created_at: action.created_at,
+          tags_a: Set(),
         })));
     case 'ADD_TAG_TO_BOOKMARK':
       const tagss = state.getIn([action.bookmarkId, 'tags_a']).concat(action.tagTitle);

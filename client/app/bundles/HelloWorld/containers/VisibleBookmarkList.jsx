@@ -8,6 +8,8 @@ import { getProposedBookmarks } from '../reducers/entitiesReducer';
 const getProposedBookmarksIds = (state) => {
   return (
     getProposedBookmarks(state)
+    .sortBy(bookmark => bookmark.get('created_at'))
+    .reverse()
     .map(bookmark => bookmark.get('id'))
   );
 };
