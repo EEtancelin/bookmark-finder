@@ -3,14 +3,11 @@
 import { connect } from 'react-redux';
 import BookmarkListIS from '../components/BookmarkListIS';
 import * as actions from '../actions/mainContentActionCreators';
-import { getBookmarksIdsForTagsIds, tagsByBookmarkCount } from '../reducers/bookmarkTagsReducer';
-import { hasSearchedTags } from '../reducers/uiReducer';
+import { getProposedBookmarks } from '../reducers/entitiesReducer';
 
 const getProposedBookmarksIds = (state) => {
-  const bookmarks = state.getIn(['entities', 'bookmarks']);
-  const searchedTagsTitles = state.getIn(['ui', 'searchedTags']);
-  return (bookmarks
-    .filter(bookmark => bookmark.get('tags_a').isSuperset(searchedTagsTitles))
+  return (
+    getProposedBookmarks(state)
     .map(bookmark => bookmark.get('id'))
   );
 };
