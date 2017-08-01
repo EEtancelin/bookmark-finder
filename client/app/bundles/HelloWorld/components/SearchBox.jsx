@@ -41,7 +41,7 @@ class SearchBox extends React.Component {
     return (
       <div style={{marginBottom: '13px'}}>
         <div className="search-bar" >
-          <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', flexDirection: 'row', marginLeft: '8px' }} >
+          <div style={{ display: 'flex', alignItems: 'center', flexDirection: 'row', marginLeft: '8px' }} >
             {(this.props.searchedTagsTitles ? this.props.searchedTagsTitles : Set([])).map(tagTitle => (
               <Tag key={tagTitle}
                 title={tagTitle}
