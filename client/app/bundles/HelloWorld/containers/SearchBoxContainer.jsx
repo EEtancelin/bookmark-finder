@@ -16,15 +16,7 @@ import {
   getAllTags,
 } from '../reducers/bookmarksReducer';
 
-
 import {
-  getTagsIdsWithCommonBookmarkWithTagsIds,
-  tagsOccurrences,
-} from '../reducers/bookmarkTagsReducer';
-
-import { sortTagsIdsByTitle } from '../reducers/tagsReducer';
-import {
-  hasSearchedTags,
   getSearchedTagsTitles,
   getSearchedTagsString,
 } from '../reducers/uiReducer';
