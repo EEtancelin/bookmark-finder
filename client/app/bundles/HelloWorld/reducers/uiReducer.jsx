@@ -1,10 +1,6 @@
 import { combineReducers } from 'redux-immutable';
 import { List } from 'immutable';
 
-import { sortTagsIdsByTitle,
-  tagsIdsToString,
-} from './tagsReducer';
-
 import {
   ADD_SEARCHED_TAG,
   DELETE_LAST_SEARCHED_TAG,
