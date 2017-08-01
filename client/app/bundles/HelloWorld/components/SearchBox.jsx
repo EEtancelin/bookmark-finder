@@ -78,8 +78,6 @@ class SearchBox extends React.Component {
 }
 
 SearchBox.propTypes = {
-  tags: PropTypes.instanceOf(immutable.Map).isRequired,
-  proposedTagsIds: PropTypes.instanceOf(immutable.Set).isRequired,
   onSearchBoxValueChange: PropTypes.func.isRequired,
   onDeleteLastSearchedTag: PropTypes.func.isRequired,
   inputValue: PropTypes.string.isRequired,

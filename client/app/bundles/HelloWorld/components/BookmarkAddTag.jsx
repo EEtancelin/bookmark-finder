@@ -151,7 +151,6 @@ class BookmarkAddTag extends React.Component {
 }
 
 BookmarkAddTag.propTypes = {
-  tags: PropTypes.any.isRequired,
   bookmarkId: PropTypes.string.isRequired,
 };
 
