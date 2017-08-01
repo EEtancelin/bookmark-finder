@@ -6,7 +6,6 @@ import { sortTagsIdsByTitle,
 } from './tagsReducer';
 
 import {
-  UPDATE_SEARCHED_TAG,
   ADD_SEARCHED_TAG,
   DELETE_LAST_SEARCHED_TAG,
   UPDATE_SEARCH_BOX_VALUE,
@@ -31,8 +30,6 @@ const searchBoxValue = (state = Map({}), action) => {
   switch (action.type) {
     case UPDATE_SEARCH_BOX_VALUE:
       return action.value.toLowerCase();
-    case UPDATE_SEARCHED_TAG:
-      return '';
     case ADD_SEARCHED_TAG:
       return '';
     case DELETE_SEARCHED_TAGS:
@@ -46,8 +43,6 @@ const searchedTags = (state = Map({}), action) => {
   switch (action.type) {
     case '@@INIT':
       return state.toSet();
-    case UPDATE_SEARCHED_TAG:
-      return action.tags.toSet();
     case ADD_SEARCHED_TAG:
       return state.push(action.tagTitle);
     case DELETE_LAST_SEARCHED_TAG:
