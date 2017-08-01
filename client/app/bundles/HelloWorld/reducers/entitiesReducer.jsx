@@ -7,10 +7,6 @@ import { bookmarks } from './bookmarksReducer';
 import { teams } from './teamsReducer';
 import { teamMembers } from './teamMembersReducer';
 
-// What is the tag hash corresponding to this title ?
-export const findTagByTitle = (tags, title) => tags.find(t => t.get('title') === title);
-
-
 export const getProposedBookmarksTagsTitles = (state) => {
   const searchedTags = state.getIn(['ui', 'searchedTags']);
   return (

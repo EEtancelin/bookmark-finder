@@ -9,7 +9,6 @@ import {
 } from '../actions/searchBoxActionCreators';
 
 import {
-  findTagByTitle,
   getProposedBookmarksTagsTitles,
 } from '../reducers/entitiesReducer';
 
