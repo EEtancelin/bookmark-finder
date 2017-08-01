@@ -43,14 +43,6 @@ export const getTagsIdsForBookmarksIds = (state, bookmarksIds) => {
   );
 };
 
-export const getTagIdsForBookmark = (state, bookmarkId) => {
-  return (state.getIn(['entities', 'bookmarkTag'])
-      .filter(bt => bookmarkId === bt.get('bookmark_id'))
-      .map(bt => bt.get('tag_id'))
-      .toSet()
-  );
-};
-
 // Which Tag have one bookmark in Common with the searchedTags ?
 export const getTagsIdsWithCommonBookmarkWithTagsIds = (state, tagsIds) => {
 

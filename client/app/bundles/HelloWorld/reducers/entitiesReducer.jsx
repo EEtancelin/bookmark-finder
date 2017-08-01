@@ -69,8 +69,6 @@ export const getBookmarksIdsAssociateToTags = (bookmarkTag, tags) => {
 
 const entitiesReducer = combineReducers({
   bookmarks,
-  bookmarkTag,
-  tags,
   teams,
   teamMembers,
   bookmarkTeams,
