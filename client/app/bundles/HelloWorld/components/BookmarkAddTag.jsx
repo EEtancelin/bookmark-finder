@@ -9,7 +9,7 @@ class BookmarkAddTag extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isEditing: false,
+      isOpened: false,
       inputValue: '',
     };
 
@@ -24,22 +24,22 @@ class BookmarkAddTag extends React.Component {
   onTagSubmit() {
     this.props.submitTag(this.state.inputValue, this.props.bookmarkId)
     this.setState({
-      isEditing: false,
+      isOpened: false,
       inputValue: '',
     })
   }
 
   onKeyDown(event) {
     event.keyCode === 13 && this.onTagSubmit();
-    event.keyCode === 27 && this.setState({ isEditing: false });
+    event.keyCode === 27 && this.setState({ isOpened: false });
   }
 
   handleClickOutside() {
-    this.setState({ isEditing: false });
+    this.setState({ isOpened: false });
   }
 
   onEditClick() {
-    this.setState({ isEditing: true });
+    this.setState({ isOpened: true });
   }
 
   onProposedTagCLick(tagTitle) {
@@ -111,7 +111,7 @@ class BookmarkAddTag extends React.Component {
     const proposedTags = this.props.getProposedTags(this.state.inputValue)
     return (
       <div style={style}>
-        { this.state.isEditing ? (
+        { this.state.isOpened ? (
           <div style={flexRowCenteredStyle}>
             <input
               className="add-tag-input"
