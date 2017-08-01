@@ -45,7 +45,6 @@ class SearchBox extends React.Component {
             {(this.props.searchedTagsTitles ? this.props.searchedTagsTitles : Set([])).map(tagTitle => (
               <Tag key={tagTitle}
                 title={tagTitle}
-                showRemoveButton={false}
                />
             ))}
           </div>
@@ -66,7 +65,6 @@ class SearchBox extends React.Component {
             {(this.props.proposedTagsTitles ? this.props.proposedTagsTitles : Set([])).map(tagTitle => (
               <Tag key={tagTitle}
                 title={tagTitle}
-                showRemoveButton={false}
                 onClick = {() => this.props.onTagClick(tagTitle)}
                />
             ))}

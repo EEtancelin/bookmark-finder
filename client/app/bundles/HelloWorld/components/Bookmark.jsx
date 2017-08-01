@@ -45,7 +45,6 @@ const Bookmark = ({ bookmarkId, tagsIds, tagsTitles, title, url, date = '', thum
             {(tagsTitles ? tagsTitles : Set([])).map(tagTitle => (
               <Tag key={tagTitle}
                 title={tagTitle}
-                showRemoveButton={true}
                 bookmark={bookmarkId}
                 onRemoveClick={() => onRemoveTagClick(tagTitle)} />
             ))}
