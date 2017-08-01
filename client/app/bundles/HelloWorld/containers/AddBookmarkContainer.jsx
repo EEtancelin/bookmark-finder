@@ -18,6 +18,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch, ownprops ) => {
   return {
     onSubmit: (values) => { onBookmarkCreated(dispatch, values)},
+    onClose: () => {dispatch({type: 'HIDE_ADD_BOOKMARK_FORM'})}
   };
 };
 

@@ -1,6 +1,7 @@
 // Absolute Import
 import React from 'react';
 import PropTypes from 'prop-types';
+const enhanceWithClickOutside = require('react-click-outside');
 import { Button, Form } from 'semantic-ui-react';
 
 
@@ -23,6 +24,9 @@ class AddBookmark extends React.Component {
     e.preventDefault();
     this.setState({ title: '', url: '' });
     this.props.onSubmit(this.state);
+  }
+  handleClickOutside() {
+    this.props.onClose()
   }
 
   render() {
@@ -54,4 +58,4 @@ AddBookmark.propTypes = {
 
 };
 
-export default AddBookmark;
+export default enhanceWithClickOutside(AddBookmark);
