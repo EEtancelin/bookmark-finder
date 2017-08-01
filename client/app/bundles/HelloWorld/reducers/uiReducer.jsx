@@ -53,10 +53,10 @@ const showAddBookmarkForm = (state = true, action) => {
   switch (action.type) {
     case '@@INIT':
       return state;
-      case 'SHOW_ADD_BOOKMARK_FORM':
-        return true;
-      case 'HIDE_ADD_BOOKMARK_FORM':
-          return false;
+    case 'SHOW_ADD_BOOKMARK_FORM':
+      return true;
+    case 'HIDE_ADD_BOOKMARK_FORM':
+      return false;
     default:
       return state;
   }
