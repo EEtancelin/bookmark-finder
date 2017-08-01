@@ -67,6 +67,7 @@ class SearchBox extends React.Component {
               <Tag key={tagTitle}
                 title={tagTitle}
                 showRemoveButton={false}
+                onClick = {() => this.props.onTagClick(tagTitle)}
                />
             ))}
           </div>

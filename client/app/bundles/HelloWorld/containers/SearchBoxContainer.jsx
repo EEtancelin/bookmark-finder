@@ -78,6 +78,7 @@ const mapDispatchToProps = (dispatch, ownprops) => {
     onDeleteTagsClick: () => dispatch(deleteSearchedTags()),
     onDeleteLastSearchedTag: () => dispatch(deleteLastSearchedTag()),
     onSearchBoxValueChange: (tagsTitles, userInput) => dispatch(onUserInputChange(tagsTitles, userInput)),
+    onTagClick: tagTitle => dispatch(addSearchedTag(tagTitle)),
   };
 };
 
