@@ -9,7 +9,7 @@ class BookmarkAddTag extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isEditing: true,
+      isEditing: false,
       inputValue: '',
     };
 
@@ -24,7 +24,7 @@ class BookmarkAddTag extends React.Component {
   onTagSubmit() {
     this.props.submitTag(this.state.inputValue, this.props.bookmarkId)
     this.setState({
-      isEditing: true,
+      isEditing: false,
       inputValue: '',
     })
   }
