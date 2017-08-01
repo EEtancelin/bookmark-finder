@@ -1,10 +1,10 @@
 import React from 'react';
+const enhanceWithClickOutside = require('react-click-outside');
 import PropTypes from 'prop-types';
 import { Button } from 'reactstrap';
 import { Icon } from 'semantic-ui-react';
 
 class BookmarkAddTag extends React.Component {
-
 
   constructor(props) {
     super(props);
@@ -32,6 +32,10 @@ class BookmarkAddTag extends React.Component {
   onKeyDown(event) {
     event.keyCode === 13 && this.onTagSubmit();
     event.keyCode === 27 && this.setState({ isEditing: false });
+  }
+
+  handleClickOutside() {
+    this.setState({ isEditing: false });
   }
 
   onEditClick() {
@@ -154,4 +158,4 @@ BookmarkAddTag.propTypes = {
   bookmarkId: PropTypes.string.isRequired,
 };
 
-export default BookmarkAddTag;
+export default enhanceWithClickOutside(BookmarkAddTag);
