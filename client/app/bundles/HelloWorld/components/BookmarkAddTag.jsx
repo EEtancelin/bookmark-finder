@@ -38,13 +38,8 @@ class BookmarkAddTag extends React.Component {
     this.setState({ isEditing: true });
   }
 
-  onProposedTagCLick(tag) {
-    const tagTitle = this.props.tags
-      .filter(t => t.get('id') === tag)
-      .first()
-      .get('title');
+  onProposedTagCLick(tagTitle) {
     this.setState({ inputValue: tagTitle });
-
   }
 
   onUserInputChange(e) {
@@ -55,13 +50,13 @@ class BookmarkAddTag extends React.Component {
 
 
   shouldProposeTags(){
-    const proposedTags = this.props.getProposedTags(this.props.tags, this.state.inputValue);
+    const proposedTags = this.props.getProposedTags(this.state.inputValue);
     const inputValue = this.state.inputValue;
 
     return(
       (
         proposedTags.count() === 1 &&
-        proposedTags.first().get('title') !== inputValue
+        proposedTags.first() !== inputValue
       ) || (
         proposedTags.count() > 1
       )
@@ -109,7 +104,7 @@ class BookmarkAddTag extends React.Component {
       paddingLeft: '8px',
       cursor:'pointer',
     }
-    const proposedTags = this.props.getProposedTags(this.props.tags, this.state.inputValue)
+    const proposedTags = this.props.getProposedTags(this.state.inputValue)
     return (
       <div style={style}>
         { this.state.isEditing ? (
@@ -133,12 +128,13 @@ class BookmarkAddTag extends React.Component {
           </Button>
             { this.shouldProposeTags() &&
               <div style={ tagProposalsBoxStyle } >
-                  {proposedTags.valueSeq().map(t => (
-                    <div key={t.get('id')}
+                  {proposedTags.valueSeq().map(tagTitle => (
+                    <div
+                      key={tagTitle}
                       style={tagProposal}
-                      onClick={() => { this.onProposedTagCLick(t.get('id')); }}
+                      onClick={() => { this.onProposedTagCLick(tagTitle); }}
                     >
-                      {t.get('title')}
+                      {tagTitle}
                     </div>
                   ))}
                 </div>

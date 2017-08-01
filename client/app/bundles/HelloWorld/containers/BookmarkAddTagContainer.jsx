@@ -1,13 +1,22 @@
 // Simple example of a React "smart" component
 
 import { connect } from 'react-redux';
-import BookmarkAddTag from '../components/BookmarkAddTag';
+//Selectors
+import { getAllTags } from '../reducers/bookmarksReducer';
+
+//Actions
 import { postTag , addTagToBookmark } from '../actions/bookmarkActionCreators';
 
+// Components
+import BookmarkAddTag from '../components/BookmarkAddTag';
 
 // What are the tags to propose ?
-const getProposedTags = (tags, inputValue) => {
-  return ( tags.filter(t => RegExp(inputValue).exec(t.get('title'))));
+const getProposedTags = (state, inputValue) => {
+  return (
+    getAllTags(state)
+    .filter(tagTitle => RegExp(inputValue).exec(tagTitle))
+    .sort()
+  );
 }
 
 // Is this tag is new ?
@@ -29,7 +38,7 @@ const submitTag = (tagTitle, bookmarkId) => {
 const mapStateToProps = (state, ownprops) => ({
   bookmarkId: ownprops.bookmark,
   tags: state.get('entities').get('tags'),
-  getProposedTags: (tags, inputValue) => getProposedTags(tags, inputValue)
+  getProposedTags: inputValue => getProposedTags(state, inputValue),
 });
 
 
